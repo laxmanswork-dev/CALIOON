@@ -1936,21 +1936,23 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Mobile deity background — pillar visible on right, text protected on left */}
+    {/* Mobile deity background — full pillar on right half, mirroring desktop layout */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
+      {/* Solid cover behind navbar */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:3 }} />
+      {/* Full pillar — right 60% of screen, objectFit:contain shows complete column */}
       <video autoPlay muted loop playsInline style={{
-        position:'absolute', inset:0, width:'100%', height:'100%',
-        objectFit:'cover', objectPosition:'60% center',
-        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
+        position:'absolute', right:0, top:'100px', bottom:0,
+        width:'60%', height:'calc(100% - 100px)',
+        objectFit:'contain', objectPosition:'right center',
+        opacity:0.80, filter:'brightness(1.30) contrast(1.12) saturate(0.85)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
-      {/* Solid cover behind navbar — video visually starts right below the 3-line menu */}
-      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
-      {/* Left-side dark shield keeps text readable; right opens up to show pillar */}
+      {/* Left dark shield for text readability, fades toward pillar */}
       <div style={{
         position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
-        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
+        background:'linear-gradient(to right, rgba(5,10,18,0.96) 0%, rgba(5,10,18,0.90) 28%, rgba(5,10,18,0.40) 48%, transparent 70%)',
       }} />
     </div>
 
