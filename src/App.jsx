@@ -1944,9 +1944,9 @@ const Hero = () => (
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:3 }} />
       {/* Pillar video — smaller fixed element, bottom-right anchored, full column visible */}
       <video autoPlay muted loop playsInline style={{
-        position:'absolute', right:'-2%', bottom:0,
-        width:'58%', height:'82%',
-        objectFit:'contain', objectPosition:'right bottom',
+        position:'absolute', right:'-2%', top:'100px', bottom:0,
+        width:'58%', height:'calc(100% - 100px)',
+        objectFit:'contain', objectPosition:'right center',
         opacity:0.85, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
         zIndex:1,
       }}>
