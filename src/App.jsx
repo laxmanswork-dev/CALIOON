@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import imgIcon   from "./assets/images/icon.png";
 import imgZeus   from "./assets/images/zeus.jpg";
@@ -156,6 +157,15 @@ const styles = `
   }
   @media(max-width: 640px) {
     .hero-content-block { max-width: 100%; }
+  }
+
+  /* --- MOBILE PERFORMANCE: disable blur filters on phones --- */
+  @media (max-width: 768px) {
+    * { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+    .god-matte-card { will-change: transform; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
 
   /* --- HERO CREDIBILITY STRIP --- */
@@ -1540,14 +1550,13 @@ const Navbar = () => {
       </div>
 
       <AnimatePresence>
-        {mobileOpen && (
+        {mobileOpen && createPortal(
           <motion.div
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: '0%' }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 lg:hidden flex flex-col overflow-hidden"
-            style={{ background: 'linear-gradient(160deg, #030810 0%, #060F1C 40%, #04080F 100%)' }}
+            style={{ position:'fixed', inset:0, zIndex:9999, display:'flex', flexDirection:'column', overflow:'hidden', background: 'linear-gradient(160deg, #030810 0%, #060F1C 40%, #04080F 100%)' }}
           >
             {/* Background texture */}
             <div className="greek-stone-texture-overlay !opacity-[0.06]" />
@@ -1645,7 +1654,8 @@ const Navbar = () => {
                 AD OLYMPUM
               </p>
             </div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
       </AnimatePresence>
     </nav>
@@ -2967,14 +2977,13 @@ const OurGods = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.75, delay: i * 0.09 + baseDelay, ease: LUXURY_EASE }}
-      whileHover={{ y: -4 }}
       className="god-matte-card p-5 flex flex-col group"
     >
       <div className="god-matte-shimmer" />
       <div className="greek-stone-texture-overlay" />
       <div className="greek-temple-wall-grain" />
       <div className="w-full mb-4 relative overflow-hidden z-10" style={{ aspectRatio: '3/4', border: '1px solid rgba(198,160,98,0.45)', boxShadow: '0 0 18px rgba(198,160,98,0.10), inset 0 0 12px rgba(198,160,98,0.04)', transition: 'border-color 0.40s ease, box-shadow 0.40s ease' }}>
-        <img src={god.img} alt={god.n} className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+        <img src={god.img} alt={god.n} loading="lazy" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050A12]/90 z-10 pointer-events-none" />
         <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 30%, rgba(198,160,98,0.08) 0%, transparent 70%)' }} />
         <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-[#c6a062]/60 group-hover:border-[#c6a062]/95 transition-colors duration-500 z-20" />
@@ -2983,50 +2992,13 @@ const OurGods = () => {
         <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-[#c6a062]/60 group-hover:border-[#c6a062]/95 transition-colors duration-500 z-20" />
       </div>
       <div className="flex flex-col flex-grow relative z-10">
-        <motion.span
-          initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 1 }}
-          whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.50, delay: i * 0.09 + baseDelay + 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[#c6a062] text-[10px] block tracking-[0.28em] uppercase font-bold"
-          style={{ fontFamily: "'Cinzel', serif" }}
-        >{god.tag}</motion.span>
-        <motion.div
-          initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.38, delay: i * 0.09 + baseDelay + 0.24, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(198,160,98,0.45), rgba(198,160,98,0.10) 60%, transparent)', transformOrigin: 'left' }}
-        />
-        <motion.h4
-          initial={{ opacity: 0, scale: 0.88, filter: 'blur(6px)' }}
-          whileInView={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.55, delay: i * 0.09 + baseDelay + 0.30, ease: [0.34, 1.56, 0.64, 1] }}
-          className="heading-cinzel text-[#fdf0d5] text-[18px] font-bold tracking-[0.05em] group-hover:text-white transition-colors duration-300"
-        >{god.n}</motion.h4>
-        <motion.div
-          initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.38, delay: i * 0.09 + baseDelay + 0.38, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(198,160,98,0.30), rgba(198,160,98,0.07) 60%, transparent)', transformOrigin: 'left' }}
-        />
-        <motion.p
-          initial={{ opacity: 0, x: -14, filter: 'blur(4px)' }}
-          whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.50, delay: i * 0.09 + baseDelay + 0.44, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[11px] text-[#c6a062] font-bold uppercase tracking-[0.18em] group-hover:text-[#d4b07a] transition-colors duration-300"
-        >{god.r}</motion.p>
-        <motion.div
-          initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.38, delay: i * 0.09 + baseDelay + 0.50, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, transparent)', transformOrigin: 'left' }}
-        />
-        <motion.p
-          initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.60, delay: i * 0.09 + baseDelay + 0.56, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white/55 text-[12px] leading-relaxed mt-auto group-hover:text-white/70 transition-colors duration-400"
-        >{god.desc}</motion.p>
+        <span className="text-[#c6a062] text-[12px] block tracking-[0.18em] uppercase font-bold" style={{ fontFamily: "'Cinzel', serif" }}>{god.tag}</span>
+        <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(198,160,98,0.45), rgba(198,160,98,0.10) 60%, transparent)' }} />
+        <h4 className="heading-cinzel text-[#fdf0d5] text-[18px] font-bold tracking-[0.05em] group-hover:text-white transition-colors duration-300">{god.n}</h4>
+        <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(198,160,98,0.30), rgba(198,160,98,0.07) 60%, transparent)' }} />
+        <p className="text-[11px] text-[#c6a062] font-bold uppercase tracking-[0.18em] group-hover:text-[#d4b07a] transition-colors duration-300">{god.r}</p>
+        <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, transparent)' }} />
+        <p className="text-white/55 text-[12px] leading-relaxed mt-auto group-hover:text-white/70 transition-colors duration-400">{god.desc}</p>
       </div>
     </motion.div>
   );
@@ -4641,11 +4613,11 @@ const IntroScreen = ({ onComplete }) => {
         />
 
         {/* CALIOON wordmark — horizontal sweep */}
-        <div style={{ overflow:'hidden', lineHeight:1 }}>
+        <div style={{ overflow:'hidden', lineHeight:1, width:'100%', textAlign:'center' }}>
           <motion.div
             style={{
-              fontFamily:"'Cinzel',serif", fontSize:'54px', fontWeight:700,
-              letterSpacing:'0.32em', paddingRight:'0.32em',
+              fontFamily:"'Cinzel',serif", fontSize:'clamp(28px, 12vw, 54px)', fontWeight:700,
+              letterSpacing:'clamp(0.10em, 2.5vw, 0.32em)', paddingRight:'clamp(0.10em, 2.5vw, 0.32em)',
               color:'#fdf0d5', lineHeight:1, whiteSpace:'nowrap',
             }}
             initial={{ clipPath:'inset(0 100% 0 0)', opacity:1 }}
@@ -4667,8 +4639,8 @@ const IntroScreen = ({ onComplete }) => {
         {/* Tagline */}
         <motion.div
           style={{
-            fontFamily:"'Cinzel',serif", fontSize:'10.5px', fontWeight:600,
-            letterSpacing:'0.48em', paddingRight:'0.48em',
+            fontFamily:"'Cinzel',serif", fontSize:'clamp(8px, 2.5vw, 10.5px)', fontWeight:600,
+            letterSpacing:'clamp(0.14em, 2vw, 0.48em)', paddingRight:'clamp(0.14em, 2vw, 0.48em)',
             color:'rgba(198,160,98,0.68)', textTransform:'uppercase', whiteSpace:'nowrap',
           }}
           initial={{ opacity: 0, y: 10 }}
