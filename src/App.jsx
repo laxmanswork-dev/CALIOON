@@ -1937,7 +1937,7 @@ const Hero = () => (
     </div>
 
     {/* Mobile deity background — pillar visible on right, text protected on left */}
-    <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
+    <div className="lg:hidden absolute top-[100px] left-0 right-0 bottom-0 select-none pointer-events-none z-0" aria-hidden="true">
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
         objectFit:'cover', objectPosition:'60% center',
