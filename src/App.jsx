@@ -73,9 +73,10 @@ const styles = `
   }
   @media (max-width: 1024px) {
     .calioon-section-hero {
+      min-height: auto;
       align-items: flex-start;
-      padding-top: 120px;
-      padding-bottom: 60px;
+      padding-top: 130px;
+      padding-bottom: 80px;
     }
   }
 
@@ -518,7 +519,10 @@ const styles = `
   }
   @media(max-width: 1280px) { .text-hero { font-size: 64px; } }
   @media(max-width: 1024px) { .text-hero { font-size: 56px; } }
-  @media(max-width: 640px) { .text-hero { font-size: 44px; } }
+  @media(max-width: 640px)  { .text-hero { font-size: 44px; } }
+  @media(max-width: 480px)  { .text-hero { font-size: 36px; } }
+  @media(max-width: 375px)  { .text-hero { font-size: 28px; } }
+  @media(max-width: 320px)  { .text-hero { font-size: 22px; } }
 
   .text-section-title {
     font-family: 'Cinzel', serif;
@@ -1231,11 +1235,6 @@ const styles = `
     white-space: nowrap;
   }
 
-  /* --- HERO HEADLINE — prevent horizontal scroll on very small screens --- */
-  @media(max-width: 375px) {
-    .text-hero { font-size: 28px; }
-  }
-
   /* --- CONTACT LEFT LABEL — prevent overflow on small screens --- */
   @media(max-width: 640px) {
     .contact-eyebrow { font-size: 11px !important; letter-spacing: 0.16em !important; }
@@ -1779,7 +1778,7 @@ const Hero = () => (
 
 
     <div className="calioon-global-container h-full w-full relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:items-center h-full w-full min-h-[calc(100vh-100px)]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:items-center w-full lg:h-full lg:min-h-[calc(100vh-100px)]">
         
         <div className="hero-content-block">
           <div className="flex flex-col gap-0 w-full items-start text-left m-0 p-0">
@@ -1792,7 +1791,7 @@ const Hero = () => (
             }} />
 
                         {/* H1 — cinematic line-by-line vertical emergence */}
-            <h1 className="text-hero text-white block m-0 p-0 mb-6 self-start" style={{ position: 'relative', zIndex: 1 }}>
+            <h1 className="text-hero text-white block m-0 p-0 mb-6 w-full overflow-hidden" style={{ position: 'relative', zIndex: 1 }}>
               {[
                 { text: "WE DON'T",      delay: 0.10, ls: '0.10em', color: 'inherit' },
                 { text: "BUILD BRANDS.", delay: 0.28, ls: '0.03em', color: 'inherit' },
