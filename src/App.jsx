@@ -1940,7 +1940,7 @@ const Hero = () => (
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
-        objectFit:'cover', objectPosition:'75% center',
+        objectFit:'cover', objectPosition:'right center',
         opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
