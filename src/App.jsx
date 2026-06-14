@@ -1936,29 +1936,26 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Mobile deity background — full pillar, right-side panel, objectFit contain */}
+    {/* Mobile deity background — pillar anchored bottom-right, fixed size, no cropping */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
-      {/* Dark base so left side behind text is always solid */}
+      {/* Solid dark base */}
       <div style={{ position:'absolute', inset:0, background:'#050A12' }} />
       {/* Solid cover behind navbar */}
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:3 }} />
-      {/* Right-side pillar panel — contain keeps full column visible, no cropping */}
-      <div style={{
-        position:'absolute', right:0, top:'100px', bottom:0,
-        width:'62%', zIndex:1, overflow:'hidden',
+      {/* Pillar video — smaller fixed element, bottom-right anchored, full column visible */}
+      <video autoPlay muted loop playsInline style={{
+        position:'absolute', right:'-2%', bottom:0,
+        width:'58%', height:'82%',
+        objectFit:'contain', objectPosition:'right bottom',
+        opacity:0.85, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
+        zIndex:1,
       }}>
-        <video autoPlay muted loop playsInline style={{
-          width:'100%', height:'100%',
-          objectFit:'contain', objectPosition:'right center',
-          opacity:0.85, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
-        }}>
-          <source src="/hero-video.mp4" type="video/mp4" />
-        </video>
-      </div>
-      {/* Left gradient — strong dark on text side, fades into pillar */}
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+      {/* Left gradient shield for text readability */}
       <div style={{
         position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:2,
-        background:'linear-gradient(to right, rgba(5,10,18,1) 0%, rgba(5,10,18,0.95) 30%, rgba(5,10,18,0.50) 50%, rgba(5,10,18,0.10) 70%, transparent 85%)',
+        background:'linear-gradient(to right, rgba(5,10,18,1) 0%, rgba(5,10,18,0.95) 28%, rgba(5,10,18,0.55) 48%, rgba(5,10,18,0.10) 68%, transparent 82%)',
       }} />
     </div>
 
