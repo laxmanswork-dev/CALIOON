@@ -1,0 +1,81 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Claude Code session files
+.claude/
+
+# Temp files
+*.tmp
+
+# QA audit screenshots (root-level PNGs generated during development)
+/*.png
+
+# Audit & screenshot helper scripts (root-level)
+/audit_final.cjs
+/check_domains.cjs
+/check_domains2.cjs
+/chk3.cjs
+/chk_full.cjs
+/final_verify.cjs
+/measure_domains.cjs
+/qa_audit.cjs
+/responsive_check.cjs
+/responsive_check2.cjs
+/screenshot2.cjs
+/screenshot_sections.cjs
+/screenshots3.cjs
+/screenshots4.cjs
+/screenshots5.cjs
+/screenshots6.cjs
+/screenshots7.cjs
+/screenshots8.cjs
+/screenshots9_mobile.cjs
+/screenshots_final.cjs
+
+# Dev patch scripts directory
+/scripts/
+
+# Unused public test media (not referenced in the app)
+/public/b.png
+/public/bbf.png
+/public/bdcfb.png
+/public/cbv.png
+/public/dbc.png
+/public/dhjd.png
+/public/hf.mp4
+/public/hf.png
+/public/i.mp4
+/public/ijhi.png
+/public/j.mp4
+/public/j (2).png
+/public/jdf.png
+/public/jffj.png
+/public/kjd.png
+/public/knb.png
+/public/n.png
+/public/nf.png
+/public/nj.png
+/public/vgg.png
+/public/vv.png

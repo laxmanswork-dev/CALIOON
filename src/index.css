@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Cinzel", serif;
+  --font-inter: "Inter", sans-serif;
+  --color-gold: #c6a062;
+  --color-gold-light: #f5e3c3;
+  --color-gold-deep: #8a6d3b;
+  --color-bg-dark: #030508;
+  --color-bg-deep: #010203;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-white/80 font-inter overflow-x-hidden antialiased selection:bg-gold selection:text-black;
+    /* Removed global letter-spacing to fix paragraph readability */
+  }
+
+  h1, h2, h3, h4, .font-cinzel {
+    @apply font-cinzel uppercase;
+    /* Reduced tracking from 0.2em to 0.12em for imperial density */
+    letter-spacing: 0.12em;
+  }
+}
+
+@layer utilities {
+  /* --- 1. TYPOGRAPHY HIERARCHY REFINEMENT --- */
+  .hero-heading {
+    /* Reduced from 96px to elegant imperial proportions */
+    @apply text-[58px] lg:text-[68px] xl:text-[76px] leading-[0.9] tracking-[-0.02em] font-cinzel;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+
+  .section-heading {
+    @apply text-[32px] lg:text-[42px] tracking-[0.15em] mb-8;
+  }
+
+  .card-heading {
+    @apply text-[16px] lg:text-[18px] tracking-[0.2em] leading-relaxed;
+  }
+
+  .label-text {
+    @apply text-[10px] tracking-[0.3em] text-gold/60 font-cinzel;
+  }
+
+  /* --- 2. GRID & ALIGNMENT BALANCE --- */
+  .section-spacing {
+    /* Reduced from py-64 to dense cinematic spacing */
+    @apply py-28 lg:py-36 px-8 xl:px-20;
+  }
+
+  .navbar-height {
+    @apply h-[80px] flex items-center justify-between;
+  }
+
+  .logo-container {
+    @apply w-[140px] h-auto flex items-center justify-start overflow-hidden;
+  }
+
+  .hero-grid-gap {
+    @apply gap-x-12 xl:gap-x-20;
+  }
+
+  /* --- 3. LUXURY INTERACTION (POLISHED) --- */
+  .imperial-button {
+    @apply relative overflow-hidden transition-all duration-700 border border-gold/25 bg-transparent py-3.5 px-9;
+    /* Reduced tracking from 0.5em to 0.25em */
+    @apply font-cinzel text-[10px] tracking-[0.25em] text-gold uppercase;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .imperial-button:hover {
+    @apply border-gold/60 -translate-y-0.5;
+    box-shadow: 0 10px 30px -5px rgba(198, 160, 98, 0.15);
+  }
+
+  /* --- 4. CINEMATIC ATMOSPHERE REFINEMENT --- */
+  .cinematic-grain {
+    @apply fixed inset-0 pointer-events-none z-[9999] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .gold-matte-gradient {
+    background: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-gold) 50%, var(--color-gold-deep) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Subtle Lift for details (Lifting shadows slightly for readability) */
+  .lifted-dark {
+    @apply bg-[#05070a];
+  }
+
+  /* --- 5. COMPONENT SPECIFIC REFINEMENT --- */
+  .domain-card {
+    @apply p-10 border border-white/5 bg-bg-deep/50 transition-all duration-700;
+    /* Reduced internal spacing for architectural density */
+  }
+
+  .god-portrait-container {
+    @apply relative grayscale brightness-[0.6] transition-all duration-1000;
+  }
+
+  .god-portrait-container:hover {
+    /* Reduced scale from 105 to 102 for luxury feel */
+    @apply grayscale-0 brightness-100 scale-[1.02];
+  }
+
+  .imperial-input {
+    @apply w-full bg-transparent border-b border-white/10 py-4 font-cinzel text-[11px] tracking-[0.2em] text-white;
+    @apply transition-all duration-500 outline-none focus:border-gold;
+  }
+
+  /* --- 6. ANIMATION CONTROL --- */
+  @keyframes pillarFloat {
+    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 30px rgba(198,160,0,0.05)); }
+    50% { transform: translateY(-12px); filter: drop-shadow(0 0 45px rgba(198,160,0,0.1)); }
+  }
+
+  .animate-pillar-subtle {
+    animation: pillarFloat 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .imperial-divider {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, rgba(198,160,98,0.15) 50%, transparent);
+  }
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { @apply bg-bg-dark; }
+::-webkit-scrollbar-thumb { @apply bg-gold/15; }
