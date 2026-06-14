@@ -1936,18 +1936,19 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Mobile deity background — faded pillar preserves luxury on small screens */}
+    {/* Mobile deity background — pillar visible on right, text protected on left */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
-        objectFit:'cover', objectPosition:'right center',
-        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
+        objectFit:'cover', objectPosition:'82% center',
+        opacity:0.70, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
+      {/* Left-side dark shield keeps text readable; right opens up to show pillar */}
       <div style={{
         position:'absolute', inset:0,
-        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
+        background:'linear-gradient(to right, rgba(5,10,18,0.93) 0%, rgba(5,10,18,0.88) 28%, rgba(5,10,18,0.50) 50%, rgba(5,10,18,0.10) 100%)',
       }} />
     </div>
 
