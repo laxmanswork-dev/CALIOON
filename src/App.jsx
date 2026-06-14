@@ -3663,14 +3663,13 @@ const Contact = () => {
       <div className="museum-navy-mist-ambient" />
       <div className="greek-museum-vignette" />
 
-      {/* Ambient radiance rings */}
+      {/* Static radiance rings — animation removed for performance */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
-        <div className="w-[600px] h-[600px] rounded-full border border-[#c6a062]/[0.06] animate-contact-radiance"
+        <div className="w-[600px] h-[600px] rounded-full border border-[#c6a062]/[0.06]"
           style={{ boxShadow: "0 0 120px 10px rgba(198,160,98,0.03)" }} />
       </div>
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-0">
-        <div className="w-[380px] h-[380px] rounded-full border border-[#c6a062]/[0.05] animate-contact-radiance"
-          style={{ animationDelay: "3.5s", animationDuration: "9s" }} />
+        <div className="w-[380px] h-[380px] rounded-full border border-[#c6a062]/[0.05]" />
       </div>
 
       <EmpireCrestBg
@@ -4027,7 +4026,6 @@ const Contact = () => {
               border:'1.5px solid rgba(198,160,98,0.80)',
               borderRadius:'2px',
               boxShadow:'0 0 0 1px rgba(198,160,98,0.12), 0 0 48px rgba(198,160,98,0.10), 0 24px 80px rgba(0,0,0,0.70), inset 0 1px 0 rgba(198,160,98,0.10)',
-              animation:'empireCardBreath 5s ease-in-out infinite',
             }}>
 
               {/* Top gold accent stripe */}
@@ -4042,19 +4040,18 @@ const Contact = () => {
               }} />
 
 
-              {/* Floating ambient orbs */}
+              {/* Static ambient glow orbs — animations removed for performance */}
               {[
-                { left:'18%', top:'28%', size:180, anim:'empireOrbDrift',  dur:'8s',  delay:'0s'   },
-                { left:'78%', top:'62%', size:140, anim:'empireOrbDrift2', dur:'11s', delay:'2.4s' },
-                { left:'52%', top:'88%', size:110, anim:'empireOrbDrift3', dur:'9.5s',delay:'5s'  },
+                { left:'18%', top:'28%', size:180, opacity:0.10 },
+                { left:'78%', top:'62%', size:140, opacity:0.08 },
+                { left:'52%', top:'88%', size:110, opacity:0.07 },
               ].map((o,i) => (
                 <div key={i} aria-hidden="true" style={{
                   position:'absolute', pointerEvents:'none', zIndex:1,
                   left:o.left, top:o.top,
                   width:`${o.size}px`, height:`${o.size}px`,
-                  background:'radial-gradient(circle, rgba(212,175,106,0.14) 0%, transparent 70%)',
+                  background:`radial-gradient(circle, rgba(212,175,106,${o.opacity}) 0%, transparent 70%)`,
                   borderRadius:'50%',
-                  animation:`${o.anim} ${o.dur} ease-in-out ${o.delay} infinite`,
                 }} />
               ))}
 
@@ -4069,7 +4066,7 @@ const Contact = () => {
                   style={{
                     position:'absolute', ...pos, pointerEvents:'none', zIndex:5,
                     transform:`rotate(${pos.rotate}deg)`,
-                    animation:`empireCornerGlow 3s ease-in-out ${i*0.75}s infinite`,
+                    opacity:0.85,
                   }}>
                   <polyline points="2,24 2,2 24,2" stroke="rgba(198,160,98,0.95)" strokeWidth="1.5" fill="none" strokeLinecap="square"/>
                   <polyline points="7,18 7,7 18,7"  stroke="rgba(198,160,98,0.40)" strokeWidth="0.8" fill="none" strokeLinecap="square"/>
