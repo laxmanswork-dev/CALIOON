@@ -1941,13 +1941,13 @@ const Hero = () => (
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
         objectFit:'cover', objectPosition:'60% center',
-        opacity:0.13, filter:'brightness(0.9) contrast(1.05) saturate(0.65)',
+        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
       <div style={{
         position:'absolute', inset:0,
-        background:'linear-gradient(to right, rgba(5,10,18,0.96) 0%, rgba(5,10,18,0.80) 45%, rgba(5,10,18,0.60) 100%)',
+        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
       }} />
     </div>
 
