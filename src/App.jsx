@@ -2430,7 +2430,7 @@ const Philosophy = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center top',
       backgroundRepeat: 'no-repeat',
-      opacity: 0.12,
+      opacity: 0.32,
       filter: 'blur(0.6px)',
     }} />
     <div className="greek-stone-texture-overlay" />
