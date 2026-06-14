@@ -4009,7 +4009,7 @@ const Contact = () => {
             {/* Form card */}
             <div className="form-card" style={{
               position:'relative', overflow:'hidden', width:'100%', maxWidth:'760px', margin:'0 auto',
-              background:'linear-gradient(160deg, #050A12 0%, #07101D 45%, #050A12 100%)',
+              background:'#000000',
               backdropFilter:'blur(18px)', WebkitBackdropFilter:'blur(18px)',
               border:'1.5px solid rgba(198,160,98,0.80)',
               borderRadius:'2px',
@@ -4157,7 +4157,7 @@ const Contact = () => {
                   whileInView={{ opacity:1, y:0, filter:'blur(0px)' }}
                   viewport={{ once:true, margin:'-20px' }}
                   transition={{ duration:0.65, delay:0.05, ease:[0.16,1,0.3,1] }}
-                  style={{ gap:'24px', padding:'14px 16px', background:'linear-gradient(160deg, rgba(8,6,2,0.99) 0%, rgba(2,2,1,1) 50%, rgba(6,5,1,0.98) 100%)', border:'1.5px solid rgba(212,175,106,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(255,232,138,0.06), 0 4px 20px rgba(0,0,0,0.65)' }}>
+                  style={{ gap:'24px', padding:'14px 16px', background:'#000000', border:'1.5px solid rgba(198,160,98,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(198,160,98,0.06), 0 4px 20px rgba(0,0,0,0.80)' }}>
                   <div>
                     <label className="empire-label">Full Name <span style={{color:'#D4AF6A'}}>*</span></label>
                     <input className={`empire-input${errors.name ? ' empire-input-error' : ''}`} type="text" placeholder="YOUR NAME"
@@ -4178,7 +4178,7 @@ const Contact = () => {
                   whileInView={{ opacity:1, y:0, filter:'blur(0px)' }}
                   viewport={{ once:true, margin:'-20px' }}
                   transition={{ duration:0.65, delay:0.16, ease:[0.16,1,0.3,1] }}
-                  style={{ gap:'24px', padding:'14px 16px', background:'linear-gradient(160deg, rgba(8,6,2,0.99) 0%, rgba(2,2,1,1) 50%, rgba(6,5,1,0.98) 100%)', border:'1.5px solid rgba(212,175,106,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(255,232,138,0.06), 0 4px 20px rgba(0,0,0,0.65)' }}>
+                  style={{ gap:'24px', padding:'14px 16px', background:'#000000', border:'1.5px solid rgba(198,160,98,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(198,160,98,0.06), 0 4px 20px rgba(0,0,0,0.80)' }}>
                   <div>
                     <label className="empire-label">Phone Number <span style={{color:'#D4AF6A'}}>*</span></label>
                     <input className={`empire-input${errors.phone ? ' empire-input-error' : ''}`} type="tel" placeholder="+1 000 000 0000"
@@ -4198,7 +4198,7 @@ const Contact = () => {
                   whileInView={{ opacity:1, y:0, filter:'blur(0px)' }}
                   viewport={{ once:true, margin:'-20px' }}
                   transition={{ duration:0.65, delay:0.28, ease:[0.16,1,0.3,1] }}
-                  style={{ padding:'18px 16px', background:'linear-gradient(160deg, rgba(6,5,1,0.99) 0%, rgba(2,2,1,1) 50%, rgba(5,4,1,0.99) 100%)', border:'1.5px solid rgba(212,175,106,0.52)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'0 0 32px rgba(198,160,98,0.13), inset 0 0 28px rgba(212,175,106,0.05), inset 0 1px 0 rgba(255,232,138,0.08), 0 8px 28px rgba(0,0,0,0.70)' }}>
+                  style={{ padding:'18px 16px', background:'#000000', border:'1.5px solid rgba(198,160,98,0.52)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'0 0 32px rgba(198,160,98,0.10), inset 0 1px 0 rgba(198,160,98,0.08), 0 8px 28px rgba(0,0,0,0.80)' }}>
                   {/* Section header */}
                   <div style={{ display:'flex', alignItems:'center', gap:'12px', marginBottom:'18px' }}>
                     <div style={{ height:'1px', flex:1, background:'linear-gradient(90deg, transparent, rgba(212,175,106,0.55))' }} />
@@ -4337,7 +4337,7 @@ const Contact = () => {
                   whileInView={{ opacity:1, y:0, filter:'blur(0px)' }}
                   viewport={{ once:true, margin:'-20px' }}
                   transition={{ duration:0.65, delay:0.40, ease:[0.16,1,0.3,1] }}
-                  style={{ padding:'14px 16px', background:'linear-gradient(160deg, rgba(8,6,2,0.99) 0%, rgba(2,2,1,1) 50%, rgba(6,5,1,0.98) 100%)', border:'1.5px solid rgba(212,175,106,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(255,232,138,0.06), 0 4px 20px rgba(0,0,0,0.65)' }}>
+                  style={{ padding:'14px 16px', background:'#000000', border:'1.5px solid rgba(198,160,98,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(198,160,98,0.06), 0 4px 20px rgba(0,0,0,0.80)' }}>
                   <label className="empire-label">Project Description</label>
                   <textarea className="empire-input" rows={3} placeholder="DESCRIBE YOUR VISION AND GOALS..."
                     value={form.description} onChange={e => setForm(f => ({...f, description: e.target.value}))}
