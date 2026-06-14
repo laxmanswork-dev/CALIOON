@@ -1936,21 +1936,29 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Mobile deity background */}
+    {/* Mobile deity background — full pillar, right-side panel, objectFit contain */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
-      <video autoPlay muted loop playsInline style={{
-        position:'absolute', inset:0, width:'100%', height:'100%',
-        objectFit:'cover', objectPosition:'60% center',
-        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
-      }}>
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
-      {/* Solid cover behind navbar — video visually starts right below the 3-line menu */}
-      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
-      {/* Left-side dark shield keeps text readable; right opens up to show pillar */}
+      {/* Dark base so left side behind text is always solid */}
+      <div style={{ position:'absolute', inset:0, background:'#050A12' }} />
+      {/* Solid cover behind navbar */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:3 }} />
+      {/* Right-side pillar panel — contain keeps full column visible, no cropping */}
       <div style={{
-        position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
-        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
+        position:'absolute', right:0, top:'100px', bottom:0,
+        width:'62%', zIndex:1, overflow:'hidden',
+      }}>
+        <video autoPlay muted loop playsInline style={{
+          width:'100%', height:'100%',
+          objectFit:'contain', objectPosition:'right center',
+          opacity:0.85, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
+        }}>
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+      {/* Left gradient — strong dark on text side, fades into pillar */}
+      <div style={{
+        position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:2,
+        background:'linear-gradient(to right, rgba(5,10,18,1) 0%, rgba(5,10,18,0.95) 30%, rgba(5,10,18,0.50) 50%, rgba(5,10,18,0.10) 70%, transparent 85%)',
       }} />
     </div>
 
