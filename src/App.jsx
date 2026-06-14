@@ -3927,29 +3927,6 @@ const Contact = () => {
       </div>
 
 
-      {/* Empire seal watermark */}
-      <img aria-hidden="true" src="/CALIOON Empire.png" alt=""
-        style={{
-          position:'absolute', top:0, left:0, width:'100%', height:'100%',
-          objectFit:'cover', objectPosition:'center center',
-          opacity:0.45, pointerEvents:'none', zIndex:1,
-          filter:'grayscale(80%) brightness(1.10) contrast(0.75)',
-          mixBlendMode:'screen',
-          maskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
-          WebkitMaskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
-        }}
-      />
-      <img aria-hidden="true" src="/CALIOON.png" alt=""
-        style={{
-          position:'absolute', bottom:0, left:0, width:'100%', height:'100%',
-          objectFit:'cover', objectPosition:'center bottom',
-          opacity:0.08, pointerEvents:'none', zIndex:1,
-          filter:'grayscale(100%) brightness(0.6) contrast(0.5)',
-          mixBlendMode:'overlay',
-          maskImage:'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)',
-          WebkitMaskImage:'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)',
-        }}
-      />
 
       {/* Radial ambient glow */}
       <div aria-hidden="true" style={{ position:'absolute', top:'50%', left:'52%', transform:'translate(-50%,-50%)', width:'900px', height:'700px', background:'radial-gradient(ellipse, rgba(212,175,106,0.05) 0%, transparent 65%)', pointerEvents:'none', zIndex:1 }} />
@@ -4029,33 +4006,26 @@ const Contact = () => {
             style={{ position:'relative', width:'100%' }}
           >
 
-            {/* Form card with glassmorphism */}
+            {/* Form card */}
             <div className="form-card" style={{
               position:'relative', overflow:'hidden', width:'100%', maxWidth:'760px', margin:'0 auto',
-              background:'linear-gradient(160deg, rgba(8,6,2,0.97) 0%, rgba(2,2,1,1) 50%, rgba(6,5,1,0.97) 100%)',
+              background:'linear-gradient(160deg, #050A12 0%, #07101D 45%, #050A12 100%)',
               backdropFilter:'blur(18px)', WebkitBackdropFilter:'blur(18px)',
-              border:'1.5px solid rgba(212,175,106,0.72)',
-              borderRadius:'4px',
+              border:'1.5px solid rgba(198,160,98,0.80)',
+              borderRadius:'2px',
+              boxShadow:'0 0 0 1px rgba(198,160,98,0.12), 0 0 48px rgba(198,160,98,0.10), 0 24px 80px rgba(0,0,0,0.70), inset 0 1px 0 rgba(198,160,98,0.10)',
               animation:'empireCardBreath 5s ease-in-out infinite',
             }}>
 
-              {/* Greek background image */}
-              <img aria-hidden="true" src="/greek.png" alt=""
-                style={{
-                  position:'absolute', top:'-16px', left:'4px', width:'calc(100% + 32px)', height:'calc(100% + 32px)',
-                  objectFit:'fill',
-                  opacity:0.55, pointerEvents:'none', zIndex:0,
-                  filter:'none',
-                  mixBlendMode:'normal',
-                  maskImage:'radial-gradient(ellipse 90% 85% at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,1) 100%)',
-                  WebkitMaskImage:'radial-gradient(ellipse 90% 85% at 50% 50%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,1) 100%)',
-                }}
-              />
-
-              {/* Dark readability overlay — fades centre, preserves border design */}
+              {/* Top gold accent stripe */}
+              <div aria-hidden="true" style={{
+                position:'absolute', top:0, left:0, right:0, height:'2px', zIndex:6, pointerEvents:'none',
+                background:'linear-gradient(90deg, transparent 0%, rgba(198,160,98,0.60) 20%, rgba(198,160,98,0.95) 50%, rgba(198,160,98,0.60) 80%, transparent 100%)',
+              }} />
+              {/* Subtle inner radial glow */}
               <div aria-hidden="true" style={{
                 position:'absolute', inset:0, zIndex:1, pointerEvents:'none',
-                background:'radial-gradient(ellipse 78% 75% at 52% 50%, rgba(4,8,15,0.68) 0%, rgba(7,16,29,0.42) 55%, rgba(4,8,15,0.14) 100%)',
+                background:'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(198,160,98,0.05) 0%, transparent 70%)',
               }} />
 
 
@@ -4082,14 +4052,15 @@ const Contact = () => {
                 { bottom:0, right:0,   rotate:180 },
                 { bottom:0, left:0,    rotate:270 },
               ].map((pos,i) => (
-                <svg key={i} aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none"
+                <svg key={i} aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" fill="none"
                   style={{
                     position:'absolute', ...pos, pointerEvents:'none', zIndex:5,
                     transform:`rotate(${pos.rotate}deg)`,
                     animation:`empireCornerGlow 3s ease-in-out ${i*0.75}s infinite`,
                   }}>
-                  <polyline points="2,18 2,2 18,2" stroke="rgba(212,175,106,0.85)" strokeWidth="1.2" fill="none" strokeLinecap="square"/>
-                  <polyline points="6,14 6,6 14,6"  stroke="rgba(212,175,106,0.35)" strokeWidth="0.7" fill="none" strokeLinecap="square"/>
+                  <polyline points="2,24 2,2 24,2" stroke="rgba(198,160,98,0.95)" strokeWidth="1.5" fill="none" strokeLinecap="square"/>
+                  <polyline points="7,18 7,7 18,7"  stroke="rgba(198,160,98,0.40)" strokeWidth="0.8" fill="none" strokeLinecap="square"/>
+                  <circle cx="2" cy="2" r="1.5" fill="rgba(198,160,98,0.70)"/>
                 </svg>
               ))}
 
