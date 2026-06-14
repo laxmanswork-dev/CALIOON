@@ -3928,6 +3928,19 @@ const Contact = () => {
 
 
 
+      {/* Empire seal watermark */}
+      <img aria-hidden="true" src="/CALIOON Empire.png" alt=""
+        style={{
+          position:'absolute', top:0, left:0, width:'100%', height:'100%',
+          objectFit:'cover', objectPosition:'center center',
+          opacity:0.45, pointerEvents:'none', zIndex:1,
+          filter:'grayscale(80%) brightness(1.10) contrast(0.75)',
+          mixBlendMode:'screen',
+          maskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
+          WebkitMaskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
+        }}
+      />
+
       {/* Radial ambient glow */}
       <div aria-hidden="true" style={{ position:'absolute', top:'50%', left:'52%', transform:'translate(-50%,-50%)', width:'900px', height:'700px', background:'radial-gradient(ellipse, rgba(212,175,106,0.05) 0%, transparent 65%)', pointerEvents:'none', zIndex:1 }} />
 
