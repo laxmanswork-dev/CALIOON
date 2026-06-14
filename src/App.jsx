@@ -71,6 +71,13 @@ const styles = `
     overflow: hidden;
     background-color: #050A12;
   }
+  @media (max-width: 1024px) {
+    .calioon-section-hero {
+      align-items: flex-start;
+      padding-top: 120px;
+      padding-bottom: 60px;
+    }
+  }
 
   .calioon-section-auto {
     min-height: 100vh;
@@ -1404,6 +1411,7 @@ const Navbar = () => {
   };
   
   return (
+    <>
     <nav className="fixed top-0 left-0 w-full z-[100] h-[100px] border-b border-white/5 bg-[#050A12]/90 backdrop-blur-md">
       <div className="greek-stone-texture-overlay !opacity-[0.03]" />
       {/* 3-zone layout: brand | nav | cta — all zones explicit width so center is always truly centered */}
@@ -1548,9 +1556,10 @@ const Navbar = () => {
           <span className={`block h-0.5 bg-[#c6a062] transition-all duration-300 w-6 ${mobileOpen ? '-rotate-45 -translate-y-[8px]' : ''}`} />
         </button>
       </div>
+    </nav>
 
-      <AnimatePresence>
-        {mobileOpen && createPortal(
+    <AnimatePresence>
+      {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: '0%' }}
@@ -1654,11 +1663,10 @@ const Navbar = () => {
                 AD OLYMPUM
               </p>
             </div>
-          </motion.div>,
-          document.body
-        )}
-      </AnimatePresence>
-    </nav>
+          </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
@@ -1771,7 +1779,7 @@ const Hero = () => (
 
 
     <div className="calioon-global-container h-full w-full relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center h-full w-full min-h-[calc(100vh-100px)]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:items-center h-full w-full min-h-[calc(100vh-100px)]">
         
         <div className="hero-content-block">
           <div className="flex flex-col gap-0 w-full items-start text-left m-0 p-0">
@@ -3386,8 +3394,7 @@ const CaseStudies = () => (
         position: 'absolute', inset: 0, width: '100%', height: '100%',
         objectFit: 'cover', objectPosition: 'center center',
         zIndex: 0, pointerEvents: 'none',
-        opacity: 0.55,
-        mixBlendMode: 'luminosity',
+        opacity: 0.18,
       }}
     />
     <div aria-hidden="true" style={{
@@ -3929,8 +3936,8 @@ const Contact = () => {
           opacity:0.45, pointerEvents:'none', zIndex:1,
           filter:'grayscale(80%) brightness(1.10) contrast(0.75)',
           mixBlendMode:'screen',
-          maskImage:'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0) 100%)',
-          WebkitMaskImage:'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0) 100%)',
+          maskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
+          WebkitMaskImage:'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.70) 100%)',
         }}
       />
       <img aria-hidden="true" src="/CALIOON.png" alt=""
