@@ -2469,12 +2469,12 @@ const Hero = () => {
 
               {/* Stone aging cracks — irregular, organic */}
               <path d="M62,314 C67,330 65,347 70,360" stroke="#5a4838" strokeWidth="0.6" strokeOpacity="0.48" fill="none"/>
-              <path d="M155,482 C160,498 158,514" stroke="#5a4838" strokeWidth="0.5" strokeOpacity="0.40" fill="none"/>
+              <path d="M155,482 Q160,498 158,514" stroke="#5a4838" strokeWidth="0.5" strokeOpacity="0.40" fill="none"/>
               <path d="M90,665 C95,680 93,694 98,706" stroke="#5a4838" strokeWidth="0.5" strokeOpacity="0.38" fill="none"/>
-              <path d="M194,564 C199,578 197,590" stroke="#5a4838" strokeWidth="0.4" strokeOpacity="0.32" fill="none"/>
-              <path d="M46,756 C50,768 48,778" stroke="#5a4838" strokeWidth="0.35" strokeOpacity="0.28" fill="none"/>
-              <path d="M168,320 C172,334 170,346" stroke="#5a4838" strokeWidth="0.4" strokeOpacity="0.30" fill="none"/>
-              <path d="M36,540 C40,552" stroke="#5a4838" strokeWidth="0.35" strokeOpacity="0.26" fill="none"/>
+              <path d="M194,564 Q199,578 197,590" stroke="#5a4838" strokeWidth="0.4" strokeOpacity="0.32" fill="none"/>
+              <path d="M46,756 Q50,768 48,778" stroke="#5a4838" strokeWidth="0.35" strokeOpacity="0.28" fill="none"/>
+              <path d="M168,320 Q172,334 170,346" stroke="#5a4838" strokeWidth="0.4" strokeOpacity="0.30" fill="none"/>
+              <path d="M36,540 L40,552" stroke="#5a4838" strokeWidth="0.35" strokeOpacity="0.26" fill="none"/>
 
               {/* Horizontal stone stress lines */}
               <path d="M24,416 Q82,414 134,415 Q186,414 242,416" stroke="#3e2e1c" strokeWidth="0.45" strokeOpacity="0.22" fill="none"/>
