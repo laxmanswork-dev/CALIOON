@@ -149,19 +149,16 @@ export async function onRequestPost({ request, env }) {
 </div>
 </body></html>`;
 
-  // 7 ── Send both emails ──────────────────────────────────────────────────────
+  // 7 ── Send admin notification ─────────────────────────────────────────────
+  // Temporary: no verified domain yet — Resend only delivers to the account
+  // owner email. Switch recipients + re-enable auto-reply once calioon.com
+  // is verified in Resend and FROM_EMAIL env var is set.
   try {
     await sendEmail(
-      ['calioon.global@gmail.com', 'laxman.calioon@gmail.com'],
+      ['laxman.s.work@gmail.com'],
       `New Empire Application — ${company || name}`,
       adminHtml,
       email,
-    );
-
-    await sendEmail(
-      [email],
-      'Your Empire Application Has Been Received',
-      replyHtml,
     );
 
     return respond({ ok: true });
