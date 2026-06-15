@@ -1303,16 +1303,17 @@ const styles = `
     /* Lock accent rule close to EMPIRES. */
     .text-hero { margin-bottom: 10px !important; }
     /* Cred strip: eyebrow above headline, bigger labels so industry reads instantly */
-    .hero-cred-strip { order: -1; margin-top: 0 !important; margin-bottom: 18px !important; }
+    .hero-cred-strip { order: -1; margin-top: 14px !important; margin-bottom: 18px !important; }
     .hero-cred-rule  { display: none !important; }
     .hero-cred-label { font-size: 11px !important; letter-spacing: 0.07em !important; }
     .hero-cred-sep   { font-size: 8px !important; margin: 0 6px !important; }
     /* Paragraph immediately after accent rule, buttons last */
     .hero-para-text  { order: 3; margin-top: 8px !important; margin-bottom: 24px !important; max-width: 250px !important; }
     .hero-btns-wrap  { order: 4; }
-    /* Buttons: 5–10% smaller so eye stays on headline */
-    .hero-cta-btn  { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
-    .hero-btns-wrap { gap: 10px !important; }
+    /* Buttons: slimmer; primary slightly heavier to lead the eye */
+    .hero-cta-btn     { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
+    .hero-cta-primary { font-size: 12px !important; font-weight: 800 !important; letter-spacing: 0.16em !important; }
+    .hero-btns-wrap   { gap: 10px !important; }
     /* Paragraph: accessible contrast (≥4.5:1) + lower visual weight */
     .hero-para-text { font-size: 12px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
     /* Open leading on each line */
@@ -1944,7 +1945,7 @@ const Hero = () => (
                 {/* PRIMARY */}
                 <motion.a
                   href="#contact"
-                  className="hero-cta-btn heading-cinzel bg-[#c6a062] text-black h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-300 hover:brightness-110"
+                  className="hero-cta-btn hero-cta-primary heading-cinzel bg-[#c6a062] text-black h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-300 hover:brightness-110"
                   style={{ position: 'relative', overflow: 'hidden', letterSpacing: '0.20em', flexShrink: 0 }}
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
