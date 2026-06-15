@@ -1280,8 +1280,10 @@ const styles = `
       object-position: center center !important;
     }
     .contact-bg-img {
-      object-fit: contain !important;
+      object-fit: cover !important;
       object-position: center top !important;
+      top: clamp(70px, 22vw, 100px) !important;
+      height: calc(100% - clamp(70px, 22vw, 100px)) !important;
       filter: grayscale(60%) brightness(1.80) contrast(0.85) !important;
       opacity: 0.70 !important;
     }
