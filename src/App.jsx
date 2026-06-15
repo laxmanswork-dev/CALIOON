@@ -53,10 +53,10 @@ const styles = `
     .calioon-global-container { padding-left: 32px; padding-right: 32px; }
   }
   @media(max-width: 640px) {
-    .calioon-global-container { padding-left: 24px; padding-right: 24px; }
+    .calioon-global-container { padding-left: 18px; padding-right: 18px; }
   }
   @media(max-width: 425px) {
-    .calioon-global-container { padding-left: 16px; padding-right: 16px; }
+    .calioon-global-container { padding-left: 12px; padding-right: 12px; }
   }
 
   /* --- FULL VIEWPORT CONTAINER --- */
