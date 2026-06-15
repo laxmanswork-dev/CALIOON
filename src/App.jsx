@@ -1244,6 +1244,51 @@ const styles = `
   @media(max-width: 640px) {
     .contact-eyebrow { font-size: 11px !important; letter-spacing: 0.16em !important; }
   }
+
+  /* ── MOBILE AUDIT FIXES (320–430px) ── */
+
+  /* Cred strip: prevent clipping on 320px phones */
+  @media(max-width: 360px) {
+    .hero-cred-label { font-size: 7px; letter-spacing: 0.03em; }
+    .hero-cred-sep   { font-size: 5px; margin: 0 2px; }
+  }
+
+  /* Philosophy left block: center on mobile like hero content */
+  @media(max-width: 768px) {
+    .philosophy-left-content-block {
+      align-items: center;
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+
+  /* Contact feature list: scale down on small phones */
+  @media(max-width: 640px) {
+    .contact-feature-label { font-size: 13px !important; letter-spacing: 0.08em !important; }
+    .contact-feature-desc  { font-size: 13px !important; line-height: 1.55 !important; }
+  }
+
+  /* Footer links: increase from 9.5px — unreadable on mobile */
+  @media(max-width: 640px) {
+    .footer-legal-link { font-size: 11px !important; letter-spacing: 0.10em !important; }
+  }
+
+  /* Case studies left: center heading + ornament on mobile */
+  @media(max-width: 768px) {
+    .case-left-col { text-align: center !important; }
+    .case-left-col h3, .case-left-col h2 { text-align: center; }
+  }
+
+  /* Process left col: center label + heading on mobile */
+  @media(max-width: 768px) {
+    .process-left-col { text-align: center !important; }
+    .process-left-col h3, .process-left-col h2, .process-left-col p { text-align: center; }
+  }
+
+  /* Hero section: tighten top padding on very small phones */
+  @media(max-width: 375px) {
+    .calioon-section-hero { padding-top: 118px; padding-bottom: 60px; }
+  }
 `;
 
 const LUXURY_EASE = [0.16, 1, 0.3, 1];
@@ -1914,7 +1959,7 @@ const Hero = () => (
                 animate={{ scaleX: 1, opacity: 1 }}
                 transition={{ duration: 0.55, delay: 2.08, ease: [0.16, 1, 0.3, 1] }}
               />
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'nowrap', gap: '0', overflow: 'hidden' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '0', overflow: 'visible' }}>
                 {['BRANDING', 'AI AUTOMATION', 'PERFORMANCE', 'SYSTEMS'].map((label, i) => (
                   <motion.span
                     key={i}
@@ -3080,7 +3125,7 @@ const Process = () => (
 
     <div className="calioon-global-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 lg:gap-16 items-center w-full">
-        <div className="space-y-6 text-left">
+        <div className="space-y-6 text-left process-left-col">
           <motion.div
             initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -3471,7 +3516,7 @@ const CaseStudies = () => (
 
     <div className="calioon-global-container relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-        <div className="space-y-10 text-left relative z-20">
+        <div className="space-y-10 text-left relative z-20 case-left-col">
           <SectionReveal x={-15} y={0}>
             <h3 className="text-label-caps text-[#c6a062] mb-4 block">Case Studies</h3>
             <h2 className="text-section-title text-white" style={{ marginBottom:'12px' }}>From Unknown<br /><span className="gold-matte-text">To Unavoidable.</span></h2>
@@ -3959,11 +4004,11 @@ const Contact = () => {
 
             <motion.div initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.6, ease:[0.16,1,0.3,1] }}
-              style={{ display:'inline-flex', alignItems:'center', gap:'12px', marginBottom:'16px', position:'relative', zIndex:1 }}
+              style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:'center', gap:'8px', marginBottom:'16px', position:'relative', zIndex:1 }}
             >
-              <div style={{ height:'1px', width:'40px', background:'linear-gradient(90deg,transparent,rgba(212,175,106,0.7))' }} />
-              <span style={{ fontSize:'clamp(10px,1.6vw,14px)', letterSpacing:'clamp(0.06em,1.4vw,0.26em)', color:'#D4AF6A', fontFamily:"'Cinzel',serif", fontWeight:700 }}>THE BRANDS THAT WIN TOMORROW</span>
-              <div style={{ height:'1px', width:'40px', background:'linear-gradient(90deg,rgba(212,175,106,0.7),transparent)' }} />
+              <div style={{ height:'1px', width:'clamp(18px,5vw,40px)', background:'linear-gradient(90deg,transparent,rgba(212,175,106,0.7))' }} />
+              <span style={{ fontSize:'clamp(9px,2.6vw,14px)', letterSpacing:'clamp(0.05em,0.8vw,0.26em)', color:'#D4AF6A', fontFamily:"'Cinzel',serif", fontWeight:700, textAlign:'center' }}>THE BRANDS THAT WIN TOMORROW</span>
+              <div style={{ height:'1px', width:'clamp(18px,5vw,40px)', background:'linear-gradient(90deg,rgba(212,175,106,0.7),transparent)' }} />
             </motion.div>
 
             <motion.h2
@@ -4002,8 +4047,8 @@ const Contact = () => {
                 >
                   <div style={{ width:'8px', height:'8px', background:'#D4AF6A', transform:'rotate(45deg)', marginTop:'7px', flexShrink:0 }} />
                   <div>
-                    <p style={{ fontSize:'17px', fontFamily:"'Cinzel',serif", color:'#D4AF6A', fontWeight:700, letterSpacing:'0.14em', textTransform:'uppercase', margin:'0 0 4px' }}>{p.label}</p>
-                    <p style={{ fontSize:'16px', color:'rgba(253,240,213,0.55)', lineHeight:'1.62', margin:0 }}>{p.desc}</p>
+                    <p className="contact-feature-label" style={{ fontSize:'clamp(13px,4.2vw,17px)', fontFamily:"'Cinzel',serif", color:'#D4AF6A', fontWeight:700, letterSpacing:'0.14em', textTransform:'uppercase', margin:'0 0 4px' }}>{p.label}</p>
+                    <p className="contact-feature-desc" style={{ fontSize:'clamp(13px,4vw,16px)', color:'rgba(253,240,213,0.55)', lineHeight:'1.62', margin:0 }}>{p.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -4516,7 +4561,7 @@ const Footer = () => {
               { label:'Terms of Service', href:'/terms' },
               { label:'calioon.global@gmail.com', href:'mailto:calioon.global@gmail.com' },
             ].map((link, i) => (
-              <a key={i} href={link.href}
+              <a key={i} href={link.href} className="footer-legal-link"
                 style={{
                   fontFamily:"'Cinzel',serif", fontSize:'9.5px', letterSpacing:'0.18em',
                   textTransform:'uppercase', color:'rgba(198,160,98,0.38)', textDecoration:'none',
