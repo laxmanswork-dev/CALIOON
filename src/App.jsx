@@ -1299,18 +1299,18 @@ const styles = `
   /* ─── Mobile Hero Optimization: headline dominance 375–430px ─── */
   @media(max-width: 480px) {
     /* Tighter top padding → more viewport for headline */
-    .calioon-section-hero { padding-top: 106px !important; padding-bottom: 56px; }
+    .calioon-section-hero { padding-top: 106px !important; padding-bottom: 28px; }
     /* Extra breathing room below headline */
     .text-hero { margin-bottom: 30px !important; }
     /* Reorder: buttons before paragraph so CTA is second thing eye hits */
     .hero-btns-wrap  { order: 3; }
-    .hero-para-text  { order: 4; margin-top: 18px !important; margin-bottom: 0 !important; }
+    .hero-para-text  { order: 4; margin-top: 40px !important; margin-bottom: 0 !important; max-width: 250px !important; }
     .hero-cred-strip { order: 5; }
     /* Buttons: 5–10% smaller so eye stays on headline */
     .hero-cta-btn  { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
     .hero-btns-wrap { gap: 10px !important; }
     /* Paragraph: lower visual weight — supporting role only */
-    .hero-para-text { font-size: 12px !important; line-height: 1.58 !important; color: rgba(255,255,255,0.50) !important; }
+    .hero-para-text { font-size: 12px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.44) !important; }
     /* Open leading on each line */
     .hero-line-wrap > span { line-height: 1.90 !important; }
     /* Couplet grouping:
@@ -2033,7 +2033,7 @@ const Hero = () => (
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
         objectFit:'cover', objectPosition:'60% center',
-        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
+        opacity:0.38, filter:'brightness(1.30) contrast(1.10) saturate(0.80)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
