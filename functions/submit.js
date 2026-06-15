@@ -70,7 +70,7 @@ export async function onRequestPost(context) {
   const apiKey = env?.RESEND_API_KEY;
   if (!apiKey) return json({ ok: false, error: 'Server configuration error' }, 500);
 
-  const toEmail   = env?.TO_EMAIL   || 'calioon.global@gmail.com';
+  const toEmails  = (env?.TO_EMAIL || 'calioon.global@gmail.com,laxman.calioon@gmail.com').split(',').map(e => e.trim());
   const fromEmail = env?.FROM_EMAIL || 'onboarding@resend.dev';
   const pillarList = services.join(', ');
   const appTime  = new Date().toLocaleString('en-US', {
@@ -147,7 +147,7 @@ export async function onRequestPost(context) {
   try {
     await sendEmail(apiKey, {
       from: fromEmail,
-      to: [toEmail],
+      to: toEmails,
       subject: `New Empire Application — ${escapeHtml(company || name)}`,
       html: adminHtml,
       reply_to: email,
