@@ -1300,8 +1300,8 @@ const styles = `
   @media(max-width: 480px) {
     /* Tighter top padding → more viewport for headline */
     .calioon-section-hero { padding-top: 106px !important; padding-bottom: 28px; }
-    /* Extra breathing room below headline */
-    .text-hero { margin-bottom: 30px !important; }
+    /* Lock accent rule close to EMPIRES. */
+    .text-hero { margin-bottom: 10px !important; }
     /* Reorder: buttons before paragraph so CTA is second thing eye hits */
     .hero-btns-wrap  { order: 3; }
     .hero-para-text  { order: 4; margin-top: 40px !important; margin-bottom: 0 !important; max-width: 250px !important; }
@@ -1326,7 +1326,7 @@ const styles = `
   }
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 100px !important; }
-    .text-hero { margin-bottom: 22px !important; }
+    .text-hero { margin-bottom: 8px !important; }
     .hero-line-wrap-0      { margin-bottom: 1px;  }
     .hero-line-wrap-1      { margin-bottom: 14px; }
     .hero-line-wrap-2      { margin-bottom: 7px;  }
@@ -2044,10 +2044,10 @@ const Hero = () => (
         position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
         background:'linear-gradient(to right, rgba(5,10,18,0.92) 0%, rgba(5,10,18,0.70) 40%, rgba(5,10,18,0.28) 100%)',
       }} />
-      {/* Extra darkening behind headline text area only (top 65%, left-biased) */}
+      {/* Headline zone: uniform 12% dark wash top-to-bottom over text area */}
       <div style={{
-        position:'absolute', top:'100px', left:0, width:'100%', height:'65%', zIndex:1, pointerEvents:'none',
-        background:'linear-gradient(150deg, rgba(5,10,18,0.42) 0%, rgba(5,10,18,0.20) 46%, transparent 70%)',
+        position:'absolute', top:'100px', left:0, width:'100%', height:'62%', zIndex:1, pointerEvents:'none',
+        background:'linear-gradient(to bottom, rgba(5,10,18,0.20) 0%, rgba(5,10,18,0.14) 55%, transparent 100%)',
       }} />
     </div>
 
