@@ -1,5 +1,4 @@
 ﻿import React, { useEffect, useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import imgIcon   from "./assets/images/icon.png";
@@ -3845,12 +3844,6 @@ const CTA_WORD_V = {
   visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.34, ease: [0.22, 1, 0.36, 1] } },
 };
 
-// ── EmailJS credentials — fill these in after creating your EmailJS account ──
-const EJS_SERVICE_ID  = 'YOUR_SERVICE_ID';      // e.g. 'service_abc123'
-const EJS_ADMIN_TPL   = 'YOUR_ADMIN_TEMPLATE_ID'; // template that emails CALIOON
-const EJS_REPLY_TPL   = 'YOUR_REPLY_TEMPLATE_ID'; // template that auto-replies to client
-const EJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';       // from EmailJS account → API Keys
-
 const HEADING_TEXT = 'EMPIRES ARE BUILT. NOT BORN.';
 const BLANK_FORM = { name: '', email: '', phone: '', company: '', services: [], description: '' };
 
@@ -3874,12 +3867,12 @@ const Contact = () => {
 
   const validate = () => {
     const errs = {};
-    if (!form.name.trim())        errs.name        = 'Name is required';
-    if (!form.email.trim())       errs.email       = 'Email is required';
+    if (!form.name.trim())          errs.name        = 'Name is required';
+    if (!form.email.trim())         errs.email       = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Enter a valid email address';
-    if (!form.phone.trim())       errs.phone       = 'Phone number is required';
-    if (form.services.length === 0) errs.services  = 'Select at least one service pillar';
-    if (!form.description.trim()) errs.description = 'Project description is required';
+    if (!form.phone.trim())         errs.phone       = 'Phone number is required';
+    if (form.services.length === 0) errs.services    = 'Select at least one service pillar';
+    if (!form.description.trim())   errs.description = 'Project description is required';
     return errs;
   };
 
@@ -3889,37 +3882,18 @@ const Contact = () => {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
     setSubmitState('loading');
-
-    const commonParams = {
-      from_name:   form.name,
-      from_email:  form.email,
-      phone:       form.phone,
-      company:     form.company || '—',
-      pillar:      form.services.join(', '),
-      description: form.description,
-      time:        new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'short' }),
-    };
-
     try {
-      // 1 — notify CALIOON
-      await emailjs.send(EJS_SERVICE_ID, EJS_ADMIN_TPL, {
-        ...commonParams,
-        subject: `New Empire Application — ${form.company || form.name}`,
-        to_email: 'calioon.global@gmail.com',
-      }, EJS_PUBLIC_KEY);
-
-      // 2 — auto-reply to client
-      await emailjs.send(EJS_SERVICE_ID, EJS_REPLY_TPL, {
-        to_name:  form.name,
-        to_email: form.email,
-        reply_to: 'calioon.global@gmail.com',
-      }, EJS_PUBLIC_KEY);
-
-      setSubmitState('success');
-      setTimeout(() => {
-        setForm(BLANK_FORM);
-        setSubmitState('idle');
-      }, 6000);
+      const res = await fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSubmitState('success');
+        setTimeout(() => { setForm(BLANK_FORM); setSubmitState('idle'); }, 6000);
+      } else {
+        setSubmitState('error');
+      }
     } catch {
       setSubmitState('error');
     }
