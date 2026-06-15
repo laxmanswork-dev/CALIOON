@@ -1302,12 +1302,14 @@ const styles = `
     .calioon-section-hero { padding-top: 106px !important; padding-bottom: 28px; }
     /* Lock accent rule close to EMPIRES. */
     .text-hero { margin-bottom: 10px !important; }
-    /* Cred strip: flip to eyebrow above headline so industry is immediately clear */
+    /* Cred strip: eyebrow above headline, bigger labels so industry reads instantly */
     .hero-cred-strip { order: -1; margin-top: 0 !important; margin-bottom: 18px !important; }
     .hero-cred-rule  { display: none !important; }
-    /* Reorder remaining: buttons before paragraph */
-    .hero-btns-wrap  { order: 3; }
-    .hero-para-text  { order: 4; margin-top: 40px !important; margin-bottom: 0 !important; max-width: 250px !important; }
+    .hero-cred-label { font-size: 11px !important; letter-spacing: 0.07em !important; }
+    .hero-cred-sep   { font-size: 8px !important; margin: 0 6px !important; }
+    /* Paragraph immediately after accent rule, buttons last */
+    .hero-para-text  { order: 3; margin-top: 8px !important; margin-bottom: 24px !important; max-width: 250px !important; }
+    .hero-btns-wrap  { order: 4; }
     /* Buttons: 5–10% smaller so eye stays on headline */
     .hero-cta-btn  { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
     .hero-btns-wrap { gap: 10px !important; }
@@ -1329,6 +1331,8 @@ const styles = `
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 100px !important; }
     .text-hero { margin-bottom: 8px !important; }
+    .hero-cred-label { font-size: 9.5px !important; letter-spacing: 0.05em !important; }
+    .hero-cred-sep   { font-size: 7px !important; margin: 0 4px !important; }
     .hero-line-wrap-0      { margin-bottom: 1px;  }
     .hero-line-wrap-1      { margin-bottom: 14px; }
     .hero-line-wrap-2      { margin-bottom: 7px;  }
