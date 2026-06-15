@@ -1278,8 +1278,8 @@ const styles = `
     .case-bg-img {
       object-fit: contain !important;
       object-position: center center !important;
-      filter: brightness(1.45) contrast(1.05) !important;
-      opacity: 0.32 !important;
+      filter: brightness(1.20) contrast(1.05) !important;
+      opacity: 0.26 !important;
     }
     .contact-bg-img {
       object-fit: cover !important;
