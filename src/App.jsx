@@ -1282,6 +1282,8 @@ const styles = `
     .contact-bg-img {
       object-fit: contain !important;
       object-position: center top !important;
+      filter: grayscale(60%) brightness(1.80) contrast(0.85) !important;
+      opacity: 0.70 !important;
     }
   }
 
