@@ -163,8 +163,11 @@ const styles = `
   @media(max-width: 1024px) {
     .hero-content-block { transform: none; }
   }
+  @media(max-width: 1024px) {
+    .hero-content-block { align-items: center; text-align: center; }
+  }
   @media(max-width: 640px) {
-    .hero-content-block { max-width: 100%; }
+    .hero-content-block { max-width: 100%; align-items: center; text-align: center; }
   }
 
   /* --- MOBILE PERFORMANCE: disable blur filters on phones --- */
@@ -1791,7 +1794,7 @@ const Hero = () => (
             }} />
 
                         {/* H1 — cinematic line-by-line vertical emergence */}
-            <h1 className="text-hero text-white block m-0 p-0 mb-6 w-full overflow-hidden" style={{ position: 'relative', zIndex: 1 }}>
+            <h1 className="text-hero text-white block m-0 p-0 mb-6 w-full overflow-hidden text-center lg:text-left" style={{ position: 'relative', zIndex: 1 }}>
               {[
                 { text: "WE DON'T",      delay: 0.10, ls: '0.10em', color: 'inherit' },
                 { text: "BUILD BRANDS.", delay: 0.28, ls: '0.03em', color: 'inherit' },
