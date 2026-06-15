@@ -525,8 +525,8 @@ const styles = `
   @media(min-width: 1025px) and (max-width: 1280px) { .text-hero { font-size: clamp(48px, 4.8vw, 62px); } }
   @media(max-width: 1024px) { .text-hero { font-size: 56px; } }
   @media(max-width: 640px)  { .text-hero { font-size: 48px; } }
-  @media(max-width: 480px)  { .text-hero { font-size: 40px; } }
-  @media(max-width: 375px)  { .text-hero { font-size: 32px; } }
+  @media(max-width: 480px)  { .text-hero { font-size: 44px; line-height: 1.13; } }
+  @media(max-width: 375px)  { .text-hero { font-size: 36px; line-height: 1.13; } }
   @media(max-width: 320px)  { .text-hero { font-size: 26px; } }
 
   .text-section-title {
@@ -1295,6 +1295,27 @@ const styles = `
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 118px; padding-bottom: 60px; }
   }
+
+  /* ─── Mobile Hero Optimization: headline dominance 375–430px ─── */
+  @media(max-width: 480px) {
+    /* Tighter top padding → more viewport for headline */
+    .calioon-section-hero { padding-top: 106px !important; padding-bottom: 56px; }
+    /* Extra breathing room below headline */
+    .text-hero { margin-bottom: 30px !important; }
+    /* Reorder: buttons before paragraph so CTA is second thing eye hits */
+    .hero-btns-wrap  { order: 3; }
+    .hero-para-text  { order: 4; margin-top: 20px !important; margin-bottom: 0 !important; }
+    .hero-cred-strip { order: 5; }
+    /* Buttons: slimmer, tighter gap */
+    .hero-cta-btn  { height: 44px !important; min-height: 44px !important; }
+    .hero-btns-wrap { gap: 12px !important; }
+    /* Paragraph: slightly smaller + looser tracking to reduce visual weight */
+    .hero-para-text { font-size: 13px !important; line-height: 1.68 !important; }
+  }
+  @media(max-width: 375px) {
+    .calioon-section-hero { padding-top: 100px !important; }
+    .text-hero { margin-bottom: 24px !important; }
+  }
 `;
 
 const LUXURY_EASE = [0.16, 1, 0.3, 1];
@@ -1888,7 +1909,7 @@ const Hero = () => (
 
             {/* Paragraph — single unit fade + rise (no word splitting) */}
             <motion.p
-              className="text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-center lg:self-start text-center lg:text-left"
+              className="hero-para-text text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-center lg:self-start text-center lg:text-left"
               initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.85, delay: 1.32, ease: [0.22, 1, 0.36, 1] }}
@@ -1897,12 +1918,12 @@ const Hero = () => (
             </motion.p>
 
             {/* Buttons — individual staggered entrance */}
-            <div className="flex flex-col sm:flex-row gap-[28px] justify-center lg:justify-start items-center w-full m-0 p-0 self-center lg:self-start">
+            <div className="hero-btns-wrap flex flex-col sm:flex-row gap-[28px] justify-center lg:justify-start items-center w-full m-0 p-0 self-center lg:self-start">
 
                 {/* PRIMARY */}
                 <motion.a
                   href="#contact"
-                  className="heading-cinzel bg-[#c6a062] text-black h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-300 hover:brightness-110"
+                  className="hero-cta-btn heading-cinzel bg-[#c6a062] text-black h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-300 hover:brightness-110"
                   style={{ position: 'relative', overflow: 'hidden', letterSpacing: '0.20em', flexShrink: 0 }}
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -1931,7 +1952,7 @@ const Hero = () => (
                 {/* SECONDARY */}
                 <motion.a
                   href="#casestudies"
-                  className="heading-cinzel text-[#c6a062] h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-500 hover:bg-[rgba(198,160,98,0.07)]"
+                  className="hero-cta-btn heading-cinzel text-[#c6a062] h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-500 hover:bg-[rgba(198,160,98,0.07)]"
                   style={{ position: 'relative', border: '1px solid rgba(198,160,98,0.40)', letterSpacing: '0.20em', flexShrink: 0 }}
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -1957,7 +1978,7 @@ const Hero = () => (
             </div>
 
             {/* Credibility strip — hairline sweep + per-item stagger */}
-            <div className="self-center lg:self-start w-full" style={{ marginTop: '36px' }}>
+            <div className="hero-cred-strip self-center lg:self-start w-full" style={{ marginTop: '36px' }}>
               <motion.div
                 aria-hidden="true"
                 style={{ height: '1px', width: '100%', maxWidth: '480px', background: 'linear-gradient(to right, rgba(198,160,98,0.22), rgba(198,160,98,0.06) 70%, transparent)', marginBottom: '16px', transformOrigin: 'left center' }}
@@ -2006,7 +2027,7 @@ const Hero = () => (
       {/* Left-side dark shield keeps text readable */}
       <div style={{
         position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
-        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
+        background:'linear-gradient(to right, rgba(5,10,18,0.92) 0%, rgba(5,10,18,0.70) 40%, rgba(5,10,18,0.28) 100%)',
       }} />
     </div>
 
