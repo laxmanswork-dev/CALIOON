@@ -1273,6 +1273,18 @@ const styles = `
     .contact-privacy-row { justify-content: center !important; }
   }
 
+  /* Case Studies + Contact: prevent background image zoom/crop on mobile */
+  @media(max-width: 768px) {
+    .case-bg-img {
+      object-fit: contain !important;
+      object-position: center center !important;
+    }
+    .contact-bg-img {
+      object-fit: contain !important;
+      object-position: center 40% !important;
+    }
+  }
+
   /* Contact feature list: scale down on small phones */
   @media(max-width: 640px) {
     .contact-feature-label { font-size: 13px !important; letter-spacing: 0.08em !important; }
@@ -3507,7 +3519,7 @@ const ImperialArchive = () => {
 // --- COMPONENT: CASE STUDIES (ENHANCED with live tracker + animated counters) ---
 const CaseStudies = () => (
   <section id="casestudies" className="calioon-section-auto border-t border-[#c6a062]/20 relative">
-    <img aria-hidden="true" src="/jas.png" alt=""
+    <img aria-hidden="true" src="/jas.png" alt="" className="case-bg-img"
       style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
         objectFit: 'cover', objectPosition: 'center center',
@@ -4047,7 +4059,7 @@ const Contact = () => {
 
 
       {/* Empire seal watermark */}
-      <img aria-hidden="true" src="/CALIOON Empire.png" alt=""
+      <img aria-hidden="true" src="/CALIOON Empire.png" alt="" className="contact-bg-img"
         style={{
           position:'absolute', top:0, left:0, width:'100%', height:'100%',
           objectFit:'cover', objectPosition:'center center',
