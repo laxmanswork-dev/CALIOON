@@ -1687,110 +1687,99 @@ const Navbar = () => {
 
     <AnimatePresence>
       {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.28 }}
+          onClick={() => setMobileOpen(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 9999,
+            background: 'rgba(4,8,15,0.93)',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+          }}
+        >
           <motion.div
-            initial={{ opacity: 0, y: '-100%' }}
-            animate={{ opacity: 1, y: '0%' }}
-            exit={{ opacity: 0, y: '-100%' }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{ position:'fixed', inset:0, zIndex:9999, display:'flex', flexDirection:'column', overflow:'hidden', background: 'linear-gradient(160deg, #010204 0%, #020609 40%, #010204 100%)' }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'relative', width: '100%', maxWidth: '520px',
+              padding: 'clamp(36px,6vw,64px) clamp(24px,5vw,48px)',
+              textAlign: 'center',
+            }}
           >
-            {/* Background texture */}
-            <div className="greek-stone-texture-overlay !opacity-[0.06]" />
-            <div className="greek-temple-wall-grain" />
-            {/* Ambient radial glow */}
-            <div aria-hidden style={{ position:'absolute', inset:0, pointerEvents:'none',
-              background:'radial-gradient(ellipse 70% 60% at 50% 35%, rgba(198,160,98,0.07) 0%, transparent 70%)' }} />
+            {/* Close */}
+            <button
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close navigation"
+              style={{
+                position: 'absolute', top: 0, right: 'clamp(20px,4vw,40px)',
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'rgba(198,160,98,0.55)', fontSize: '20px',
+                fontFamily: "'Cinzel',serif", lineHeight: 1, padding: '6px',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#c6a062'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(198,160,98,0.55)'}
+            >✕</button>
 
-            {/* Top bar matching navbar */}
-            <div className="flex items-center justify-between px-6 h-[100px] flex-shrink-0 relative z-10 border-b border-[rgba(198,160,98,0.12)]">
-              {/* Emblem + wordmark */}
-              <div className="flex items-center" style={{ gap: '6px' }}>
-                <img src={imgIcon} alt="" aria-hidden="true"
-                  style={{ height:'44px', width:'44px', objectFit:'contain',
-                    filter:'drop-shadow(0 0 8px rgba(198,160,98,0.50))' }} />
-                <span style={{ fontFamily:"'Montserrat',sans-serif", fontWeight:800, fontSize:'20px',
-                  letterSpacing:'0.22em', textTransform:'uppercase', color:'#F2EDE4' }}>CALIOON</span>
-              </div>
-              {/* Close X */}
-              <button onClick={() => setMobileOpen(false)} aria-label="Close menu"
-                className="focus:outline-none" style={{ color:'rgba(198,160,98,0.70)', padding:'8px' }}>
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <path d="M3 3 L19 19 M19 3 L3 19" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-                </svg>
-              </button>
+            {/* Eyebrow */}
+            <div style={{ marginBottom: 'clamp(24px,4vw,40px)' }}>
+              <span style={{
+                fontFamily: "'Cinzel',serif", fontSize: 'clamp(8px,1.8vw,11px)',
+                letterSpacing: '0.32em', color: 'rgba(198,160,98,0.55)',
+                textTransform: 'uppercase', display: 'block',
+              }}>THE PILLARS OF CALIOON</span>
+              <div style={{
+                margin: '10px auto 0', height: '1px', width: '60px',
+                background: 'linear-gradient(90deg,transparent,rgba(198,160,98,0.60),transparent)',
+              }} />
             </div>
 
-            {/* Nav links */}
-            <nav className="flex flex-col flex-1 justify-center px-8 relative z-10" style={{ gap:0 }}>
-              {menuItems.map((item, idx) => (
-                <div key={item}>
-                  {/* Greek meander divider */}
-                  <motion.div
-                    initial={{ scaleX: 0, opacity: 0 }}
-                    animate={{ scaleX: 1, opacity: 1 }}
-                    transition={{ duration: 0.32, delay: 0.05 + idx * 0.06, ease: LUXURY_EASE }}
-                    style={{ height:'1px', background:'linear-gradient(90deg, rgba(198,160,98,0.08), rgba(198,160,98,0.22), rgba(198,160,98,0.08))', transformOrigin:'left', marginBottom: idx === 0 ? '20px' : 0 }}
-                  />
-                  <motion.a
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.45, delay: 0.08 + idx * 0.06, ease: LUXURY_EASE }}
-                    href={`#${item.toLowerCase().replaceAll(' ', '')}`}
-                    onClick={() => setMobileOpen(false)}
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      padding: '20px 0',
-                      fontFamily: "'Cinzel', serif", fontSize: '14px', fontWeight: 600,
-                      letterSpacing: '0.22em', textTransform: 'uppercase',
-                      color: 'rgba(212,175,106,0.65)', textDecoration: 'none',
-                      transition: 'color 0.22s ease',
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,232,140,0.95)'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(212,175,106,0.65)'}
-                  >
-                    <span>{item}</span>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ opacity:0.40 }}>
-                      <path d="M2 2 L8 5 L2 8" stroke="rgba(198,160,98,1)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </motion.a>
-                </div>
+            {/* Nav items */}
+            <nav>
+              {menuItems.map((item, i) => (
+                <motion.a
+                  key={item}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.30, delay: 0.08 + i * 0.055, ease: [0.16, 1, 0.3, 1] }}
+                  href={`#${item.toLowerCase().replaceAll(' ', '')}`}
+                  onClick={() => setMobileOpen(false)}
+                  style={{
+                    display: 'block', width: '100%',
+                    background: 'none', border: 'none', cursor: 'pointer',
+                    fontFamily: "'Cinzel',serif",
+                    fontSize: 'clamp(14px,3.2vw,20px)',
+                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                    color: 'rgba(253,240,213,0.82)',
+                    padding: 'clamp(12px,2.4vw,18px) 0',
+                    borderBottom: i < menuItems.length - 1 ? '1px solid rgba(198,160,98,0.10)' : 'none',
+                    transition: 'color 0.22s ease, letter-spacing 0.22s ease',
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#c6a062'; e.currentTarget.style.letterSpacing = '0.22em'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'rgba(253,240,213,0.82)'; e.currentTarget.style.letterSpacing = '0.16em'; }}
+                >
+                  {item}
+                </motion.a>
               ))}
-              {/* Last divider */}
-              <motion.div
-                initial={{ scaleX: 0, opacity: 0 }}
-                animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.32, delay: 0.05 + menuItems.length * 0.06, ease: LUXURY_EASE }}
-                style={{ height:'1px', background:'linear-gradient(90deg, rgba(198,160,98,0.08), rgba(198,160,98,0.22), rgba(198,160,98,0.08))', transformOrigin:'left' }}
-              />
             </nav>
 
-            {/* CTA */}
-            <div className="px-8 pb-10 flex-shrink-0 relative z-10">
-              <motion.a
-                href="#contact"
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.42, ease: LUXURY_EASE }}
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  height: '58px', width: '100%', textDecoration: 'none',
-                  background: 'linear-gradient(135deg, #C8A030 0%, #E8C860 35%, #D4AF50 60%, #A07820 100%)',
-                  clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)',
-                  fontFamily: "'Cinzel', serif", fontSize: '12px', fontWeight: 800,
-                  letterSpacing: '0.24em', textTransform: 'uppercase', color: '#04080F',
-                  boxShadow: '0 4px 24px rgba(212,175,106,0.40)',
-                }}
-              >
-                ENTER THE EMPIRE
-              </motion.a>
-              {/* Tagline */}
-              <p style={{ textAlign:'center', fontFamily:"'Cinzel',serif", fontSize:'9px',
-                letterSpacing:'0.26em', color:'rgba(198,160,98,0.30)', textTransform:'uppercase', marginTop:'14px' }}>
-                AD OLYMPUM
-              </p>
-            </div>
+            {/* Bottom ornament */}
+            <div style={{
+              marginTop: 'clamp(20px,3.5vw,32px)',
+              color: 'rgba(198,160,98,0.35)', fontSize: '13px',
+              letterSpacing: '0.05em', fontFamily: 'monospace',
+            }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
           </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
     </>
