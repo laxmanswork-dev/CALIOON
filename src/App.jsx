@@ -1891,7 +1891,14 @@ const EmpireCrestBg = ({ wrapStyle = {}, svgStyle = {} }) => {
 };
 
 // --- COMPONENT: HERO (LOCKED) ---
-const Hero = () => (
+const Hero = () => {
+  const [pillarOpen, setPillarOpen] = useState(false);
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  return (
+  <>
   <section className="calioon-section-hero relative border-t border-[#c6a062]/20">
     <div className="greek-stone-texture-overlay" />
     <div className="greek-museum-vignette" />
@@ -1972,10 +1979,10 @@ const Hero = () => (
             <div className="hero-btns-wrap flex flex-col sm:flex-row gap-[28px] justify-center lg:justify-start items-center w-full m-0 p-0 self-center lg:self-start">
 
                 {/* PRIMARY */}
-                <motion.a
-                  href="#contact"
+                <motion.button
+                  onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
                   className="hero-cta-btn hero-cta-primary heading-cinzel bg-[#c6a062] text-black h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-300 hover:brightness-110"
-                  style={{ position: 'relative', overflow: 'hidden', letterSpacing: '0.20em', flexShrink: 0 }}
+                  style={{ position: 'relative', overflow: 'hidden', letterSpacing: '0.20em', flexShrink: 0, border: 'none', cursor: 'pointer' }}
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.65, delay: 1.60, ease: [0.16, 1, 0.3, 1] }}
@@ -1993,18 +2000,18 @@ const Hero = () => (
                     <path d="M11,0 L11,11 L0,11" stroke="rgba(0,0,0,0.30)" strokeWidth="1.1" strokeLinecap="square" />
                   </svg>
                   <span aria-hidden style={{ marginRight:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
-                  START YOUR EMPIRE
+                  ENTER THE EMPIRE
                   <span aria-hidden style={{ marginLeft:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
                   <span aria-hidden style={{ position:'absolute', inset:0, overflow:'hidden', pointerEvents:'none' }}>
                     <span style={{ position:'absolute', top:0, bottom:0, width:'40%', background:'linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.20) 40%,rgba(255,255,255,0.36) 50%,rgba(255,255,255,0.20) 60%,transparent 100%)', animation:'ctaGlassPass 3.0s ease-in-out 2.4s infinite' }} />
                   </span>
-                </motion.a>
+                </motion.button>
 
                 {/* SECONDARY */}
-                <motion.a
-                  href="#casestudies"
+                <motion.button
+                  onClick={() => setPillarOpen(true)}
                   className="hero-cta-btn heading-cinzel text-[#c6a062] h-[54px] w-full sm:w-[252px] text-[12.5px] font-bold flex items-center justify-center transition-all duration-500 hover:bg-[rgba(198,160,98,0.07)]"
-                  style={{ position: 'relative', border: '1px solid rgba(198,160,98,0.40)', letterSpacing: '0.20em', flexShrink: 0 }}
+                  style={{ position: 'relative', border: '1px solid rgba(198,160,98,0.40)', letterSpacing: '0.20em', flexShrink: 0, background: 'none', cursor: 'pointer' }}
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.65, delay: 1.80, ease: [0.16, 1, 0.3, 1] }}
@@ -2022,9 +2029,9 @@ const Hero = () => (
                     <path d="M11,0 L11,11 L0,11" stroke="#c6a062" strokeWidth="1.1" strokeOpacity="0.70" strokeLinecap="square" />
                   </svg>
                   <span aria-hidden style={{ marginRight:'9px', opacity:0.55, fontSize:'6px' }}>◆</span>
-                  SUMMON GROWTH
+                  DISCOVER THE PILLARS
                   <span aria-hidden style={{ marginLeft:'9px', opacity:0.55, fontSize:'6px' }}>◆</span>
-                </motion.a>
+                </motion.button>
 
             </div>
 
@@ -2525,7 +2532,117 @@ const Hero = () => (
     </div>
 
   </section>
-);
+
+  {/* ── PILLARS NAV OVERLAY ── */}
+  {createPortal(
+    <AnimatePresence>
+      {pillarOpen && (
+        <motion.div
+          key="pillars-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.28 }}
+          onClick={() => setPillarOpen(false)}
+          style={{
+            position: 'fixed', inset: 0, zIndex: 99999,
+            background: 'rgba(4,8,15,0.93)',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: 'relative', width: '100%', maxWidth: '520px',
+              padding: 'clamp(36px,6vw,64px) clamp(24px,5vw,48px)',
+              textAlign: 'center',
+            }}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setPillarOpen(false)}
+              aria-label="Close navigation"
+              style={{
+                position: 'absolute', top: 0, right: 'clamp(20px,4vw,40px)',
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'rgba(198,160,98,0.55)', fontSize: '20px',
+                fontFamily: "'Cinzel',serif", lineHeight: 1, padding: '6px',
+                transition: 'color 0.2s ease',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#c6a062'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(198,160,98,0.55)'}
+            >✕</button>
+
+            {/* Eyebrow */}
+            <div style={{ marginBottom: 'clamp(24px,4vw,40px)' }}>
+              <span style={{
+                fontFamily: "'Cinzel',serif", fontSize: 'clamp(8px,1.8vw,11px)',
+                letterSpacing: '0.32em', color: 'rgba(198,160,98,0.55)',
+                textTransform: 'uppercase', display: 'block',
+              }}>THE PILLARS OF CALIOON</span>
+              <div style={{
+                margin: '10px auto 0', height: '1px', width: '60px',
+                background: 'linear-gradient(90deg,transparent,rgba(198,160,98,0.60),transparent)',
+              }} />
+            </div>
+
+            {/* Nav items */}
+            <nav>
+              {[
+                { label: 'Philosophy',   id: 'philosophy'  },
+                { label: 'Domains',      id: 'domains'     },
+                { label: 'Our Gods',     id: 'ourgods'     },
+                { label: 'Process',      id: 'process'     },
+                { label: 'Case Studies', id: 'casestudies' },
+                { label: 'Contact',      id: 'contact'     },
+              ].map(({ label, id }, i) => (
+                <motion.button
+                  key={id}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.30, delay: 0.08 + i * 0.055, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={() => { scrollTo(id); setPillarOpen(false); }}
+                  style={{
+                    display: 'block', width: '100%',
+                    background: 'none', border: 'none', cursor: 'pointer',
+                    fontFamily: "'Cinzel',serif",
+                    fontSize: 'clamp(14px,3.2vw,20px)',
+                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                    color: 'rgba(253,240,213,0.82)',
+                    padding: 'clamp(12px,2.4vw,18px) 0',
+                    borderBottom: i < 5 ? '1px solid rgba(198,160,98,0.10)' : 'none',
+                    transition: 'color 0.22s ease, letter-spacing 0.22s ease',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = '#c6a062'; e.currentTarget.style.letterSpacing = '0.22em'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'rgba(253,240,213,0.82)'; e.currentTarget.style.letterSpacing = '0.16em'; }}
+                >
+                  {label}
+                </motion.button>
+              ))}
+            </nav>
+
+            {/* Bottom ornament */}
+            <div style={{
+              marginTop: 'clamp(20px,3.5vw,32px)',
+              color: 'rgba(198,160,98,0.35)', fontSize: '13px',
+              letterSpacing: '0.05em', fontFamily: 'monospace',
+            }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  )}
+  </>
+  );
+};
 
 // --- COMPONENT: PHILOSOPHY (LOCKED) ---
 const PHILOSOPHY_ITEMS = [
