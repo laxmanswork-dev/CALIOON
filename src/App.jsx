@@ -146,7 +146,7 @@ const styles = `
 
   /* --- LEFT BLOCK HERO AXIS (LOCKED) --- */
   .hero-content-block {
-    max-width: 520px;
+    max-width: 580px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -513,14 +513,16 @@ const styles = `
 
   .text-hero {
     font-family: 'Cinzel', serif;
-    font-size: clamp(32px, 5.5vw, 72px);
+    font-size: clamp(32px, 5.5vw, 64px);
     line-height: 1.08;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     margin: 0;
   }
-  @media(max-width: 1280px) { .text-hero { font-size: 64px; } }
+  /* Narrow laptop (1025–1280px): padding jumps to 96px making column ~416–544px.
+     Scale smoothly from 49px at 1025px to 62px at 1280px so BRANDS. never clips. */
+  @media(min-width: 1025px) and (max-width: 1280px) { .text-hero { font-size: clamp(48px, 4.8vw, 62px); } }
   @media(max-width: 1024px) { .text-hero { font-size: 56px; } }
   @media(max-width: 640px)  { .text-hero { font-size: 48px; } }
   @media(max-width: 480px)  { .text-hero { font-size: 40px; } }
