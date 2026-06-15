@@ -1905,7 +1905,7 @@ const Hero = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:items-center w-full lg:h-full lg:min-h-[calc(100vh-100px)]">
         
         <div className="hero-content-block">
-          <div className="flex flex-col gap-0 w-full items-center text-center md:items-start md:text-left m-0 p-0">
+          <div className="flex flex-col gap-0 w-full items-start text-left m-0 p-0">
 
             {/* Ultra-subtle radial depth glow behind headline */}
             <div aria-hidden="true" style={{
@@ -1915,7 +1915,7 @@ const Hero = () => {
             }} />
 
                         {/* H1 — cinematic line-by-line vertical emergence */}
-            <h1 className="text-hero text-white block m-0 p-0 mb-6 w-full overflow-hidden text-center lg:text-left" style={{ position: 'relative', zIndex: 1 }}>
+            <h1 className="text-hero text-white block m-0 p-0 mb-6 w-full overflow-hidden text-left" style={{ position: 'relative', zIndex: 1 }}>
               {[
                 { text: "WE DON'T",      delay: 0.10, ls: '0.10em', color: 'inherit' },
                 { text: "BUILD BRANDS.", delay: 0.28, ls: '0.03em', color: 'inherit' },
