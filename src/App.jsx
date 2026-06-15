@@ -1344,7 +1344,7 @@ const styles = `
     .hero-cta-primary { font-size: 12px !important; font-weight: 800 !important; letter-spacing: 0.16em !important; }
     .hero-btns-wrap   { gap: 10px !important; }
     /* Paragraph: accessible contrast (≥4.5:1) + lower visual weight */
-    .hero-para-text { font-size: 12px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
+    .hero-para-text { font-size: 14px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
     /* Open leading on each line */
     .hero-line-wrap > span { line-height: 1.90 !important; }
     /* Couplet grouping:
@@ -1956,7 +1956,7 @@ const Hero = () => {
 
             {/* Paragraph — single unit fade + rise (no word splitting) */}
             <motion.p
-              className="hero-para-text text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-center lg:self-start text-center lg:text-left"
+              className="hero-para-text text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-start text-left"
               initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.85, delay: 1.32, ease: [0.22, 1, 0.36, 1] }}
