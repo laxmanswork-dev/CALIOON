@@ -1286,8 +1286,8 @@ const styles = `
       object-position: center top !important;
       top: clamp(70px, 22vw, 100px) !important;
       height: calc(100% - clamp(70px, 22vw, 100px)) !important;
-      filter: grayscale(60%) brightness(1.80) contrast(0.85) !important;
-      opacity: 0.70 !important;
+      filter: grayscale(70%) brightness(0.75) contrast(1.40) !important;
+      opacity: 0.55 !important;
     }
   }
 
