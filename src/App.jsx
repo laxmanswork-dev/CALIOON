@@ -1302,15 +1302,17 @@ const styles = `
     .calioon-section-hero { padding-top: 106px !important; padding-bottom: 28px; }
     /* Lock accent rule close to EMPIRES. */
     .text-hero { margin-bottom: 10px !important; }
-    /* Reorder: buttons before paragraph so CTA is second thing eye hits */
+    /* Cred strip: flip to eyebrow above headline so industry is immediately clear */
+    .hero-cred-strip { order: -1; margin-top: 0 !important; margin-bottom: 18px !important; }
+    .hero-cred-rule  { display: none !important; }
+    /* Reorder remaining: buttons before paragraph */
     .hero-btns-wrap  { order: 3; }
     .hero-para-text  { order: 4; margin-top: 40px !important; margin-bottom: 0 !important; max-width: 250px !important; }
-    .hero-cred-strip { order: 5; }
     /* Buttons: 5–10% smaller so eye stays on headline */
     .hero-cta-btn  { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
     .hero-btns-wrap { gap: 10px !important; }
-    /* Paragraph: lower visual weight — supporting role only */
-    .hero-para-text { font-size: 12px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.44) !important; }
+    /* Paragraph: accessible contrast (≥4.5:1) + lower visual weight */
+    .hero-para-text { font-size: 12px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
     /* Open leading on each line */
     .hero-line-wrap > span { line-height: 1.90 !important; }
     /* Couplet grouping:
@@ -1957,7 +1959,7 @@ const Hero = () => (
                     <path d="M11,0 L11,11 L0,11" stroke="rgba(0,0,0,0.30)" strokeWidth="1.1" strokeLinecap="square" />
                   </svg>
                   <span aria-hidden style={{ marginRight:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
-                  ENTER THE EMPIRE
+                  START YOUR EMPIRE
                   <span aria-hidden style={{ marginLeft:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
                   <span aria-hidden style={{ position:'absolute', inset:0, overflow:'hidden', pointerEvents:'none' }}>
                     <span style={{ position:'absolute', top:0, bottom:0, width:'40%', background:'linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.20) 40%,rgba(255,255,255,0.36) 50%,rgba(255,255,255,0.20) 60%,transparent 100%)', animation:'ctaGlassPass 3.0s ease-in-out 2.4s infinite' }} />
@@ -1996,6 +1998,7 @@ const Hero = () => (
             <div className="hero-cred-strip self-center lg:self-start w-full" style={{ marginTop: '36px' }}>
               <motion.div
                 aria-hidden="true"
+                className="hero-cred-rule"
                 style={{ height: '1px', width: '100%', maxWidth: '480px', background: 'linear-gradient(to right, rgba(198,160,98,0.22), rgba(198,160,98,0.06) 70%, transparent)', marginBottom: '16px', transformOrigin: 'left center' }}
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
