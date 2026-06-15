@@ -1346,7 +1346,7 @@ const styles = `
     /* Paragraph: accessible contrast (≥4.5:1) + lower visual weight */
     .hero-para-text { font-size: 14px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
     /* Open leading on each line */
-    .hero-line-wrap > span { line-height: 1.90 !important; }
+    .hero-line-wrap > span { line-height: 1.60 !important; }
     /* Couplet grouping:
        WE DON'T          ← tight to BUILD BRANDS.
        BUILD BRANDS.     ← big gap (couplet break)
@@ -1354,8 +1354,8 @@ const styles = `
        EMPIRES.
     */
     .hero-line-wrap-0      { margin-bottom: 1px;  }
-    .hero-line-wrap-1      { margin-bottom: 20px; }
-    .hero-line-wrap-2      { margin-bottom: 10px; }
+    .hero-line-wrap-1      { margin-bottom: 14px; }
+    .hero-line-wrap-2      { margin-bottom: 6px; }
     .hero-line-wrap-empires { margin-bottom: 0;   }
   }
   @media(max-width: 375px) {
