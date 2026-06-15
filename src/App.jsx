@@ -1781,7 +1781,7 @@ const Hero = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:items-center w-full lg:h-full lg:min-h-[calc(100vh-100px)]">
         
         <div className="hero-content-block">
-          <div className="flex flex-col gap-0 w-full items-start text-left m-0 p-0">
+          <div className="flex flex-col gap-0 w-full items-center text-center lg:items-start lg:text-left m-0 p-0">
 
             {/* Ultra-subtle radial depth glow behind headline */}
             <div aria-hidden="true" style={{
@@ -1823,7 +1823,7 @@ const Hero = () => (
             </h1>
             {/* Accent rule */}
             <motion.div
-              className="self-start mb-8"
+              className="self-center lg:self-start mb-8"
               style={{ height: '1px', width: '120px', background: 'linear-gradient(to right, rgba(198,160,98,0.75) 0%, rgba(198,160,98,0.30) 55%, transparent 100%)', transformOrigin: 'left center' }}
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
@@ -1832,7 +1832,7 @@ const Hero = () => (
 
             {/* Paragraph — single unit fade + rise (no word splitting) */}
             <motion.p
-              className="text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-start"
+              className="text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-center lg:self-start text-center lg:text-left"
               initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.85, delay: 1.32, ease: [0.22, 1, 0.36, 1] }}
@@ -1841,7 +1841,7 @@ const Hero = () => (
             </motion.p>
 
             {/* Buttons — individual staggered entrance */}
-            <div className="flex flex-col sm:flex-row gap-[28px] justify-start items-center w-full m-0 p-0 self-start">
+            <div className="flex flex-col sm:flex-row gap-[28px] justify-center lg:justify-start items-center w-full m-0 p-0 self-center lg:self-start">
 
                 {/* PRIMARY */}
                 <motion.a
@@ -1901,7 +1901,7 @@ const Hero = () => (
             </div>
 
             {/* Credibility strip — hairline sweep + per-item stagger */}
-            <div className="self-start w-full" style={{ marginTop: '36px' }}>
+            <div className="self-center lg:self-start w-full" style={{ marginTop: '36px' }}>
               <motion.div
                 aria-hidden="true"
                 style={{ height: '1px', width: '100%', maxWidth: '480px', background: 'linear-gradient(to right, rgba(198,160,98,0.22), rgba(198,160,98,0.06) 70%, transparent)', marginBottom: '16px', transformOrigin: 'left center' }}
@@ -1909,7 +1909,7 @@ const Hero = () => (
                 animate={{ scaleX: 1, opacity: 1 }}
                 transition={{ duration: 0.55, delay: 2.08, ease: [0.16, 1, 0.3, 1] }}
               />
-              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'nowrap', gap: '0', overflow: 'hidden' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'nowrap', gap: '0', overflow: 'hidden' }}>
                 {['BRANDING', 'AI AUTOMATION', 'PERFORMANCE', 'SYSTEMS'].map((label, i) => (
                   <motion.span
                     key={i}
