@@ -1262,9 +1262,15 @@ const styles = `
     }
   }
 
-  /* Contact heading: center on mobile */
+  /* Contact section left column: center on mobile */
   @media(max-width: 768px) {
     .contact-main-heading { text-align: center !important; }
+    .contact-desc-para { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+    .contact-feature-list { align-items: center !important; }
+    .contact-feature-item { justify-content: center !important; }
+    .contact-feature-label { text-align: center !important; }
+    .contact-feature-desc  { text-align: center !important; }
+    .contact-privacy-row { justify-content: center !important; }
   }
 
   /* Contact feature list: scale down on small phones */
@@ -4089,12 +4095,13 @@ const Contact = () => {
             <motion.p
               initial={{ opacity:0, y:14 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.65, delay:0.30, ease:[0.16,1,0.3,1] }}
+              className="contact-desc-para"
               style={{ color:'rgba(253,240,213,0.68)', fontSize:'16px', lineHeight:'1.72', maxWidth:'380px', margin:'0 0 14px', position:'relative', zIndex:1 }}
             >
               CALIOON accepts a limited number of growth partners each quarter. Complete the application below to begin your evaluation.
             </motion.p>
 
-            <div style={{ display:'flex', flexDirection:'column', gap:'14px', position:'relative', zIndex:1 }}>
+            <div className="contact-feature-list" style={{ display:'flex', flexDirection:'column', gap:'14px', position:'relative', zIndex:1 }}>
               {[
                 { label:'Strategic Growth',      desc:'Data-driven market expansion and brand positioning at the highest tier.' },
                 { label:'Performance Dominance', desc:'ROI-obsessed execution across every channel, every campaign.' },
@@ -4103,7 +4110,7 @@ const Contact = () => {
                 <motion.div key={i}
                   initial={{ opacity:0, x:-20 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
                   transition={{ duration:0.55, delay:0.40 + i*0.10, ease:[0.16,1,0.3,1] }}
-                  style={{ display:'flex', alignItems:'flex-start', gap:'14px' }}
+                  className="contact-feature-item" style={{ display:'flex', alignItems:'flex-start', gap:'14px' }}
                 >
                   <div style={{ width:'8px', height:'8px', background:'#D4AF6A', transform:'rotate(45deg)', marginTop:'7px', flexShrink:0 }} />
                   <div>
@@ -4114,7 +4121,7 @@ const Contact = () => {
               ))}
             </div>
 
-            <motion.div initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
+            <motion.div className="contact-privacy-row" initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
               transition={{ duration:0.6, delay:0.72 }}
               style={{ display:'flex', alignItems:'center', gap:'8px', marginTop:'14px', position:'relative', zIndex:1 }}
             >
