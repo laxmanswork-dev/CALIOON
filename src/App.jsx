@@ -1262,6 +1262,11 @@ const styles = `
     }
   }
 
+  /* Contact heading: center on mobile */
+  @media(max-width: 768px) {
+    .contact-main-heading { text-align: center !important; }
+  }
+
   /* Contact feature list: scale down on small phones */
   @media(max-width: 640px) {
     .contact-feature-label { font-size: 13px !important; letter-spacing: 0.08em !important; }
@@ -4069,7 +4074,7 @@ const Contact = () => {
             <motion.h2
               initial={{ opacity:0, y:20 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.75, delay:0.10, ease:[0.16,1,0.3,1] }}
-              className="text-white font-bold uppercase"
+              className="contact-main-heading text-white font-bold uppercase"
               style={{ fontSize:'clamp(34px, 8vw, 88px)', lineHeight:'1.06', letterSpacing:'0.04em', margin:0, fontFamily:"'Cinzel',serif", position:'relative', zIndex:1 }}
             >
               <span style={{ color:'#ffffff' }}>BUILD YOUR</span><br/>
