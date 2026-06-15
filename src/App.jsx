@@ -3200,7 +3200,7 @@ const Process = () => (
             style={{ marginTop:'-18px' }}
           >
             <h2 className="text-section-title text-white" style={{ marginBottom:'12px' }}>The Ascension <span style={{ color:'#D4AF60' }}>System</span></h2>
-            <div style={{ marginBottom:'24px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginBottom:'24px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
           </motion.div>
           <motion.p
             className="text-body-copy text-white/60 max-w-[450px] w-full"
