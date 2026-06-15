@@ -1936,26 +1936,21 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Mobile deity background — pillar anchored bottom-right, fixed size, no cropping */}
+    {/* Mobile deity background */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
-      {/* Solid dark base */}
-      <div style={{ position:'absolute', inset:0, background:'#050A12' }} />
-      {/* Solid cover behind navbar */}
-      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:3 }} />
-      {/* Pillar video — smaller fixed element, bottom-right anchored, full column visible */}
       <video autoPlay muted loop playsInline style={{
-        position:'absolute', right:'-2%', bottom:0,
-        width:'58%', height:'82%',
-        objectFit:'contain', objectPosition:'right bottom',
-        opacity:0.85, filter:'brightness(1.35) contrast(1.12) saturate(0.85)',
-        zIndex:1,
+        position:'absolute', inset:0, width:'100%', height:'100%',
+        objectFit:'cover', objectPosition:'60% center',
+        opacity:0.55, filter:'brightness(1.40) contrast(1.10) saturate(0.80)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
-      {/* Left gradient shield for text readability */}
+      {/* Solid cover behind navbar */}
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
+      {/* Left-side dark shield keeps text readable */}
       <div style={{
-        position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:2,
-        background:'linear-gradient(to right, rgba(5,10,18,1) 0%, rgba(5,10,18,0.95) 28%, rgba(5,10,18,0.55) 48%, rgba(5,10,18,0.10) 68%, transparent 82%)',
+        position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
+        background:'linear-gradient(to right, rgba(5,10,18,0.78) 0%, rgba(5,10,18,0.50) 45%, rgba(5,10,18,0.20) 100%)',
       }} />
     </div>
 
