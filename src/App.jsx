@@ -1281,7 +1281,7 @@ const styles = `
     }
     .contact-bg-img {
       object-fit: contain !important;
-      object-position: center 40% !important;
+      object-position: center top !important;
     }
   }
 
