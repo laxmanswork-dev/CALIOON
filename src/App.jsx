@@ -2070,7 +2070,7 @@ const Hero = () => (
       <video autoPlay muted loop playsInline style={{
         position:'absolute', inset:0, width:'100%', height:'100%',
         objectFit:'cover', objectPosition:'60% center',
-        opacity:0.46, filter:'brightness(1.55) contrast(1.10) saturate(0.80)',
+        opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
       }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
