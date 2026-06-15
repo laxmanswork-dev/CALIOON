@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import imgIcon   from "./assets/images/icon.png";
@@ -3844,12 +3845,17 @@ const CTA_WORD_V = {
   visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.34, ease: [0.22, 1, 0.36, 1] } },
 };
 
+// ── EmailJS credentials — fill these in after creating your EmailJS account ──
+const EJS_SERVICE_ID  = 'YOUR_SERVICE_ID';      // e.g. 'service_abc123'
+const EJS_ADMIN_TPL   = 'YOUR_ADMIN_TEMPLATE_ID'; // template that emails CALIOON
+const EJS_REPLY_TPL   = 'YOUR_REPLY_TEMPLATE_ID'; // template that auto-replies to client
+const EJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';       // from EmailJS account → API Keys
+
 const HEADING_TEXT = 'EMPIRES ARE BUILT. NOT BORN.';
+const BLANK_FORM = { name: '', email: '', phone: '', company: '', services: [], description: '' };
+
 const Contact = () => {
-  const [form, setForm] = useState({
-    name: '', email: '', phone: '', company: '',
-    services: [], description: ''
-  });
+  const [form, setForm] = useState(BLANK_FORM);
   const [cycle, setCycle] = useState(0);
   const [submitState, setSubmitState] = useState('idle'); // idle | loading | success | error
   const [errors, setErrors] = useState({});
@@ -3868,11 +3874,12 @@ const Contact = () => {
 
   const validate = () => {
     const errs = {};
-    if (!form.name.trim()) errs.name = 'Name is required';
-    if (!form.email.trim()) errs.email = 'Email is required';
+    if (!form.name.trim())        errs.name        = 'Name is required';
+    if (!form.email.trim())       errs.email       = 'Email is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Enter a valid email address';
-    if (!form.phone.trim()) errs.phone = 'Phone number is required';
-    if (form.services.length === 0) errs.services = 'Select at least one service pillar';
+    if (!form.phone.trim())       errs.phone       = 'Phone number is required';
+    if (form.services.length === 0) errs.services  = 'Select at least one service pillar';
+    if (!form.description.trim()) errs.description = 'Project description is required';
     return errs;
   };
 
@@ -3882,17 +3889,37 @@ const Contact = () => {
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
     setSubmitState('loading');
+
+    const commonParams = {
+      from_name:   form.name,
+      from_email:  form.email,
+      phone:       form.phone,
+      company:     form.company || '—',
+      pillar:      form.services.join(', '),
+      description: form.description,
+      time:        new Date().toLocaleString('en-IN', { dateStyle: 'full', timeStyle: 'short' }),
+    };
+
     try {
-      const res = await fetch('/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setSubmitState('success');
-      } else {
-        setSubmitState('error');
-      }
+      // 1 — notify CALIOON
+      await emailjs.send(EJS_SERVICE_ID, EJS_ADMIN_TPL, {
+        ...commonParams,
+        subject: `New Empire Application — ${form.company || form.name}`,
+        to_email: 'calioon.global@gmail.com',
+      }, EJS_PUBLIC_KEY);
+
+      // 2 — auto-reply to client
+      await emailjs.send(EJS_SERVICE_ID, EJS_REPLY_TPL, {
+        to_name:  form.name,
+        to_email: form.email,
+        reply_to: 'calioon.global@gmail.com',
+      }, EJS_PUBLIC_KEY);
+
+      setSubmitState('success');
+      setTimeout(() => {
+        setForm(BLANK_FORM);
+        setSubmitState('idle');
+      }, 6000);
     } catch {
       setSubmitState('error');
     }
@@ -4394,11 +4421,12 @@ const Contact = () => {
                     <path d="M16 28 L24 36 L40 20" stroke="#c6a062" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <h3 style={{ fontFamily:"'Cinzel',serif", fontSize:'22px', fontWeight:700, letterSpacing:'0.14em', color:'#FDF0D5', margin:'0 0 12px', textTransform:'uppercase' }}>
-                    Application Received
+                    APPLICATION RECEIVED
                   </h3>
                   <div style={{ height:'1px', width:'60px', background:'linear-gradient(90deg,transparent,rgba(198,160,98,0.80),transparent)', margin:'0 auto 16px' }} />
-                  <p style={{ fontFamily:"'Inter',sans-serif", fontSize:'15px', color:'rgba(253,240,213,0.65)', lineHeight:1.7, margin:0 }}>
-                    Our council will review your application within 48 hours.
+                  <p style={{ fontFamily:"'Cinzel',serif", fontSize:'13px', color:'rgba(253,240,213,0.65)', lineHeight:1.9, margin:0, letterSpacing:'0.06em' }}>
+                    Your empire evaluation has begun.<br/>
+                    A response will be provided within 48 hours.
                   </p>
                 </div>
               )}
@@ -4592,11 +4620,12 @@ const Contact = () => {
                   viewport={{ once:true, margin:'-20px' }}
                   transition={{ duration:0.65, delay:0.40, ease:[0.16,1,0.3,1] }}
                   style={{ padding:'14px 16px', background:'#000000', border:'1.5px solid rgba(198,160,98,0.38)', borderRadius:'6px', backdropFilter:'blur(14px)', WebkitBackdropFilter:'blur(14px)', boxShadow:'inset 0 1px 0 rgba(198,160,98,0.06), 0 4px 20px rgba(0,0,0,0.80)' }}>
-                  <label className="empire-label">Project Description</label>
-                  <textarea className="empire-input" rows={3} placeholder="DESCRIBE YOUR VISION AND GOALS..."
-                    value={form.description} onChange={e => setForm(f => ({...f, description: e.target.value}))}
+                  <label className="empire-label">Project Description <span style={{color:'#D4AF6A'}}>*</span></label>
+                  <textarea className={`empire-input${errors.description ? ' empire-input-error' : ''}`} rows={3} placeholder="DESCRIBE YOUR VISION AND GOALS..."
+                    value={form.description} onChange={e => { setForm(f => ({...f, description: e.target.value})); if (errors.description) setErrors(x => ({...x, description: undefined})); }}
                     style={{ resize:'none', lineHeight:'1.75', width:'100%' }}
                   />
+                  {errors.description && <span className="empire-error-msg">{errors.description}</span>}
                 </motion.div>
 
                 {/* Submit */}
@@ -4670,13 +4699,13 @@ const Contact = () => {
                       opacity: submitState === 'loading' ? 0.6 : 1,
                       transition: 'opacity 0.22s ease',
                     }}>
-                      {submitState === 'loading' ? 'SUBMITTING...' : 'SUBMIT EMPIRE APPLICATION'}
+                      {submitState === 'loading' ? 'PROCESSING APPLICATION...' : 'SUBMIT EMPIRE APPLICATION'}
                     </span>
                   </button>
 
                   {submitState === 'error' && (
                     <p style={{ textAlign:'center', fontSize:'11px', color:'rgba(255,120,100,0.85)', marginTop:'12px', letterSpacing:'0.14em', fontFamily:"'Cinzel',serif" }}>
-                      Unable to submit application. Please try again.
+                      APPLICATION FAILED — Please try again in a few moments.
                     </p>
                   )}
                   {submitState !== 'error' && (
