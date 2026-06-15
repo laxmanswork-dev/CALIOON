@@ -1692,7 +1692,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: '0%' }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            style={{ position:'fixed', inset:0, zIndex:9999, display:'flex', flexDirection:'column', overflow:'hidden', background: 'linear-gradient(160deg, #030810 0%, #060F1C 40%, #04080F 100%)' }}
+            style={{ position:'fixed', inset:0, zIndex:9999, display:'flex', flexDirection:'column', overflow:'hidden', background: 'linear-gradient(160deg, #010204 0%, #020609 40%, #010204 100%)' }}
           >
             {/* Background texture */}
             <div className="greek-stone-texture-overlay !opacity-[0.06]" />
