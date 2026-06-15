@@ -1311,10 +1311,14 @@ const styles = `
     .hero-btns-wrap { gap: 12px !important; }
     /* Paragraph: slightly smaller + looser tracking to reduce visual weight */
     .hero-para-text { font-size: 13px !important; line-height: 1.68 !important; }
+    /* Headline open leading: each line taller so all 4 lines fill ~50% of screen */
+    .hero-line-wrap { margin-bottom: 12px; }
+    .hero-line-wrap > span { line-height: 1.90 !important; }
   }
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 100px !important; }
     .text-hero { margin-bottom: 24px !important; }
+    .hero-line-wrap { margin-bottom: 8px; }
   }
 `;
 
@@ -1874,7 +1878,7 @@ const Hero = () => (
                 { text: "BUILD BRANDS.", delay: 0.28, ls: '0.03em', color: 'inherit' },
                 { text: "WE BUILD",      delay: 0.46, ls: '0.10em', color: '#c6a062' },
               ].map(({ text, delay, ls, color }, li) => (
-                <div key={li} style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
+                <div key={li} className="hero-line-wrap" style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
                   <motion.span
                     style={{ display: 'block', whiteSpace: 'nowrap', letterSpacing: ls, color, lineHeight: '1.06' }}
                     initial={{ y: '105%', opacity: 0 }}
@@ -1886,7 +1890,7 @@ const Hero = () => (
                 </div>
               ))}
               {/* EMPIRES. — gold horizontal sweep */}
-              <div style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
+              <div className="hero-line-wrap" style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
                 <motion.span
                   className="gold-matte-text"
                   style={{ display: 'block', whiteSpace: 'nowrap', letterSpacing: '0.16em', lineHeight: '1.06', filter: 'brightness(1.22)' }}
