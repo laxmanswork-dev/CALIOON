@@ -1312,13 +1312,13 @@ const styles = `
     /* Paragraph: slightly smaller + looser tracking to reduce visual weight */
     .hero-para-text { font-size: 13px !important; line-height: 1.68 !important; }
     /* Headline open leading: each line taller so all 4 lines fill ~50% of screen */
-    .hero-line-wrap { margin-bottom: 12px; }
+    .hero-line-wrap { margin-bottom: 6px; }
     .hero-line-wrap > span { line-height: 1.90 !important; }
   }
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 100px !important; }
     .text-hero { margin-bottom: 24px !important; }
-    .hero-line-wrap { margin-bottom: 8px; }
+    .hero-line-wrap { margin-bottom: 4px; }
   }
 `;
 
