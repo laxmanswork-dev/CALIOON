@@ -519,10 +519,10 @@ const styles = `
   }
   @media(max-width: 1280px) { .text-hero { font-size: 64px; } }
   @media(max-width: 1024px) { .text-hero { font-size: 56px; } }
-  @media(max-width: 640px)  { .text-hero { font-size: 44px; } }
-  @media(max-width: 480px)  { .text-hero { font-size: 36px; } }
-  @media(max-width: 375px)  { .text-hero { font-size: 28px; } }
-  @media(max-width: 320px)  { .text-hero { font-size: 22px; } }
+  @media(max-width: 640px)  { .text-hero { font-size: 54px; } }
+  @media(max-width: 480px)  { .text-hero { font-size: 46px; } }
+  @media(max-width: 375px)  { .text-hero { font-size: 38px; } }
+  @media(max-width: 320px)  { .text-hero { font-size: 30px; } }
 
   .text-section-title {
     font-family: 'Cinzel', serif;
