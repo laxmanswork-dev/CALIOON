@@ -1330,14 +1330,14 @@ const styles = `
     /* Tighter top padding → more viewport for headline */
     .calioon-section-hero { padding-top: 106px !important; padding-bottom: 28px; }
     /* Lock accent rule close to EMPIRES. */
-    .text-hero { margin-bottom: 10px !important; }
+    .text-hero { margin-bottom: 4px !important; }
     /* Cred strip: eyebrow above headline, bigger labels so industry reads instantly */
     .hero-cred-strip { order: -1; margin-top: 14px !important; margin-bottom: 18px !important; }
     .hero-cred-rule  { display: none !important; }
     .hero-cred-label { font-size: 11px !important; letter-spacing: 0.07em !important; }
     .hero-cred-sep   { font-size: 8px !important; margin: 0 6px !important; }
     /* Paragraph immediately after accent rule, buttons last */
-    .hero-para-text  { order: 3; margin-top: 8px !important; margin-bottom: 24px !important; max-width: 250px !important; }
+    .hero-para-text  { order: 3; margin-top: 2px !important; margin-bottom: 18px !important; max-width: 250px !important; }
     .hero-btns-wrap  { order: 4; }
     /* Buttons: slimmer; primary slightly heavier to lead the eye */
     .hero-cta-btn     { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
