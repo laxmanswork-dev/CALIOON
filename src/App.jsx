@@ -1285,6 +1285,12 @@ const styles = `
     .process-left-col h3, .process-left-col h2, .process-left-col p { text-align: center; }
   }
 
+  /* Ornament line (⌜⌟⌜⌟⌜⌟ ◈ ⌜⌟⌜⌟⌜⌟): center on mobile in process + case studies */
+  .section-ornament-line { text-align: left; }
+  @media(max-width: 768px) {
+    .section-ornament-line { text-align: center !important; }
+  }
+
   /* Hero section: tighten top padding on very small phones */
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 118px; padding-bottom: 60px; }
@@ -3134,7 +3140,7 @@ const Process = () => (
           >
             <div className="mb-4" style={{ display:'block', overflow:'hidden' }}>
               <h3 className="text-label-caps text-[#c6a062] block" style={{ fontSize: '15px', marginBottom:'7px' }}>Our Process</h3>
-              <div style={{ textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+              <div className="section-ornament-line" style={{ color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
             </div>
           </motion.div>
           <motion.div
@@ -3520,7 +3526,7 @@ const CaseStudies = () => (
           <SectionReveal x={-15} y={0}>
             <h3 className="text-label-caps text-[#c6a062] mb-4 block">Case Studies</h3>
             <h2 className="text-section-title text-white" style={{ marginBottom:'12px' }}>From Unknown<br /><span className="gold-matte-text">To Unavoidable.</span></h2>
-            <div style={{ marginBottom:'8px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginBottom:'8px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
           </SectionReveal>
           
           <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-10">
