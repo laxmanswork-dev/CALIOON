@@ -1260,6 +1260,17 @@ const styles = `
       text-align: center;
       max-width: 100%;
     }
+    /* Override text-left on inner div; center animated flex containers */
+    .philo-inner { text-align: center !important; }
+    .philo-title { justify-content: center !important; }
+    .philo-para  { justify-content: center !important; }
+    /* Domains section header */
+    .domains-section-header { text-align: center !important; }
+    /* Contact left column */
+    .contact-left-col { text-align: center !important; }
+    .contact-accent-line { margin-left: auto !important; margin-right: auto !important; transform-origin: center !important; }
+    .contact-feature-item { justify-content: center !important; }
+    .contact-privacy-row  { justify-content: center !important; }
   }
 
   /* Contact feature list: scale down on small phones */
@@ -2546,10 +2557,10 @@ const Philosophy = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
         
         <div className="philosophy-left-content-block">
-          <div className="space-y-6 text-left relative z-10 w-full">
+          <div className="philo-inner space-y-6 text-left relative z-10 w-full">
 
             {/* Label — each character blurs in sequentially */}
-            <span className="text-label-caps text-[#c6a062]" style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <span className="philo-title text-label-caps text-[#c6a062]" style={{ display: 'flex', flexWrap: 'wrap' }}>
               {"The Philosophy".split('').map((char, ci) =>
                 char === ' ' ? (
                   <span key={ci} style={{ display: 'inline-block', width: '0.45em' }} />
@@ -2566,7 +2577,7 @@ const Philosophy = () => {
                 )
               )}
             </span>
-            <div style={{ marginTop:'8px', marginBottom:'16px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginTop:'8px', marginBottom:'16px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
 
             {/* Heading — each line rises from behind a hidden overflow mask */}
             <h2 className="text-section-title text-white block">
@@ -2604,10 +2615,10 @@ const Philosophy = () => {
               </span>
 
             </h2>
-            <div style={{ marginTop:'8px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginTop:'8px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
 
             {/* Paragraph — word by word soft fade + rise */}
-            <p className="text-body-copy text-white/60 max-w-full" style={{ display: 'flex', flexWrap: 'wrap', columnGap: '0.3em', rowGap: '0.15em' }}>
+            <p className="philo-para text-body-copy text-white/60 max-w-full" style={{ display: 'flex', flexWrap: 'wrap', columnGap: '0.3em', rowGap: '0.15em' }}>
               {"At CALIOON, we operate with the absolute conviction that market leadership belongs solely to those who command it via absolute operational dominance.".split(' ').map((word, wi) => (
                 <motion.span
                   key={wi}
@@ -2927,7 +2938,7 @@ const Domains = () => {
       <div className="calioon-global-container relative z-30 w-full h-full flex flex-col justify-center" style={{ paddingTop:'25px' }}>
 
         {/* ── SECTION HEADER ── */}
-        <div className="w-full text-left mb-8 xl:mb-10">
+        <div className="domains-section-header w-full text-left mb-8 xl:mb-10">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2946,7 +2957,7 @@ const Domains = () => {
           >
             THE DOMAINS OF <span style={{ color:'#c6a062' }}>EMPIRE</span>
           </motion.h2>
-          <div style={{ marginTop:'14px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+          <div className="section-ornament-line" style={{ marginTop:'14px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
         </div>
 
         {/* ── CARDS ── */}
@@ -4055,7 +4066,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.18fr] gap-10 lg:gap-14" style={{ alignItems:'flex-start', width:'100%' }}>
 
           {/* ── LEFT COLUMN ── */}
-          <div style={{ display:'flex', flexDirection:'column', paddingTop:'8px' }}>
+          <div className="contact-left-col" style={{ display:'flex', flexDirection:'column', paddingTop:'8px' }}>
 
             <motion.div initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.6, ease:[0.16,1,0.3,1] }}
@@ -4076,7 +4087,7 @@ const Contact = () => {
               <span style={{ color:'#c6a062' }}>EMPIRE WITH US.</span>
             </motion.h2>
 
-            <motion.div initial={{ scaleX:0 }} whileInView={{ scaleX:1 }} viewport={{ once:true }}
+            <motion.div className="contact-accent-line" initial={{ scaleX:0 }} whileInView={{ scaleX:1 }} viewport={{ once:true }}
               transition={{ duration:0.55, delay:0.25, ease:[0.16,1,0.3,1] }}
               style={{ width:'90px', height:'1.5px', background:'linear-gradient(90deg,rgba(212,175,106,0.9),rgba(212,175,106,0.2))', margin:'10px 0', transformOrigin:'left', position:'relative', zIndex:1 }}
             />
@@ -4098,7 +4109,7 @@ const Contact = () => {
                 <motion.div key={i}
                   initial={{ opacity:0, x:-20 }} whileInView={{ opacity:1, x:0 }} viewport={{ once:true }}
                   transition={{ duration:0.55, delay:0.40 + i*0.10, ease:[0.16,1,0.3,1] }}
-                  style={{ display:'flex', alignItems:'flex-start', gap:'14px' }}
+                  className="contact-feature-item" style={{ display:'flex', alignItems:'flex-start', gap:'14px' }}
                 >
                   <div style={{ width:'8px', height:'8px', background:'#D4AF6A', transform:'rotate(45deg)', marginTop:'7px', flexShrink:0 }} />
                   <div>
@@ -4109,7 +4120,7 @@ const Contact = () => {
               ))}
             </div>
 
-            <motion.div initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
+            <motion.div className="contact-privacy-row" initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
               transition={{ duration:0.6, delay:0.72 }}
               style={{ display:'flex', alignItems:'center', gap:'8px', marginTop:'14px', position:'relative', zIndex:1 }}
             >
