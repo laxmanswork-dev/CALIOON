@@ -1304,21 +1304,32 @@ const styles = `
     .text-hero { margin-bottom: 30px !important; }
     /* Reorder: buttons before paragraph so CTA is second thing eye hits */
     .hero-btns-wrap  { order: 3; }
-    .hero-para-text  { order: 4; margin-top: 20px !important; margin-bottom: 0 !important; }
+    .hero-para-text  { order: 4; margin-top: 18px !important; margin-bottom: 0 !important; }
     .hero-cred-strip { order: 5; }
-    /* Buttons: slimmer, tighter gap */
-    .hero-cta-btn  { height: 44px !important; min-height: 44px !important; }
-    .hero-btns-wrap { gap: 12px !important; }
-    /* Paragraph: slightly smaller + looser tracking to reduce visual weight */
-    .hero-para-text { font-size: 13px !important; line-height: 1.68 !important; }
-    /* Headline open leading: each line taller so all 4 lines fill ~50% of screen */
-    .hero-line-wrap { margin-bottom: 6px; }
+    /* Buttons: 5–10% smaller so eye stays on headline */
+    .hero-cta-btn  { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
+    .hero-btns-wrap { gap: 10px !important; }
+    /* Paragraph: lower visual weight — supporting role only */
+    .hero-para-text { font-size: 12px !important; line-height: 1.58 !important; color: rgba(255,255,255,0.50) !important; }
+    /* Open leading on each line */
     .hero-line-wrap > span { line-height: 1.90 !important; }
+    /* Couplet grouping:
+       WE DON'T          ← tight to BUILD BRANDS.
+       BUILD BRANDS.     ← big gap (couplet break)
+       WE BUILD          ← medium gap (breathing before EMPIRES)
+       EMPIRES.
+    */
+    .hero-line-wrap-0      { margin-bottom: 1px;  }
+    .hero-line-wrap-1      { margin-bottom: 20px; }
+    .hero-line-wrap-2      { margin-bottom: 10px; }
+    .hero-line-wrap-empires { margin-bottom: 0;   }
   }
   @media(max-width: 375px) {
     .calioon-section-hero { padding-top: 100px !important; }
-    .text-hero { margin-bottom: 24px !important; }
-    .hero-line-wrap { margin-bottom: 4px; }
+    .text-hero { margin-bottom: 22px !important; }
+    .hero-line-wrap-0      { margin-bottom: 1px;  }
+    .hero-line-wrap-1      { margin-bottom: 14px; }
+    .hero-line-wrap-2      { margin-bottom: 7px;  }
   }
 `;
 
@@ -1878,7 +1889,7 @@ const Hero = () => (
                 { text: "BUILD BRANDS.", delay: 0.28, ls: '0.03em', color: 'inherit' },
                 { text: "WE BUILD",      delay: 0.46, ls: '0.10em', color: '#c6a062' },
               ].map(({ text, delay, ls, color }, li) => (
-                <div key={li} className="hero-line-wrap" style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
+                <div key={li} className={`hero-line-wrap hero-line-wrap-${li}`} style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
                   <motion.span
                     style={{ display: 'block', whiteSpace: 'nowrap', letterSpacing: ls, color, lineHeight: '1.06' }}
                     initial={{ y: '105%', opacity: 0 }}
@@ -1890,7 +1901,7 @@ const Hero = () => (
                 </div>
               ))}
               {/* EMPIRES. — gold horizontal sweep */}
-              <div className="hero-line-wrap" style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
+              <div className="hero-line-wrap hero-line-wrap-empires" style={{ display: 'block', overflow: 'hidden', lineHeight: '1.12' }}>
                 <motion.span
                   className="gold-matte-text"
                   style={{ display: 'block', whiteSpace: 'nowrap', letterSpacing: '0.16em', lineHeight: '1.06', filter: 'brightness(1.22)' }}
@@ -2032,6 +2043,11 @@ const Hero = () => (
       <div style={{
         position:'absolute', top:'100px', left:0, right:0, bottom:0, zIndex:1,
         background:'linear-gradient(to right, rgba(5,10,18,0.92) 0%, rgba(5,10,18,0.70) 40%, rgba(5,10,18,0.28) 100%)',
+      }} />
+      {/* Extra darkening behind headline text area only (top 65%, left-biased) */}
+      <div style={{
+        position:'absolute', top:'100px', left:0, width:'100%', height:'65%', zIndex:1, pointerEvents:'none',
+        background:'linear-gradient(150deg, rgba(5,10,18,0.42) 0%, rgba(5,10,18,0.20) 46%, transparent 70%)',
       }} />
     </div>
 
