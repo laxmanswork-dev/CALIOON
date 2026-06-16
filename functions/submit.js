@@ -155,7 +155,7 @@ export async function onRequestPost({ request, env }) {
   // is verified in Resend and FROM_EMAIL env var is set.
   try {
     await sendEmail(
-      ['laxman.s.work@gmail.com', 'calioon.global@gmail.com'],
+      ['calioon.global@gmail.com'],
       `New Empire Application — ${company || name}`,
       adminHtml,
       email,
