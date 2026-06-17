@@ -1204,23 +1204,30 @@ const styles = `
     100% { transform: translateX(260%) skewX(-18deg); opacity: 0; }
   }
 
-  /* ── LARGE SCREEN / 4K SCALING ── */
+  /* ── LARGE SCREEN / 4K SCALING ──
+     .hero-content-block stays capped at max-width:580px by default, which is
+     far narrower than the ~50% grid column these tiers actually have. Widen
+     the block and use font sizes that fit it, so "BUILD BRANDS." (the
+     longest nowrap line) doesn't clip against the pillar video column. */
   @media(min-width: 1920px) {
     .calioon-global-container { max-width: 1800px; padding-left: 120px; padding-right: 120px; }
-    .text-hero { font-size: clamp(80px, 5vw, 110px); }
+    .hero-content-block { max-width: 760px; }
+    .text-hero { font-size: clamp(60px, 4vw, 74px); }
     .text-section-title { font-size: clamp(64px, 4vw, 88px); }
     .text-body-copy { font-size: 19px; }
     .cta-headline { font-size: clamp(64px, 4vw, 88px); }
   }
   @media(min-width: 2560px) {
     .calioon-global-container { max-width: 2400px; padding-left: 180px; padding-right: 180px; }
-    .text-hero { font-size: clamp(110px, 5.5vw, 160px); }
+    .hero-content-block { max-width: 980px; }
+    .text-hero { font-size: clamp(78px, 4vw, 96px); }
     .text-section-title { font-size: clamp(88px, 4.5vw, 128px); }
     .text-body-copy { font-size: 22px; }
   }
   @media(min-width: 3840px) {
     .calioon-global-container { max-width: 3400px; padding-left: 240px; padding-right: 240px; }
-    .text-hero { font-size: 200px; }
+    .hero-content-block { max-width: 1380px; }
+    .text-hero { font-size: 120px; }
     .text-section-title { font-size: 160px; }
     .text-body-copy { font-size: 28px; }
   }
