@@ -57,6 +57,7 @@ export async function onRequestPost({ request, env }) {
   // 3 ── Config from environment ───────────────────────────────────────────────
   const RESEND_API_KEY = env.RESEND_API_KEY;
   const FROM_EMAIL     = env.FROM_EMAIL || 'onboarding@resend.dev';
+  const TO_EMAIL       = env.TO_EMAIL || 'calioon.global@gmail.com';
 
   if (!RESEND_API_KEY) {
     return respond({ ok: false, error: 'RESEND_API_KEY not configured' }, 500);
@@ -155,7 +156,7 @@ export async function onRequestPost({ request, env }) {
   // is verified in Resend and FROM_EMAIL env var is set.
   try {
     await sendEmail(
-      ['calioon.global@gmail.com'],
+      [TO_EMAIL],
       `New Empire Application — ${company || name}`,
       adminHtml,
       email,
