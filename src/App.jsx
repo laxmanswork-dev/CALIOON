@@ -529,6 +529,21 @@ const styles = `
   @media(max-width: 375px)  { .text-hero { font-size: 36px; line-height: 1.13; } }
   @media(max-width: 320px)  { .text-hero { font-size: 26px; } }
 
+  /* Tablet-landscape / narrow-laptop gap (1024–1255px): the 2-col grid kicks in
+     at lg (1024px) but the column is too narrow for fixed 252px hero buttons
+     and the full navbar (links + CTA) until ~1256px, causing clipping/overflow.
+     Shrink just these elements in this exact window — untouched below 1024
+     and at 1256px+, where the original sizing already fits natively. */
+  @media (min-width: 1024px) and (max-width: 1255px) {
+    .text-hero      { font-size: 44px !important; }
+    .hero-cta-btn   { width: 200px !important; }
+    .hero-btns-wrap { gap: 14px !important; }
+    .nav-links-zone { gap: 14px !important; }
+    .nav-links-zone a { font-size: 10px !important; letter-spacing: 0.12em !important; }
+    .nav-cta-zone   { width: 168px !important; }
+    .nav-cta-link   { padding: 0 12px !important; font-size: 9.5px !important; letter-spacing: 0.14em !important; }
+  }
+
   .text-section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(26px, 4vw, 56px);
@@ -1591,7 +1606,7 @@ const Navbar = () => {
         </div>
 
         {/* ── ZONE 2: NAV LINKS (center — Greek style) ── */}
-        <nav className="hidden lg:flex items-center h-full" style={{ gap: '32px' }} aria-label="Primary navigation">
+        <nav className="nav-links-zone hidden lg:flex items-center h-full" style={{ gap: '32px' }} aria-label="Primary navigation">
           {menuItems.map(item => {
             const active = isActive(item);
             return (
@@ -1637,8 +1652,8 @@ const Navbar = () => {
         </nav>
 
         {/* ── ZONE 3: CTA BUTTON — chamfered imperial ── */}
-        <div className="hidden lg:flex items-center justify-end flex-shrink-0" style={{ width: '240px' }}>
-          <a href="#contact" style={{
+        <div className="nav-cta-zone hidden lg:flex items-center justify-end flex-shrink-0" style={{ width: '240px' }}>
+          <a href="#contact" className="nav-cta-link" style={{
             position:'relative', display:'inline-flex', alignItems:'center', justifyContent:'center',
             height:'46px', padding:'0 28px', textDecoration:'none',
             background:'linear-gradient(135deg, #C8A030 0%, #E8C860 35%, #D4AF50 60%, #A07820 100%)',
