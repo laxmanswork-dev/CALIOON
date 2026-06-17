@@ -2078,11 +2078,18 @@ const Hero = () => {
 
     {/* Mobile deity background */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
-      <video autoPlay muted loop playsInline style={{
-        position:'absolute', inset:0, width:'100%', height:'100%',
-        objectFit:'cover', objectPosition:'60% center',
-        opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
-      }}>
+      <video
+        autoPlay muted playsInline
+        onLoadedMetadata={e => { e.currentTarget.currentTime = 1; }}
+        onTimeUpdate={e => {
+          const v = e.currentTarget;
+          if (v.duration && v.currentTime >= v.duration - 0.15) v.currentTime = 1;
+        }}
+        style={{
+          position:'absolute', inset:0, width:'100%', height:'100%',
+          objectFit:'cover', objectPosition:'60% center',
+          opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
+        }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
       {/* Solid cover behind navbar */}
@@ -2109,9 +2116,13 @@ const Hero = () => {
             <video
               autoPlay
               muted
-              loop
               playsInline
               className="hero-video"
+              onLoadedMetadata={e => { e.currentTarget.currentTime = 1; }}
+              onTimeUpdate={e => {
+                const v = e.currentTarget;
+                if (v.duration && v.currentTime >= v.duration - 0.15) v.currentTime = 1;
+              }}
             >
               <source src="/hero-video.mp4" type="video/mp4" />
             </video>
