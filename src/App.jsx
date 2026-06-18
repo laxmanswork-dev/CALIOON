@@ -1336,7 +1336,7 @@ const styles = `
     .process-left-col h3, .process-left-col h2, .process-left-col p { text-align: center; }
   }
 
-  /* Ornament line (⌜⌟⌜⌟⌜⌟ ◈ ⌜⌟⌜⌟⌜⌟): center on mobile in process + case studies */
+  /* Ornament line (⌜⌟⌜⌟⌜⌟ ⊙ ⌜⌟⌜⌟⌜⌟): center on mobile in process + case studies */
   .section-ornament-line { text-align: left; }
   @media(max-width: 768px) {
     .section-ornament-line { text-align: center !important; }
@@ -1799,7 +1799,7 @@ const Navbar = () => {
               marginTop: 'clamp(20px,3.5vw,32px)',
               color: 'rgba(198,160,98,0.35)', fontSize: '13px',
               letterSpacing: '0.05em', fontFamily: 'monospace',
-            }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
           </motion.div>
         </motion.div>
       )}
@@ -2659,7 +2659,7 @@ const Hero = () => {
               marginTop: 'clamp(20px,3.5vw,32px)',
               color: 'rgba(198,160,98,0.35)', fontSize: '13px',
               letterSpacing: '0.05em', fontFamily: 'monospace',
-            }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
           </motion.div>
         </motion.div>
       )}
@@ -2738,7 +2738,7 @@ const Philosophy = () => {
                 )
               )}
             </span>
-            <div style={{ marginTop:'8px', marginBottom:'16px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div style={{ marginTop:'8px', marginBottom:'16px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
 
             {/* Heading — each line rises from behind a hidden overflow mask */}
             <h2 className="text-section-title text-white block">
@@ -2776,7 +2776,7 @@ const Philosophy = () => {
               </span>
 
             </h2>
-            <div style={{ marginTop:'8px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div style={{ marginTop:'8px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
 
             {/* Paragraph — word by word soft fade + rise */}
             <p className="text-body-copy text-white/60 max-w-full" style={{ display: 'flex', flexWrap: 'wrap', columnGap: '0.3em', rowGap: '0.15em' }}>
@@ -3119,7 +3119,7 @@ const Domains = () => {
           >
             THE DOMAINS OF <span style={{ color:'#c6a062' }}>EMPIRE</span>
           </motion.h2>
-          <div style={{ marginTop:'14px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+          <div style={{ marginTop:'14px', textAlign:'left', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
         </div>
 
         {/* ── CARDS ── */}
@@ -3314,7 +3314,7 @@ const OurGods = () => {
             <span className="text-white">WE HAVE </span>
             <motion.span className="gold-matte-text" style={{ display: 'inline-block', filter: 'brightness(1.20)' }} initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 1 }} whileInView={{ clipPath: 'inset(0 0% 0 0)' }} viewport={{ once: true }} transition={{ duration: 0.90, delay: 0.62, ease: [0.16, 1, 0.3, 1] }}>ENTITIES OF POWER.</motion.span>
           </motion.h2>
-          <motion.div style={{ paddingTop:'6px', maxWidth:'320px', margin:'0 auto', textAlign:'center', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }} initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} transition={{ duration:0.60, delay:0.88, ease:[0.16,1,0.3,1] }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</motion.div>
+          <motion.div style={{ paddingTop:'6px', maxWidth:'320px', margin:'0 auto', textAlign:'center', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }} initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} transition={{ duration:0.60, delay:0.88, ease:[0.16,1,0.3,1] }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
         </div>
 
         {/* Row 1 — 4 cards */}
@@ -3362,7 +3362,7 @@ const Process = () => (
           >
             <div className="mb-4" style={{ display:'block', overflow:'hidden' }}>
               <h3 className="text-label-caps text-[#c6a062] block" style={{ fontSize: '15px', marginBottom:'7px' }}>Our Process</h3>
-              <div className="section-ornament-line" style={{ color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+              <div className="section-ornament-line" style={{ color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
             </div>
           </motion.div>
           <motion.div
@@ -3373,7 +3373,7 @@ const Process = () => (
             style={{ marginTop:'-18px' }}
           >
             <h2 className="text-section-title text-white" style={{ marginBottom:'12px' }}>The Ascension <span style={{ color:'#D4AF60' }}>System</span></h2>
-            <div className="section-ornament-line" style={{ marginBottom:'24px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginBottom:'24px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
           </motion.div>
           <motion.p
             className="text-body-copy text-white/60 max-w-[450px] w-full"
@@ -3748,7 +3748,7 @@ const CaseStudies = () => (
           <SectionReveal x={-15} y={0}>
             <h3 className="text-label-caps text-[#c6a062] mb-4 block">Case Studies</h3>
             <h2 className="text-section-title text-white" style={{ marginBottom:'12px' }}>From Unknown<br /><span className="gold-matte-text">To Unavoidable.</span></h2>
-            <div className="section-ornament-line" style={{ marginBottom:'8px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ◈   ⌜⌟⌜⌟⌜⌟</div>
+            <div className="section-ornament-line" style={{ marginBottom:'8px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</div>
           </SectionReveal>
           
           <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-10">
