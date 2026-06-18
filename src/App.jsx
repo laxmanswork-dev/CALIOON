@@ -4258,6 +4258,12 @@ const Contact = () => {
               style={{ width:'90px', height:'2.5px', background:'linear-gradient(90deg,rgba(212,175,106,1),rgba(212,175,106,0.45))', margin:'14px 0', transformOrigin:'left', position:'relative', zIndex:1 }}
             />
 
+            <motion.div className="section-ornament-line"
+              initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
+              transition={{ duration:0.60, delay:0.35, ease:[0.16,1,0.3,1] }}
+              style={{ marginBottom:'14px', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace', position:'relative', zIndex:1 }}
+            >⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
+
             <motion.p
               initial={{ opacity:0, y:14 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.65, delay:0.30, ease:[0.16,1,0.3,1] }}
