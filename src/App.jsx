@@ -2126,11 +2126,6 @@ const Hero = () => {
               loop
               playsInline
               className="hero-video"
-              onLoadedMetadata={e => { e.currentTarget.currentTime = 1; }}
-              onTimeUpdate={e => {
-                const v = e.currentTarget;
-                if (v.currentTime < 0.5) v.currentTime = 1;
-              }}
             >
               <source src="/hero-video.mp4" type="video/mp4" />
             </video>
