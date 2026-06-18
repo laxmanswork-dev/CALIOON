@@ -2048,14 +2048,6 @@ const Hero = () => {
 
             {/* Credibility strip — hairline sweep + per-item stagger */}
             <div className="hero-cred-strip self-center lg:self-start w-full" style={{ marginTop: '36px' }}>
-              <motion.div
-                aria-hidden="true"
-                className="hero-cred-rule section-ornament-line"
-                style={{ color: 'rgba(198,160,98,0.50)', fontSize: '12px', letterSpacing: '0.05em', fontFamily: 'monospace', marginBottom: '16px' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.55, delay: 2.08, ease: [0.16, 1, 0.3, 1] }}
-              >⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '0', overflow: 'visible' }}>
                 {['BRANDING', 'AI AUTOMATION', 'PERFORMANCE', 'SYSTEMS'].map((label, i) => (
                   <motion.span
