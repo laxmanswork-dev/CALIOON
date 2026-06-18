@@ -4278,7 +4278,10 @@ const Contact = () => {
                   transition={{ duration:0.55, delay:0.40 + i*0.10, ease:[0.16,1,0.3,1] }}
                   className="contact-feature-item" style={{ display:'flex', alignItems:'flex-start', gap:'14px' }}
                 >
-                  <div style={{ width:'8px', height:'8px', background:'#D4AF6A', transform:'rotate(45deg)', marginTop:'7px', flexShrink:0 }} />
+                  <svg width="9" height="9" viewBox="0 0 9 9" aria-hidden="true" style={{ marginTop:'7px', flexShrink:0 }}>
+                    <circle cx="4.5" cy="4.5" r="3.6" stroke="#D4AF6A" strokeWidth="1" fill="rgba(212,175,106,0.14)" />
+                    <circle cx="4.5" cy="4.5" r="1.1" fill="#D4AF6A" />
+                  </svg>
                   <div>
                     <p className="contact-feature-label" style={{ fontSize:'clamp(13px,4.2vw,17px)', fontFamily:"'Cinzel',serif", color:'#D4AF6A', fontWeight:700, letterSpacing:'0.14em', textTransform:'uppercase', margin:'0 0 4px' }}>{p.label}</p>
                     <p className="contact-feature-desc" style={{ fontSize:'clamp(13px,4vw,16px)', color:'rgba(253,240,213,0.55)', lineHeight:'1.62', margin:0 }}>{p.desc}</p>
