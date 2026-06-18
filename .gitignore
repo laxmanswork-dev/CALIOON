@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 package-lock.json
+.wrangler/
 
 # Editor directories and files
 .vscode/*
@@ -70,6 +71,9 @@ package-lock.json
 /public/i.mp4
 /public/ijhi.png
 /public/j.mp4
+/public/dcbh.mp4
+/public/fs.mp4
+/public/hfnjd.mp4
 /public/j (2).png
 /public/jdf.png
 /public/jffj.png
