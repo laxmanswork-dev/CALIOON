@@ -4253,11 +4253,6 @@ const Contact = () => {
               <span style={{ color:'#c6a062' }}>EMPIRE WITH US.</span>
             </motion.h2>
 
-            <motion.div initial={{ scaleX:0 }} whileInView={{ scaleX:1 }} viewport={{ once:true }}
-              transition={{ duration:0.55, delay:0.25, ease:[0.16,1,0.3,1] }}
-              style={{ width:'90px', height:'2.5px', background:'linear-gradient(90deg,rgba(212,175,106,1),rgba(212,175,106,0.45))', margin:'14px 0', transformOrigin:'left', position:'relative', zIndex:1 }}
-            />
-
             <motion.div className="section-ornament-line"
               initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }}
               transition={{ duration:0.60, delay:0.35, ease:[0.16,1,0.3,1] }}
