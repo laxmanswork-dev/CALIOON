@@ -2067,9 +2067,8 @@ const Hero = () => {
                   >
                     {i > 0 && (
                       <span aria-hidden="true" className="hero-cred-sep" style={{ color: 'rgba(198,160,98,0.50)', lineHeight: 1, display: 'inline-block', verticalAlign: 'middle' }}>
-                        <svg width="6" height="6" viewBox="0 0 7 7" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
-                          <rect x="0.5" y="0.5" width="6" height="6" transform="rotate(45 3.5 3.5)" fill="none" stroke="currentColor" strokeWidth="0.6" />
-                          <circle cx="3.5" cy="3.5" r="0.6" fill="currentColor" />
+                        <svg width="4" height="4" viewBox="0 0 4 4" style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+                          <circle cx="2" cy="2" r="2" fill="currentColor" />
                         </svg>
                       </span>
                     )}
@@ -3778,9 +3777,8 @@ const CaseStudies = () => (
               transition={{ duration: 0.9, delay: 0.40, ease: [0.16, 1, 0.3, 1] }}
               style={{ fontFamily: "'Cinzel', serif", fontSize: '8.5px', letterSpacing: '0.28em', color: 'rgba(198,160,98,0.52)', textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
             >
-              <svg width="6" height="6" viewBox="0 0 7 7" aria-hidden="true" style={{ flexShrink: 0 }}>
-                <rect x="0.5" y="0.5" width="6" height="6" transform="rotate(45 3.5 3.5)" fill="none" stroke="currentColor" strokeWidth="0.6" />
-                <circle cx="3.5" cy="3.5" r="0.6" fill="currentColor" />
+              <svg width="4" height="4" viewBox="0 0 4 4" aria-hidden="true" style={{ flexShrink: 0 }}>
+                <circle cx="2" cy="2" r="2" fill="currentColor" />
               </svg>
               Empire Intelligence Archive
             </motion.span>
