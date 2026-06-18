@@ -1969,12 +1969,12 @@ const Hero = () => {
             </h1>
             {/* Accent rule */}
             <motion.div
-              className="self-center lg:self-start mb-8"
-              style={{ height: '1px', width: '120px', background: 'linear-gradient(to right, rgba(198,160,98,0.75) 0%, rgba(198,160,98,0.30) 55%, transparent 100%)', transformOrigin: 'left center' }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: 1, opacity: 1 }}
+              className="section-ornament-line self-center lg:self-start mb-8"
+              style={{ color: 'rgba(198,160,98,0.65)', fontSize: '14px', letterSpacing: '0.05em', fontFamily: 'monospace' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.60, delay: 1.18, ease: [0.16, 1, 0.3, 1] }}
-            />
+            >⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
 
             {/* Paragraph — single unit fade + rise (no word splitting) */}
             <motion.p
