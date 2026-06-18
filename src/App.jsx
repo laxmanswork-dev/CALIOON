@@ -2010,9 +2010,9 @@ const Hero = () => {
                   <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true" style={{ position:'absolute', bottom:5, right:5 }}>
                     <path d="M11,0 L11,11 L0,11" stroke="rgba(0,0,0,0.30)" strokeWidth="1.1" strokeLinecap="square" />
                   </svg>
-                  <span aria-hidden style={{ marginRight:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
+                  <span aria-hidden style={{ display:'inline-block', width:'14px', height:'1px', background:'currentColor', opacity:0.42, marginRight:'10px', verticalAlign:'middle' }} />
                   ENTER THE EMPIRE
-                  <span aria-hidden style={{ marginLeft:'9px', opacity:0.42, fontSize:'6px' }}>◆</span>
+                  <span aria-hidden style={{ display:'inline-block', width:'14px', height:'1px', background:'currentColor', opacity:0.42, marginLeft:'10px', verticalAlign:'middle' }} />
                   <span aria-hidden style={{ position:'absolute', inset:0, overflow:'hidden', pointerEvents:'none' }}>
                     <span style={{ position:'absolute', top:0, bottom:0, width:'40%', background:'linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.20) 40%,rgba(255,255,255,0.36) 50%,rgba(255,255,255,0.20) 60%,transparent 100%)', animation:'ctaGlassPass 3.0s ease-in-out 2.4s infinite' }} />
                   </span>
@@ -2039,9 +2039,9 @@ const Hero = () => {
                   <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true" style={{ position:'absolute', bottom:4, right:4 }}>
                     <path d="M11,0 L11,11 L0,11" stroke="#c6a062" strokeWidth="1.1" strokeOpacity="0.70" strokeLinecap="square" />
                   </svg>
-                  <span aria-hidden style={{ marginRight:'9px', opacity:0.55, fontSize:'6px' }}>◆</span>
+                  <span aria-hidden style={{ display:'inline-block', width:'14px', height:'1px', background:'currentColor', opacity:0.55, marginRight:'10px', verticalAlign:'middle' }} />
                   DISCOVER THE PILLARS
-                  <span aria-hidden style={{ marginLeft:'9px', opacity:0.55, fontSize:'6px' }}>◆</span>
+                  <span aria-hidden style={{ display:'inline-block', width:'14px', height:'1px', background:'currentColor', opacity:0.55, marginLeft:'10px', verticalAlign:'middle' }} />
                 </motion.button>
 
             </div>
