@@ -2924,9 +2924,10 @@ const Philosophy = () => {
                     transition={{ duration:0.28, delay:d+0.06, ease:[0.16,1,0.3,1] }}
                   >
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <polygon points="7,0.5 13.5,7 7,13.5 0.5,7"
-                        stroke="#c6a062" strokeWidth="1" fill="rgba(198,160,98,0.18)"/>
-                      <circle cx="7" cy="7" r="2" fill="rgba(198,160,98,0.90)"/>
+                      <circle cx="7" cy="7" r="5.4" stroke="#c6a062" strokeWidth="1" fill="rgba(198,160,98,0.14)"/>
+                      <circle cx="7" cy="7" r="1.7" fill="rgba(198,160,98,0.90)"/>
+                      <line x1="7" y1="0.4" x2="7" y2="2.1" stroke="#c6a062" strokeWidth="1"/>
+                      <line x1="7" y1="11.9" x2="7" y2="13.6" stroke="#c6a062" strokeWidth="1"/>
                     </svg>
                   </motion.div>
 
