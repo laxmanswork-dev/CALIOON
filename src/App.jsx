@@ -2092,7 +2092,7 @@ const Hero = () => {
           opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
           willChange:'transform', transform:'translateZ(0)', backfaceVisibility:'hidden',
         }}>
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src="/video" type="video/mp4" />
       </video>
       {/* Solid cover behind navbar */}
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
@@ -2123,7 +2123,7 @@ const Hero = () => {
               preload="auto"
               className="hero-video"
             >
-              <source src="/hero-video.mp4" type="video/mp4" />
+              <source src="/video" type="video/mp4" />
             </video>
             {/* Full-video navy atmosphere — clear column corridor top-to-bottom, dark sides */}
             <div aria-hidden="true" style={{
