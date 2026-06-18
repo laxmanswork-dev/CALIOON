@@ -2125,6 +2125,13 @@ const Hero = () => {
             >
               <source src="/video" type="video/mp4" />
             </video>
+            {/* Background color blend — video's near-black bg doesn't exactly match the
+                page's navy (#050A12); lighten-blend raises only the dark pixels to match,
+                leaving the bright gold wing/ring untouched. */}
+            <div aria-hidden="true" style={{
+              position: 'absolute', inset: 0, zIndex: 7, pointerEvents: 'none',
+              background: '#050A12', mixBlendMode: 'lighten',
+            }} />
             {/* Full-video navy atmosphere — clear column corridor top-to-bottom, dark sides */}
             <div aria-hidden="true" style={{
               position: 'absolute', inset: 0, zIndex: 8, pointerEvents: 'none',
