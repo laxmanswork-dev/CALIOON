@@ -170,8 +170,11 @@ const styles = `
     .hero-content-block { max-width: 100%; align-items: center; text-align: center; }
   }
 
-  /* --- MOBILE PERFORMANCE: disable blur filters on phones --- */
-  @media (max-width: 768px) {
+  /* --- MOBILE/TABLET PERFORMANCE: GPU compositing hints below desktop pillar breakpoint ---
+     Extended from 768px to 1023px: the mobile hero video (filter + opacity)
+     renders at a much larger area on tablets than phones, with no extra GPU
+     headroom from a desktop, causing it to stutter/freeze mid-playback. */
+  @media (max-width: 1023px) {
     * { -webkit-backface-visibility: hidden; backface-visibility: hidden; }
     .god-matte-card { will-change: transform; }
   }
@@ -2092,6 +2095,7 @@ const Hero = () => {
           position:'absolute', inset:0, width:'100%', height:'100%',
           objectFit:'cover', objectPosition:'60% center',
           opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
+          willChange:'transform', transform:'translateZ(0)', backfaceVisibility:'hidden',
         }}>
         <source src="/hero-video.mp4" type="video/mp4" />
       </video>
