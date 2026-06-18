@@ -2086,11 +2086,6 @@ const Hero = () => {
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
       <video
         autoPlay muted loop playsInline
-        onLoadedMetadata={e => { e.currentTarget.currentTime = 1; }}
-        onTimeUpdate={e => {
-          const v = e.currentTarget;
-          if (v.currentTime < 0.5) v.currentTime = 1;
-        }}
         style={{
           position:'absolute', inset:0, width:'100%', height:'100%',
           objectFit:'cover', objectPosition:'60% center',
