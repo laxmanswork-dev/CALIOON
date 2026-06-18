@@ -2085,7 +2085,7 @@ const Hero = () => {
     {/* Mobile deity background */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
       <video
-        autoPlay muted loop playsInline
+        autoPlay muted loop playsInline preload="auto"
         style={{
           position:'absolute', inset:0, width:'100%', height:'100%',
           objectFit:'cover', objectPosition:'60% center',
@@ -2120,6 +2120,7 @@ const Hero = () => {
               muted
               loop
               playsInline
+              preload="auto"
               className="hero-video"
             >
               <source src="/hero-video.mp4" type="video/mp4" />
