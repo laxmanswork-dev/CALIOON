@@ -662,7 +662,7 @@ const styles = `
     height: 100%;
     object-fit: cover;
     display: block;
-    filter: brightness(1.65) contrast(1.02) saturate(0.80);
+    filter: brightness(1.40) contrast(1.20) saturate(0.85);
     transform: scale(1.04);
     transform-origin: center center;
   }
@@ -2108,7 +2108,7 @@ const Hero = () => {
       }} />
     </div>
 
-    <div className="hidden lg:block absolute right-0 bottom-0 top-[100px] w-[52vw] max-w-[860px] h-[calc(100vh-100px)] select-none pointer-events-none z-20" style={{ transform: 'translateX(11px)' }}>
+    <div className="hidden lg:block absolute right-0 bottom-0 top-[45px] w-[52vw] max-w-[860px] h-[calc(100vh-45px)] select-none pointer-events-none z-20" style={{ transform: 'translateX(11px)' }}>
       <div className="relative w-full h-full">
 
         {/* IMPERIAL CORINTHIAN PILLAR */}
