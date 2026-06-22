@@ -1582,8 +1582,8 @@ const Navbar = () => {
               alt=""
               aria-hidden="true"
               style={{
-                height: '70px',
-                width: '70px',
+                height: '55px',
+                width: '55px',
                 display: 'block',
                 flexShrink: 0,
                 objectFit: 'contain',
