@@ -5026,6 +5026,7 @@ export default function App() {
       </AnimatePresence>
       <motion.main
         className="antialiased bg-[#050A12] selection:bg-[#c6a062] selection:text-black min-h-screen relative text-white overflow-x-hidden w-full"
+        style={{ opacity: 0 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: introComplete ? 1 : 0 }}
         transition={{ duration: 0.60, ease: 'easeOut' }}
