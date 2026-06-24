@@ -4870,6 +4870,131 @@ const Footer = () => {
 };
 
 // --- COMPONENT: INTRO SCREEN ---
+const IntroScreen = ({ onComplete }) => {
+  useEffect(() => {
+    const t = setTimeout(onComplete, 2900);
+    return () => clearTimeout(t);
+  }, [onComplete]);
+
+  return (
+    <motion.div
+      key="intro"
+      style={{
+        position: 'fixed', inset: 0, zIndex: 99999,
+        background: '#04080F',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        flexDirection: 'column', overflow: 'hidden',
+      }}
+      exit={{ y: '-100%', transition: { duration: 0.90, ease: [0.76, 0, 0.24, 1] } }}
+    >
+      {/* Ambient radial glow */}
+      <div aria-hidden style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        background: 'radial-gradient(ellipse 55% 55% at 50% 50%, rgba(11,21,38,0.70) 0%, rgba(4,8,15,0.95) 100%)',
+      }} />
+
+      {/* Corner ornaments */}
+      {[
+        { top:28, left:28, path:'M0,40 L0,0 L40,0' },
+        { top:28, right:28, path:'M40,40 L40,0 L0,0' },
+        { bottom:28, left:28, path:'M0,0 L0,40 L40,40' },
+        { bottom:28, right:28, path:'M40,0 L40,40 L0,40' },
+      ].map((c, i) => (
+        <motion.svg key={i} width="40" height="40" viewBox="0 0 40 40" fill="none"
+          style={{ position:'absolute', top:c.top, left:c.left, right:c.right, bottom:c.bottom, pointerEvents:'none' }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.15 + i * 0.06, ease: 'easeOut' }}
+        >
+          <path d={c.path} stroke="rgba(198,160,98,0.35)" strokeWidth="1" strokeLinecap="square" />
+        </motion.svg>
+      ))}
+
+      {/* Top rule */}
+      <motion.div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', marginTop:'-148px', pointerEvents:'none' }}
+        initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.55, delay: 0.20, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div style={{ width:'220px', height:'1px', background:'linear-gradient(to right, transparent, rgba(198,160,98,0.55), transparent)' }} />
+      </motion.div>
+
+      {/* Centre content */}
+      <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'22px', position:'relative', zIndex:1 }}>
+
+        {/* Icon */}
+        <motion.img
+          src={imgIcon}
+          alt=""
+          aria-hidden="true"
+          style={{
+            width:'80px', height:'80px', objectFit:'contain', display:'block',
+            filter:'drop-shadow(0 0 22px rgba(198,160,98,0.60)) drop-shadow(0 0 8px rgba(198,160,98,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.70))',
+          }}
+          initial={{ opacity: 0, scale: 0.80, filter: 'blur(12px) drop-shadow(0 0 0px rgba(198,160,98,0))' }}
+          animate={{ opacity: 1, scale: 1, filter: 'drop-shadow(0 0 22px rgba(198,160,98,0.60)) drop-shadow(0 0 8px rgba(198,160,98,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.70))' }}
+          transition={{ duration: 0.75, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
+        />
+
+        {/* CALIOON wordmark — horizontal sweep */}
+        <div style={{ overflow:'hidden', lineHeight:1, width:'100%', textAlign:'center' }}>
+          <motion.div
+            style={{
+              fontFamily:"'Cinzel',serif", fontSize:'clamp(28px, 12vw, 54px)', fontWeight:700,
+              letterSpacing:'clamp(0.10em, 2.5vw, 0.32em)', paddingRight:'clamp(0.10em, 2.5vw, 0.32em)',
+              color:'#fdf0d5', lineHeight:1, whiteSpace:'nowrap',
+            }}
+            initial={{ clipPath:'inset(0 100% 0 0)', opacity:1 }}
+            animate={{ clipPath:'inset(0 0% 0 0)' }}
+            transition={{ duration: 1.05, delay: 0.82, ease: [0.16, 1, 0.3, 1] }}
+          >
+            CALIOON
+          </motion.div>
+        </div>
+
+        {/* Divider */}
+        <motion.div
+          style={{ width:'100%', height:'1px', background:'linear-gradient(to right, transparent, rgba(198,160,98,0.50), transparent)', transformOrigin:'center' }}
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.55, delay: 1.62, ease: [0.16, 1, 0.3, 1] }}
+        />
+
+        {/* Tagline */}
+        <motion.div
+          style={{
+            fontFamily:"'Cinzel',serif", fontSize:'clamp(8px, 2.5vw, 10.5px)', fontWeight:600,
+            letterSpacing:'clamp(0.14em, 2vw, 0.48em)', paddingRight:'clamp(0.14em, 2vw, 0.48em)',
+            color:'rgba(198,160,98,0.68)', textTransform:'uppercase', whiteSpace:'nowrap',
+          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.70, delay: 1.82, ease: [0.22, 1, 0.36, 1] }}
+        >
+          ARCHITECTS OF EMPIRE
+        </motion.div>
+
+      </div>
+
+      {/* Bottom rule */}
+      <motion.div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', marginTop:'148px', pointerEvents:'none' }}
+        initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.55, delay: 0.20, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div style={{ width:'220px', height:'1px', background:'linear-gradient(to right, transparent, rgba(198,160,98,0.55), transparent)' }} />
+      </motion.div>
+
+      {/* Progress bar — bottom edge */}
+      <div style={{ position:'absolute', bottom:0, left:0, right:0, height:'2px', background:'rgba(198,160,98,0.08)' }}>
+        <motion.div
+          style={{ height:'100%', background:'linear-gradient(to right, rgba(198,160,98,0.30), rgba(198,160,98,0.80), rgba(198,160,98,0.30))', transformOrigin:'left center' }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 2.65, delay: 0.20, ease: 'linear' }}
+        />
+      </div>
+
+    </motion.div>
+  );
+};
 
 // --- MAIN RUNTIME HOOK ---
 export default function App() {
@@ -4884,18 +5009,38 @@ export default function App() {
     };
   }, []);
 
+    const [introComplete, setIntroComplete] = useState(() =>
+    typeof sessionStorage !== 'undefined' && sessionStorage.getItem('calioon_intro') === '1'
+  );
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('calioon_intro', '1');
+    setIntroComplete(true);
+  };
+
   return (
-    <main className="antialiased bg-[#050A12] selection:bg-[#c6a062] selection:text-black min-h-screen relative text-white overflow-x-hidden w-full">
-      <div className="grain-overlay" />
-      <Navbar />
-      <Hero />
-      <Philosophy />
-      <Domains />
-      <OurGods />
-      <Process />
-      <CaseStudies />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <AnimatePresence mode="wait">
+        {!introComplete && (
+          <IntroScreen key="intro" onComplete={handleIntroComplete} />
+        )}
+      </AnimatePresence>
+      <motion.main
+        className="antialiased bg-[#050A12] selection:bg-[#c6a062] selection:text-black min-h-screen relative text-white overflow-x-hidden w-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: introComplete ? 1 : 0 }}
+        transition={{ duration: 0.60, ease: 'easeOut' }}
+      >
+        <div className="grain-overlay" />
+        <Navbar />
+        <Hero />
+        <Philosophy />
+        <Domains />
+        <OurGods />
+        <Process />
+        <CaseStudies />
+        <Contact />
+        <Footer />
+      </motion.main>
+    </>
   );
 }
