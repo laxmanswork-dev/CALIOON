@@ -4920,20 +4920,6 @@ const IntroScreen = ({ onComplete }) => {
       {/* Centre content */}
       <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'22px', position:'relative', zIndex:1 }}>
 
-        {/* Icon */}
-        <motion.img
-          src={imgIcon}
-          alt=""
-          aria-hidden="true"
-          style={{
-            width:'80px', height:'80px', objectFit:'contain', display:'block',
-            filter:'drop-shadow(0 0 22px rgba(198,160,98,0.60)) drop-shadow(0 0 8px rgba(198,160,98,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.70))',
-          }}
-          initial={{ opacity: 0, scale: 0.80, filter: 'blur(12px) drop-shadow(0 0 0px rgba(198,160,98,0))' }}
-          animate={{ opacity: 1, scale: 1, filter: 'drop-shadow(0 0 22px rgba(198,160,98,0.60)) drop-shadow(0 0 8px rgba(198,160,98,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.70))' }}
-          transition={{ duration: 0.75, delay: 0.38, ease: [0.16, 1, 0.3, 1] }}
-        />
-
         {/* CALIOON wordmark — horizontal sweep */}
         <div style={{ overflow:'hidden', lineHeight:1, width:'100%', textAlign:'center' }}>
           <motion.div
