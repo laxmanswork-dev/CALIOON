@@ -3245,10 +3245,10 @@ const OurGods = () => {
   const gods = [
     { tag: "MATHY",          n: "ARES",       r: "Founder & CEO",           img: imgZeus,     desc: "Sovereign growth engine, algorithmic visibility leadership, and strategic dominance architecture." },
     { tag: "TAMIL NILAVAN",  n: "APOLLO",     r: "Co-Founder & CMO",        img: imgApollo,   desc: "High-end luxury interfaces, digital design paradigms, and brand asset layouts that visually command." },
-    { tag: "GAIYASHREE",     n: "ATHENA",     r: "Marketing Director",       img: imgAthena,   desc: "Brand transformation intelligence, predictive enterprise alignment, and high-tier market positioning." },
     { tag: "RINI",           n: "ARTEMIS",    r: "Director of Partnerships", img: imgRini,     desc: "Razor-sharp targeting intelligence, precision audience acquisition, and strategic hit-rate optimization at elite scale." },
     { tag: "NAYANA SAI",     n: "APHRODITE",  r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
     { tag: "KRITHICK SURYA", n: "POSEIDON",   r: "Chief Revenue Officer",    img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
+    { tag: "GAIYASHREE",     n: "ATHENA",     r: "Marketing Director",       img: imgAthena,   desc: "Brand transformation intelligence, predictive enterprise alignment, and high-tier market positioning." },
   ];
 
   const renderCard = (god, i, baseDelay = 0) => (
@@ -3310,17 +3310,17 @@ const OurGods = () => {
           <motion.div style={{ paddingTop:'6px', maxWidth:'320px', margin:'0 auto', textAlign:'center', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }} initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} transition={{ duration:0.60, delay:0.88, ease:[0.16,1,0.3,1] }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
         </div>
 
-        {/* Row 1 — 4 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full mb-5">
-          {gods.slice(0, 4).map((god, i) => renderCard(god, i))}
+        {/* Row 1 — 3 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5 w-full mb-5">
+          {gods.slice(0, 3).map((god, i) => renderCard(god, i))}
         </div>
 
         {/* Divider */}
         <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, transparent, rgba(198,160,98,0.18) 30%, rgba(198,160,98,0.18) 70%, transparent)' }} />
 
-        {/* Row 2 — 4 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full mt-5">
-          {gods.slice(4).map((god, i) => renderCard(god, i, 0.06))}
+        {/* Row 2 — 3 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5 w-full mt-5">
+          {gods.slice(3).map((god, i) => renderCard(god, i, 0.06))}
         </div>
       </div>
     </section>
