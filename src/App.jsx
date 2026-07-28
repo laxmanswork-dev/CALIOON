@@ -3311,7 +3311,7 @@ const OurGods = () => {
         </div>
 
         {/* Row 1 — 3 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5 w-full mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5">
           {gods.slice(0, 3).map((god, i) => renderCard(god, i))}
         </div>
 
@@ -3319,7 +3319,7 @@ const OurGods = () => {
         <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, transparent, rgba(198,160,98,0.18) 30%, rgba(198,160,98,0.18) 70%, transparent)' }} />
 
         {/* Row 2 — 3 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-5 w-full mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mt-5">
           {gods.slice(3).map((god, i) => renderCard(god, i, 0.06))}
         </div>
       </div>
