@@ -3250,7 +3250,6 @@ const OurGods = () => {
     { tag: "NAYANA SAI",     n: "APHRODITE",  r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
     { tag: "KRITHICK SURYA", n: "POSEIDON",   r: "Chief Revenue Officer",    img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
     { tag: "BUBESH PRANAV",  n: "HADES",      r: "Director of Operations",   img: imgHades,    desc: "Data processing metrics, scalable programmatic deployment, tracking models, and absolute ROI mastery." },
-    { tag: "LAXMAN",         n: "HEPHAESTUS", r: "Director of Web-Strategy", img: imgLaxman,   desc: "Precision systems architecture, technology infrastructure mastery, and forge-level craftsmanship in every build." },
   ];
 
   const renderCard = (god, i, baseDelay = 0) => (
