@@ -4229,11 +4229,9 @@ const Contact = () => {
 
             <motion.div initial={{ opacity:0, y:12 }} whileInView={{ opacity:1, y:0 }} viewport={{ once:true }}
               transition={{ duration:0.6, ease:[0.16,1,0.3,1] }}
-              style={{ display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:'center', gap:'8px', marginBottom:'16px', position:'relative', zIndex:1 }}
+              style={{ display:'flex', flexWrap:'wrap', justifyContent:'flex-start', alignItems:'center', gap:'8px', marginBottom:'16px', position:'relative', zIndex:1 }}
             >
-              <div style={{ height:'1px', width:'clamp(18px,5vw,40px)', background:'linear-gradient(90deg,transparent,rgba(212,175,106,0.7))' }} />
-              <span style={{ fontSize:'clamp(9px,2.6vw,14px)', letterSpacing:'clamp(0.05em,0.8vw,0.26em)', color:'#D4AF6A', fontFamily:"'Cinzel',serif", fontWeight:700, textAlign:'center' }}>THE BRANDS THAT WIN TOMORROW</span>
-              <div style={{ height:'1px', width:'clamp(18px,5vw,40px)', background:'linear-gradient(90deg,rgba(212,175,106,0.7),transparent)' }} />
+              <span style={{ fontSize:'clamp(9px,2.6vw,14px)', letterSpacing:'clamp(0.05em,0.8vw,0.26em)', color:'#D4AF6A', fontFamily:"'Cinzel',serif", fontWeight:700, textAlign:'left' }}>THE BRANDS THAT WIN TOMORROW</span>
             </motion.div>
 
             <motion.h2
