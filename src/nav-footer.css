@@ -1,0 +1,80 @@
+/*
+ * CSS that Navbar/Footer (src/Navbar.jsx, src/Footer.jsx) depend on.
+ *
+ * These exact rules also live inside App.jsx's big injected `styles` string
+ * (used by the homepage) — they are duplicated here on purpose, not moved,
+ * so the homepage's existing CSS is never touched. This file exists so
+ * Navbar/Footer render correctly when imported standalone by a page that
+ * doesn't mount <App/> (e.g. src/Portfolio.jsx). Keep both copies in sync
+ * if Navbar/Footer's styling changes.
+ */
+
+.calioon-global-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 96px;
+  padding-right: 96px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+@media (max-width: 1024px) {
+  .calioon-global-container { padding-left: 64px; padding-right: 64px; }
+}
+@media (max-width: 768px) {
+  .calioon-global-container { padding-left: 32px; padding-right: 32px; }
+}
+@media (max-width: 640px) {
+  .calioon-global-container { padding-left: 14px; padding-right: 14px; }
+}
+@media (max-width: 425px) {
+  .calioon-global-container { padding-left: 10px; padding-right: 10px; }
+}
+
+.greek-stone-texture-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='agedMarble'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' result='noise'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23agedMarble)'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 1024px) and (max-width: 1255px) {
+  .nav-links-zone { gap: 14px !important; }
+  .nav-links-zone a { font-size: 10px !important; letter-spacing: 0.12em !important; }
+  .nav-cta-zone   { width: 168px !important; }
+  .nav-cta-link   { padding: 0 12px !important; font-size: 9.5px !important; letter-spacing: 0.14em !important; }
+}
+
+.nav-brand-zone { margin-left: -52px; width: 240px; }
+@media (max-width: 1280px) { .nav-brand-zone { margin-left: -26px; } }
+@media (max-width: 1024px) { .nav-brand-zone { margin-left: 0; width: auto; } }
+
+@keyframes footerKeylineShimmer {
+  0% { background-position: -300px 0; }
+  100% { background-position: 300px 0; }
+}
+.footer-greek-keyline {
+  position: relative;
+  overflow: hidden;
+}
+.footer-greek-keyline::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,160,98,0.0) 20%, rgba(198,160,98,0.35) 50%, rgba(198,160,98,0.0) 80%, transparent);
+  background-size: 600px 1px;
+  animation: footerKeylineShimmer 6s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .footer-legal-link { font-size: 11px !important; letter-spacing: 0.10em !important; }
+}
+
+@keyframes empireSubmitShimmer { 0% { left: -80% } 100% { left: 140% } }
