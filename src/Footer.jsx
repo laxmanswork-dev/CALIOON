@@ -21,8 +21,8 @@ const Footer = () => {
                 style={{ height:'38px', width:'38px', objectFit:'contain',
                   filter:'drop-shadow(0 0 6px rgba(198,160,98,0.35))' }} />
               <span style={{
-                fontFamily:"'Montserrat',sans-serif", fontWeight:800, fontSize:'20px',
-                letterSpacing:'0.22em', textTransform:'uppercase', color:'#F2EDE4', lineHeight:1,
+                fontFamily:"'Montserrat',sans-serif", fontWeight:600, fontSize:'18px',
+                letterSpacing:'0.05em', textTransform:'uppercase', color:'#F2EDE4', lineHeight:1,
               }}>CALIOON</span>
             </a>
 

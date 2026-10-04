@@ -80,12 +80,11 @@ const Navbar = () => {
             />
             <span style={{
               fontFamily: "'Montserrat', 'Helvetica Neue', Arial, sans-serif",
-              fontWeight: 800,
-              fontSize: '24px',
-              letterSpacing: '0.22em',
+              fontWeight: 600,
+              fontSize: '21px',
+              letterSpacing: '0.05em',
               textTransform: 'uppercase',
               color: '#F2EDE4',
-              textShadow: '0 0 28px rgba(198,160,98,0.12)',
               lineHeight: 1,
               paddingLeft: '2px',
             }}>CALIOON</span>

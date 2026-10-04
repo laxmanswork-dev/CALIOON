@@ -2418,7 +2418,7 @@ const TRUSTED_BY_LOGOS = [
 const TrustedLogo = ({ name, src }) => {
   const [failed, setFailed] = useState(false);
   return (
-    <div className="trusted-logo-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'clamp(20px, 2.8vw, 30px)', flexShrink: 0 }}>
+    <div className="trusted-logo-item" style={{ display: 'inline-flex', padding: '2.5px', border: '1.2px solid rgba(198,160,98,0.80)', flexShrink: 0 }}>
       {failed ? (
         <span style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(10px,1.3vw,13px)', letterSpacing: '0.09em', color: 'rgba(198,160,98,0.75)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
           {name}
@@ -2430,7 +2430,7 @@ const TrustedLogo = ({ name, src }) => {
           loading="lazy"
           onError={() => setFailed(true)}
           className="trusted-logo-img"
-          style={{ height: '100%', width: 'auto', maxWidth: 'clamp(64px,7vw,100px)', objectFit: 'contain', display: 'block' }}
+          style={{ height: 'clamp(20px, 2.8vw, 30px)', width: 'auto', maxWidth: 'clamp(64px,7vw,100px)', objectFit: 'contain', display: 'block' }}
         />
       )}
     </div>
@@ -4645,8 +4645,8 @@ const IntroScreen = ({ onComplete }) => {
         <div style={{ overflow:'hidden', lineHeight:1, width:'100%', textAlign:'center' }}>
           <motion.div
             style={{
-              fontFamily:"'Cinzel',serif", fontSize:'clamp(28px, 12vw, 54px)', fontWeight:700,
-              letterSpacing:'clamp(0.10em, 2.5vw, 0.32em)', paddingRight:'clamp(0.10em, 2.5vw, 0.32em)',
+              fontFamily:"'Montserrat','Helvetica Neue',Arial,sans-serif", fontSize:'clamp(20px, 5.5vw, 29px)', fontWeight:600,
+              letterSpacing:'0.05em', textTransform:'uppercase', paddingRight:'0.05em',
               color:'#fdf0d5', lineHeight:1, whiteSpace:'nowrap',
             }}
             initial={{ clipPath:'inset(0 100% 0 0)', opacity:1 }}

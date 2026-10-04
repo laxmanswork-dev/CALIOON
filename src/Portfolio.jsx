@@ -285,10 +285,10 @@ const LogoMarquee = () => {
   }, []);
 
   const renderSet = (keyPrefix) => (
-    <div style={{ display: "flex", alignItems: "center", gap: "clamp(40px,6vw,80px)", paddingRight: "clamp(40px,6vw,80px)" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "clamp(28px,5vw,56px)", paddingRight: "clamp(28px,5vw,56px)" }}>
       {TRUSTED_LOGOS.map((l, i) => (
-        <div key={`${keyPrefix}-${i}`} style={{ height: "34px", display: "flex", alignItems: "center", flexShrink: 0 }}>
-          <img src={l.src} alt={`${l.name} logo`} loading="lazy" style={{ height: "100%", width: "auto", maxWidth: "128px", objectFit: "contain", opacity: 0.86 }} />
+        <div key={`${keyPrefix}-${i}`} style={{ display: "inline-flex", padding: "2.5px", border: "1.2px solid rgba(198,160,98,0.80)", flexShrink: 0 }}>
+          <img src={l.src} alt={`${l.name} logo`} loading="lazy" style={{ display: "block", height: "30px", width: "auto", maxWidth: "110px", objectFit: "contain", opacity: 0.86 }} />
         </div>
       ))}
     </div>
@@ -296,10 +296,10 @@ const LogoMarquee = () => {
 
   if (reducedMotion) {
     return (
-      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "clamp(28px,5vw,64px)" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "clamp(20px,4vw,40px)" }}>
         {TRUSTED_LOGOS.map((l) => (
-          <div key={l.name} style={{ height: "34px", display: "flex", alignItems: "center" }}>
-            <img src={l.src} alt={`${l.name} logo`} loading="lazy" style={{ height: "100%", width: "auto", maxWidth: "128px", objectFit: "contain", opacity: 0.86 }} />
+          <div key={l.name} style={{ display: "inline-flex", padding: "2.5px", border: "1.2px solid rgba(198,160,98,0.80)" }}>
+            <img src={l.src} alt={`${l.name} logo`} loading="lazy" style={{ display: "block", height: "30px", width: "auto", maxWidth: "110px", objectFit: "contain", opacity: 0.86 }} />
           </div>
         ))}
       </div>
@@ -429,7 +429,7 @@ const RadarChart = ({ title, data, delay = 0 }) => {
   const pctDelay = delay + 1.05;
 
   return (
-    <Reveal delay={delay} style={{ border: "1px solid rgba(198,160,98,0.05)", padding: "40px 20px", textAlign: "center" }}>
+    <Reveal delay={delay} style={{ border: "1px solid rgba(198,160,98,0.35)", padding: "40px 20px", textAlign: "center" }}>
       <h4 style={{ fontFamily: "'Cinzel', serif", fontSize: "12px", letterSpacing: "0.14em", color: "#c6a062", textTransform: "uppercase", marginBottom: "12px" }}>{title}</h4>
       <svg viewBox={`0 0 ${size} ${size}`} style={{ width: "100%", maxWidth: "300px", margin: "0 auto", display: "block", overflow: "visible" }}>
         {/* STATIC layer: grid + labels + percentages. Never rotates, never moves. */}
@@ -740,9 +740,9 @@ export default function Portfolio() {
           {[CHALLENGES_GROUP_1, CHALLENGES_GROUP_2].map((group, gi) => (
             <div key={gi} style={{ marginBottom: gi === 0 ? "clamp(40px,6vw,64px)" : 0 }}>
               <style>{`@media(min-width:768px){.cp-root .cp-challenge-grid-${gi}{grid-template-columns:repeat(3,1fr) !important;}}`}</style>
-              <div className={`cp-challenge-grid-${gi}`} style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1px", background: "rgba(198,160,98,0.16)" }}>
+              <div className={`cp-challenge-grid-${gi}`} style={{ display: "grid", gridTemplateColumns: "1fr", gap: "24px" }}>
                 {group.map((c, i) => (
-                  <Reveal key={c.t} delay={i * 0.06} style={{ background: "#050A12", padding: "32px 28px" }}>
+                  <Reveal key={c.t} delay={i * 0.06} style={{ border: "1px solid rgba(198,160,98,0.35)", padding: "32px 28px" }}>
                     <h4 style={{ fontSize: "17px", fontWeight: 600, color: "#c6a062", marginBottom: "12px", letterSpacing: "0.01em" }}>{c.t}</h4>
                     <p style={{ fontSize: "13.5px", lineHeight: 1.7, color: "rgba(255,255,255,0.50)" }}>{c.d}</p>
                   </Reveal>
@@ -759,7 +759,7 @@ export default function Portfolio() {
           <SectionLabel eyebrow="What Will Our Strategy Do?" title="Three Pillars Of" gold="The Acquisition Machine" underline />
           <ResponsiveGrid cols={3} className="cp-pillar-grid">
             {PILLARS.map((p, i) => (
-              <Reveal key={p.t} delay={i * 0.08} style={{ padding: "32px 28px" }}>
+              <Reveal key={p.t} delay={i * 0.08} style={{ border: "1px solid rgba(198,160,98,0.35)", padding: "32px 28px" }}>
                 <div style={{ fontFamily: "'Cinzel', serif", color: "#c6a062", fontSize: "13px", marginBottom: "14px" }}>0{i + 1}</div>
                 <h4 style={{ fontSize: "17px", fontWeight: 600, color: "#fdf0d5", marginBottom: "12px" }}>{p.t}</h4>
                 <p style={{ fontSize: "13.5px", lineHeight: 1.7, color: "rgba(255,255,255,0.50)" }}>{p.d}</p>
