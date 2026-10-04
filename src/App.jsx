@@ -1361,15 +1361,11 @@ const styles = `
     .hero-cred-rule  { display: none !important; }
     .hero-cred-label { font-size: 11px !important; letter-spacing: 0.07em !important; }
     .hero-cred-sep   { font-size: 8px !important; margin: 0 6px !important; }
-    /* Paragraph immediately after accent rule, buttons last */
-    .hero-para-text  { order: 3; margin-top: 0px !important; margin-bottom: 14px !important; max-width: 250px !important; }
-    .hero-btns-wrap  { order: 4; }
+    .hero-btns-wrap  { order: 3; margin-top: 8px !important; }
     /* Buttons: slimmer; primary slightly heavier to lead the eye */
     .hero-cta-btn     { height: 40px !important; min-height: 40px !important; font-size: 11px !important; }
     .hero-cta-primary { font-size: 12px !important; font-weight: 800 !important; letter-spacing: 0.16em !important; }
     .hero-btns-wrap   { gap: 10px !important; }
-    /* Paragraph: accessible contrast (≥4.5:1) + lower visual weight */
-    .hero-para-text { font-size: 14px !important; line-height: 1.55 !important; color: rgba(255,255,255,0.72) !important; }
     /* Open leading on each line */
     .hero-line-wrap > span { line-height: 1.60 !important; }
     /* Couplet grouping:
@@ -1391,6 +1387,28 @@ const styles = `
     .hero-line-wrap-0      { margin-bottom: 1px;  }
     .hero-line-wrap-1      { margin-bottom: 14px; }
     .hero-line-wrap-2      { margin-bottom: 7px;  }
+  }
+
+  /* --- TRUSTED BY: infinite logo marquee --- */
+  @keyframes trustedMarqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .trusted-marquee-track {
+    animation: trustedMarqueeScroll 38s linear infinite;
+  }
+  .trusted-logo-img {
+    opacity: 0.80;
+    transition: opacity 0.4s ease;
+  }
+  .trusted-logo-item:hover .trusted-logo-img {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trusted-marquee-track {
+      animation: none !important;
+      transform: none !important;
+    }
   }
 `;
 
@@ -1972,22 +1990,15 @@ const Hero = () => {
             </h1>
             {/* Accent rule */}
             <motion.div
-              className="section-ornament-line self-center lg:self-start mb-8"
+              className="section-ornament-line self-center lg:self-start mb-10"
               style={{ color: 'rgba(198,160,98,0.65)', fontSize: '14px', letterSpacing: '0.05em', fontFamily: 'monospace' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.60, delay: 1.18, ease: [0.16, 1, 0.3, 1] }}
             >⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
 
-            {/* Paragraph — single unit fade + rise (no word splitting) */}
-            <motion.p
-              className="hero-para-text text-body-copy text-white/70 max-w-[480px] block w-full m-0 p-0 mb-9 self-start text-left"
-              initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 0.85, delay: 1.32, ease: [0.22, 1, 0.36, 1] }}
-            >
-              CALIOON architects category leadership through branding, performance systems, AI automation, and digital empire building.
-            </motion.p>
+            {/* Trusted By — social proof, fills the space of the removed description paragraph */}
+            <TrustedBy />
 
             {/* Buttons — individual staggered entrance */}
             <div className="hero-btns-wrap flex flex-col sm:flex-row gap-[28px] justify-center lg:justify-start items-center w-full m-0 p-0 self-center lg:self-start">
@@ -2092,7 +2103,7 @@ const Hero = () => {
           opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
           willChange:'transform', transform:'translateZ(0)', backfaceVisibility:'hidden',
         }}>
-        <source src="/video" type="video/mp4" />
+        <source src={import.meta.env.DEV ? "/hero-video.mp4" : "/video"} type="video/mp4" />
       </video>
       {/* Solid cover behind navbar */}
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
@@ -2123,7 +2134,7 @@ const Hero = () => {
               preload="auto"
               className="hero-video"
             >
-              <source src="/video" type="video/mp4" />
+              <source src={import.meta.env.DEV ? "/hero-video.mp4" : "/video"} type="video/mp4" />
             </video>
             {/* Background color blend — video's near-black bg doesn't exactly match the
                 page's navy (#050A12); lighten-blend raises only the dark pixels to match,
@@ -2662,6 +2673,100 @@ const Hero = () => {
     document.body
   )}
   </>
+  );
+};
+
+// --- COMPONENT: TRUSTED BY ---
+const TRUSTED_BY_LOGOS = [
+  { name: "Leap Scholar",                    src: "/logos/leap-scholar.png" },
+  { name: "Crimson Education",               src: "/logos/crimson-education.png" },
+  { name: "Athena",                          src: "/logos/athena-edu.png" },
+  { name: "upGrad",                          src: "/logos/upgrad.png" },
+  { name: "TEA",                             src: "/logos/tea.png" },
+  { name: "Santa Monica Study Abroad Pvt. Ltd.", src: "/logos/santa-monica.png" },
+];
+
+const TrustedLogo = ({ name, src }) => {
+  const [failed, setFailed] = useState(false);
+  return (
+    <div className="trusted-logo-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'clamp(20px, 2.8vw, 30px)', flexShrink: 0 }}>
+      {failed ? (
+        <span style={{ fontFamily: "'Cinzel', serif", fontSize: 'clamp(10px,1.3vw,13px)', letterSpacing: '0.09em', color: 'rgba(198,160,98,0.75)', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+          {name}
+        </span>
+      ) : (
+        <img
+          src={src}
+          alt={`${name} logo`}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="trusted-logo-img"
+          style={{ height: '100%', width: 'auto', maxWidth: 'clamp(64px,7vw,100px)', objectFit: 'contain', display: 'block' }}
+        />
+      )}
+    </div>
+  );
+};
+
+// Sits directly under the hero's decorative ornament line, in place of the removed paragraph.
+const TrustedBy = () => {
+  const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = (e) => setReducedMotion(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  const renderSet = (keyPrefix) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(20px, 3vw, 40px)', paddingRight: 'clamp(20px, 3vw, 40px)' }}>
+      {TRUSTED_BY_LOGOS.map((logo, i) => (
+        <TrustedLogo key={`${keyPrefix}-${i}`} name={logo.name} src={logo.src} />
+      ))}
+    </div>
+  );
+
+  return (
+    <div className="w-full self-start" style={{ marginBottom: 'clamp(32px, 4.6vw, 46px)' }}>
+      <motion.span
+        className="text-label-caps text-[#fdf0d5] block w-full font-bold text-left"
+        style={{ letterSpacing: '0.30em', fontSize: '15px', marginBottom: 'clamp(20px,2.8vw,26px)' }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, delay: 1.26, ease: LUXURY_EASE }}
+      >
+        TRUSTED BY
+      </motion.span>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.70, delay: 1.50, ease: LUXURY_EASE }}
+      >
+        {reducedMotion ? (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap', gap: 'clamp(16px, 2.6vw, 32px)' }}>
+            {TRUSTED_BY_LOGOS.map((logo, i) => (
+              <TrustedLogo key={`static-${i}`} name={logo.name} src={logo.src} />
+            ))}
+          </div>
+        ) : (
+          <div
+            style={{
+              overflow: 'hidden',
+              width: '100%',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+              maskImage: 'linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)',
+            }}
+          >
+            <div className="trusted-marquee-track" style={{ display: 'flex', width: 'max-content' }}>
+              {renderSet('a')}
+              {renderSet('b')}
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
   );
 };
 
