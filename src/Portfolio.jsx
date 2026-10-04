@@ -100,6 +100,9 @@ const STYLES = `
     transition: background 0.3s ease;
   }
   .cp-btn-secondary:hover { background: rgba(198,160,98,0.07); }
+  @media (max-width: 480px) {
+    .cp-btn-secondary { height: 42px; padding: 0 22px; font-size: 10.5px; letter-spacing: 0.14em; }
+  }
 
   @keyframes cpLogoMarquee {
     from { transform: translateX(0); }
@@ -230,8 +233,8 @@ const StatTile = ({ value, label, delay = 0 }) => (
 );
 
 const ResponsiveGrid = ({ cols, gap = "24px", children, className }) => (
-  <div className={className} style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap }}>
-    <style>{`@media(min-width:768px){.cp-root .${className}{grid-template-columns:repeat(${cols},1fr) !important;}}`}</style>
+  <div className={className} style={{ display: "grid", gridTemplateColumns: "1fr", gap }}>
+    <style>{`@media(min-width:640px){.cp-root .${className}{grid-template-columns:repeat(2,1fr) !important;}}@media(min-width:768px){.cp-root .${className}{grid-template-columns:repeat(${cols},1fr) !important;}}`}</style>
     {children}
   </div>
 );
