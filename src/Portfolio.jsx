@@ -418,7 +418,7 @@ const RadarChart = ({ title, data, delay = 0 }) => {
   const cx = size / 2;
   const cy = size / 2;
   const R = size * 0.20; // compact, deliberately not enlarged
-  const labelR = R * 1.8;
+  const labelR = R * 1.62;
   const n = data.length;
   const maxVal = Math.max(...data.map((d) => d.v));
   const scaleMax = Math.ceil(maxVal / 10) * 10;
@@ -474,7 +474,7 @@ const RadarChart = ({ title, data, delay = 0 }) => {
                     y={blockStartY + li * lineHeight}
                     textAnchor={anchor}
                     className="cp-radar-label"
-                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 500, fill: "#F1EBDD", letterSpacing: "0.01em" }}
+                    style={{ fontFamily: "'Inter', sans-serif", fontSize: "9.5px", fontWeight: 500, fill: "#F1EBDD", letterSpacing: "0.01em" }}
                     variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 0.3, delay: labelDelay, ease: EASE } } }}
                   >
                     {line}
@@ -485,7 +485,7 @@ const RadarChart = ({ title, data, delay = 0 }) => {
                   y={blockStartY + nameLines.length * lineHeight}
                   textAnchor={anchor}
                   className="cp-radar-pct"
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "12.5px", fontWeight: 700, fill: "#c6a062", letterSpacing: "0.01em" }}
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "11px", fontWeight: 700, fill: "#c6a062", letterSpacing: "0.01em" }}
                   variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.3, delay: pctDelay, ease: EASE } } }}
                 >
                   {d.v}%
@@ -715,7 +715,7 @@ export default function Portfolio() {
           </ResponsiveGrid>
           <div style={{ marginTop: "clamp(48px,6vw,72px)" }}>
             <style>{`@media(min-width:1024px){.cp-root .cp-breakdown-grid{grid-template-columns:repeat(3,1fr) !important;}}`}</style>
-            <div className="cp-breakdown-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "40px" }}>
+            <div className="cp-breakdown-grid" style={{ display: "grid", gridTemplateColumns: "1fr", gap: "56px" }}>
               <RadarChart title="Destination Preference" data={DESTINATIONS} delay={0} />
               <RadarChart title="Course Interests" data={COURSES} delay={0.15} />
               <RadarChart title="Student Level" data={LEVELS} delay={0.3} />
