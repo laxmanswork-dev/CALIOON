@@ -133,6 +133,16 @@ const STYLES = `
     .cp-roadmap-circle, .cp-roadmap-ring-outer, .cp-roadmap-ring-inner { animation: none !important; }
   }
 
+  /* Radar data-layer orbit: plain CSS keyframe (not Framer Motion's animate prop) with an
+     explicit transform-origin, same mechanism as the working roadmap rings above. The SVG
+     g element this rotates has no intrinsic shape geometry of its own, and Framer Motion's
+     style merging was silently overriding/mis-resolving a manually-set transformOrigin on
+     it -- that's why the orbit wasn't rendering correctly. Plain CSS avoids that conflict. */
+  .cp-radar-data-layer { animation: roadmapRingCW 22s linear infinite; transform-origin: 150px 150px; }
+  @media (prefers-reduced-motion: reduce) {
+    .cp-radar-data-layer { animation: none !important; }
+  }
+
   html { scroll-behavior: smooth; }
   .cp-subnav-link {
     font-family: 'Cinzel', serif;
@@ -487,12 +497,10 @@ const RadarChart = ({ title, data, delay = 0 }) => {
 
         {/* DATA LAYER: the only thing that moves — fill, outline, points. Self-contained
             reveal (own whileInView, decoupled from the static layer above) wrapped in a
-            continuous, seamless 360° orbit. Grid and labels above are untouched by this. */}
-        <motion.g
-          style={{ transformOrigin: `${cx}px ${cy}px` }}
-          animate={reducedMotion ? undefined : { rotate: 360 }}
-          transition={reducedMotion ? undefined : { duration: 22, repeat: Infinity, ease: "linear" }}
-        >
+            continuous, seamless 360° orbit (plain CSS, see .cp-radar-data-layer above —
+            Framer Motion's `animate={{rotate}}` + manual transformOrigin on this <g> was
+            the bug). Grid and labels above are untouched by this. */}
+        <g className="cp-radar-data-layer">
           <motion.g initial={reducedMotion ? "visible" : "hidden"} whileInView="visible" viewport={{ once: true, margin: "-40px" }}>
             <motion.polygon
               points={dataPoints}
@@ -523,7 +531,7 @@ const RadarChart = ({ title, data, delay = 0 }) => {
               );
             })}
           </motion.g>
-        </motion.g>
+        </g>
       </svg>
     </Reveal>
   );
