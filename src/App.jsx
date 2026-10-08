@@ -3079,9 +3079,9 @@ const OurGods = () => {
   const gods = [
     { tag: "MATHY",          n: "ARES",       r: "Founder & CEO",           img: imgZeus,     desc: "Sovereign growth engine, algorithmic visibility leadership, and strategic dominance architecture." },
     { tag: "TAMIL NILAVAN",  n: "APOLLO",     r: "Co-Founder & CMO",        img: imgApollo,   desc: "High-end luxury interfaces, digital design paradigms, and brand asset layouts that visually command." },
-    { tag: "RINI",           n: "ARTEMIS",    r: "Director of Partnerships", img: imgRini,     desc: "Razor-sharp targeting intelligence, precision audience acquisition, and strategic hit-rate optimization at elite scale." },
+    { tag: "GUNN KADAM",     n: "ARTEMIS",    r: "Sales Partner",            img: imgRini,     desc: "Razor-sharp targeting intelligence, precision audience acquisition, and strategic hit-rate optimization at elite scale." },
     { tag: "NAYANA SAI",     n: "APHRODITE",  r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
-    { tag: "KRITHICK SURYA", n: "POSEIDON",   r: "Chief Revenue Officer",    img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
+    { tag: "ANVESHA VERMA",  n: "AURA",       r: "Business Development Partner", img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
     { tag: "GAIYASHREE",     n: "ATHENA",     r: "Marketing Director",       img: imgAthena,   desc: "Brand transformation intelligence, predictive enterprise alignment, and high-tier market positioning." },
   ];
 
