@@ -4,12 +4,9 @@ import { motion, AnimatePresence, useInView, useScroll, useTransform } from "fra
 import imgIcon   from "./assets/images/icon.png";
 import imgZeus   from "./assets/images/zeus.jpg";
 import imgAthena from "./assets/images/athena.jpg";
-import imgHermes from "./assets/images/hermes.jpg";
-import imgHades  from "./assets/images/hades.jpg";
 import imgRini    from "./assets/images/rini.jpg";
 import imgNayana  from "./assets/images/nayana.jpg";
 import imgKarthick from "./assets/images/karthick.jpg";
-import imgLaxman  from "./assets/images/laxman.png";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 
@@ -1653,6 +1650,17 @@ const EmpireCrestBg = ({ wrapStyle = {}, svgStyle = {} }) => {
 // --- COMPONENT: HERO (LOCKED) ---
 const Hero = () => {
   const [pillarOpen, setPillarOpen] = useState(false);
+  // Gate the desktop pillar video's mount behind an actual JS viewport check, not just the
+  // `hidden lg:block` CSS class — `display:none` does not reliably stop a browser from still
+  // fetching an autoPlay/preload="auto" <video>, which was costing mobile/3G-4G users a
+  // multi-megabyte download for a video they'd never even see.
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const onChange = (e) => setIsDesktop(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1821,18 +1829,20 @@ const Hero = () => {
       </div>
     </div>
 
-    {/* Mobile deity background */}
+    {/* Mobile deity background — static image, not the 5MB+ pillar video. Mobile/3G-4G
+        users were waiting on a multi-megabyte video for a purely decorative, low-opacity
+        background; a ~140KB image gives the same ambiance and paints almost instantly. */}
     <div className="lg:hidden absolute inset-0 select-none pointer-events-none z-0" aria-hidden="true">
-      <video
-        autoPlay muted loop playsInline preload="auto"
+      <img
+        src={imgZeus}
+        alt=""
+        fetchPriority="high"
         style={{
           position:'absolute', inset:0, width:'100%', height:'100%',
           objectFit:'cover', objectPosition:'60% center',
           opacity:0.58, filter:'brightness(1.90) contrast(1.10) saturate(0.80)',
-          willChange:'transform', transform:'translateZ(0)', backfaceVisibility:'hidden',
-        }}>
-        <source src={import.meta.env.DEV ? "/hero-video.mp4" : "/video"} type="video/mp4" />
-      </video>
+        }}
+      />
       {/* Solid cover behind navbar */}
       <div style={{ position:'absolute', top:0, left:0, right:0, height:'100px', background:'#050A12', zIndex:2 }} />
       {/* Left-side dark shield keeps text readable */}
@@ -1854,16 +1864,21 @@ const Hero = () => {
         <div className="absolute inset-0 z-[25]">
           <div className="relative w-full h-full overflow-hidden">
             {/* ── hero video renders here ── */}
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="hero-video"
-            >
-              <source src={import.meta.env.DEV ? "/hero-video.mp4" : "/video"} type="video/mp4" />
-            </video>
+            {/* Only mounted on desktop: an autoPlay/preload="auto" <video> can still trigger
+                a fetch even while its CSS ancestor is display:none, so this is gated behind
+                an actual JS viewport check rather than relying on `hidden lg:block` alone. */}
+            {isDesktop && (
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="hero-video"
+              >
+                <source src={import.meta.env.DEV ? "/hero-video.mp4" : "/video"} type="video/mp4" />
+              </video>
+            )}
             {/* Background color blend — video's near-black bg doesn't exactly match the
                 page's navy (#050A12); lighten-blend raises only the dark pixels to match,
                 leaving the bright gold wing/ring untouched. */}
