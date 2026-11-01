@@ -3075,10 +3075,10 @@ const Domains = () => {
 // --- COMPONENT: OUR GODS ---
 const OurGods = () => {
   const gods = [
-    { tag: "MATHY",          n: "ARES",       r: "Founder & CEO",           img: imgZeus,     desc: "Sovereign growth engine, algorithmic visibility leadership, and strategic dominance architecture." },
+    { tag: "MATHY",          n: "KRATOS",     r: "Founder & CEO",           img: imgZeus,     desc: "Sovereign growth engine, algorithmic visibility leadership, and strategic dominance architecture." },
     { tag: "GUNN KADAM",     n: "ARTEMIS",    r: "Sales Partner",            img: imgRini,     desc: "Razor-sharp targeting intelligence, precision audience acquisition, and strategic hit-rate optimization at elite scale." },
-    { tag: "NAYANA SAI",     n: "APHRODITE",  r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
-    { tag: "ANVESHA VERMA",  n: "AURA",       r: "Business Development Partner", img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
+    { tag: "NAYANA SAI",     n: "LAUFEY",     r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
+    { tag: "ANVESHA VERMA",  n: "FREYA",      r: "Business Development Partner", img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
   ];
 
   const renderCard = (god, i, baseDelay = 0) => (
