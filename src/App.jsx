@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from "framer-motion";
 import imgIcon   from "./assets/images/icon.png";
 import imgZeus   from "./assets/images/zeus.jpg";
-import imgAthena from "./assets/images/athena.jpg";
 import imgHermes from "./assets/images/hermes.jpg";
 import imgHades  from "./assets/images/hades.jpg";
 import imgRini    from "./assets/images/rini.jpg";
@@ -3080,7 +3079,6 @@ const OurGods = () => {
     { tag: "GUNN KADAM",     n: "ARTEMIS",    r: "Sales Partner",            img: imgRini,     desc: "Razor-sharp targeting intelligence, precision audience acquisition, and strategic hit-rate optimization at elite scale." },
     { tag: "NAYANA SAI",     n: "APHRODITE",  r: "Creative Director",        img: imgNayana,   desc: "Irresistible brand narratives, cultural influence engineering, and audience connection at the highest tier." },
     { tag: "ANVESHA VERMA",  n: "AURA",       r: "Business Development Partner", img: imgKarthick, desc: "Relentless market penetration, strategic partnership dominance, and territory expansion at oceanic scale." },
-    { tag: "GAIYASHREE",     n: "ATHENA",     r: "Marketing Director",       img: imgAthena,   desc: "Brand transformation intelligence, predictive enterprise alignment, and high-tier market positioning." },
   ];
 
   const renderCard = (god, i, baseDelay = 0) => (
@@ -3144,7 +3142,7 @@ const OurGods = () => {
 
         {/* Row 1 — 3 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5">
-          {gods.slice(0, 3).map((god, i) => renderCard(god, i))}
+          {gods.slice(0, 2).map((god, i) => renderCard(god, i))}
         </div>
 
         {/* Divider */}
@@ -3152,7 +3150,7 @@ const OurGods = () => {
 
         {/* Row 2 — 3 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mt-5">
-          {gods.slice(3).map((god, i) => renderCard(god, i, 0.06))}
+          {gods.slice(2).map((god, i) => renderCard(god, i, 0.06))}
         </div>
       </div>
     </section>
