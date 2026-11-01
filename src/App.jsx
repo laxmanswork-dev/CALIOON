@@ -3140,16 +3140,16 @@ const OurGods = () => {
           <motion.div style={{ paddingTop:'6px', maxWidth:'320px', margin:'0 auto', textAlign:'center', color:'rgba(198,160,98,0.65)', fontSize:'14px', letterSpacing:'0.05em', fontFamily:'monospace' }} initial={{ opacity:0 }} whileInView={{ opacity:1 }} viewport={{ once:true }} transition={{ duration:0.60, delay:0.88, ease:[0.16,1,0.3,1] }}>⌜⌟⌜⌟⌜⌟   ⊙   ⌜⌟⌜⌟⌜⌟</motion.div>
         </div>
 
-        {/* Row 1 — 3 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5">
+        {/* Row 1 — 2 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full mb-5">
           {gods.slice(0, 2).map((god, i) => renderCard(god, i))}
         </div>
 
         {/* Divider */}
         <div className="w-full h-px my-2" style={{ background: 'linear-gradient(90deg, transparent, rgba(198,160,98,0.18) 30%, rgba(198,160,98,0.18) 70%, transparent)' }} />
 
-        {/* Row 2 — 3 cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mt-5">
+        {/* Row 2 — 2 cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full mt-5">
           {gods.slice(2).map((god, i) => renderCard(god, i, 0.06))}
         </div>
       </div>
